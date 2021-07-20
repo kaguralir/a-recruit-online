@@ -13,7 +13,7 @@ import ReactLocalStorage  from 'reactjs-localstorage';
 export default function inscription({dest}) {
     
     const router=useRouter();//donne la personne qui veut s'inscrire 
-
+    const api = "https://blooming-crag-03737.herokuapp.com"
 
     const [user_name,setUserName]=useState(false);
     const [user_firstname,setUserFirstName]=useState(false);
@@ -37,7 +37,7 @@ export default function inscription({dest}) {
             setAlert(" Veuillez remplir tous les champs pour vous inscrire")
         }else{
 
-           Axios.post('http://localhost:3080/signup',{
+           Axios.post(`${api}/ signup`,{
                 
                 user_name:user_name,
                 user_firstname:user_firstname,
@@ -55,7 +55,7 @@ export default function inscription({dest}) {
 
                     if(router.query.dest==="recruteur"){
 
-                        Axios.post('http://localhost:3080/createCompany',{//creer une centreprise à son nom
+                        Axios.post(`${api}/createCompany`,{//creer une centreprise à son nom
 
                             user_id:result.data.user_info.user_id
 
@@ -63,7 +63,7 @@ export default function inscription({dest}) {
                     }
 
                     //creer unser_info
-                    Axios.post('http://localhost:3080/createUserInfo',{//creer une centreprise à son nom
+                    Axios.post(`${api}/createUserInfo`,{//creer une centreprise à son nom
 
                             user_id:result.data.user_info.user_id
 

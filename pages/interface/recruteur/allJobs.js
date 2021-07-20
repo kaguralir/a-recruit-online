@@ -8,6 +8,8 @@ export default function allJobs(info) {
     
    // console.log(info.query)
 
+   const api = "https://blooming-crag-03737.herokuapp.com"
+
     const [unfilledJobs,setUnfilledJobs] =useState([]);
 
     const [filledJobs,setFilledJobs] =useState([]);
@@ -18,7 +20,7 @@ export default function allJobs(info) {
 
             setFilledJobs([])
 
-            Axios.post('http://localhost:3080/getUnFillededJob',{
+            Axios.post(`${api}/getUnFillededJob`,{
 
                 company_id:info.query.company_id,
 
@@ -40,7 +42,7 @@ export default function allJobs(info) {
 
             setUnfilledJobs([])
 
-            Axios.post('http://localhost:3080/getFillededJob',{
+            Axios.post(`${api}/getFillededJob`,{
 
                 company_id:info.query.company_id,
 

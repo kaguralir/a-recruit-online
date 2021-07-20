@@ -15,6 +15,9 @@ import BigSizeScreenNotif from '../../../components/notification/bigSizeScreenNo
 
 export default function recrutor(){
 
+    const api = "https://blooming-crag-03737.herokuapp.com"
+
+
     const loaded_file = (e,result) => {
 
         const file = e.target.files[0];
@@ -66,7 +69,7 @@ export default function recrutor(){
             //console.log(loded_user.user_id)
             ///Chargement des donnéés concernant l'utilisateur
 
-            Axios.post("http://localhost:3080/getCompanyInfo",
+            Axios.post(`${api}/getCompanyInfo`,
             {
                 user_id:loded_user.user_id
 
@@ -76,11 +79,11 @@ export default function recrutor(){
 
                 if(reponse.data.company_id){
         
-                    Axios.post("http://localhost:3080/getUnFillededJobLimit4",{company_id:reponse.data.company_id }).
+                    Axios.post(`${api}/getUnFillededJobLimit4`,{company_id:reponse.data.company_id }).
                     then( (reponse)=>{setCompanyUnfillededJobs(reponse.data)})
-                    Axios.post("http://localhost:3080/getFillededJobLimit4",{company_id:reponse.data.company_id}).
+                    Axios.post(`${api}/getFillededJobLimit4`,{company_id:reponse.data.company_id}).
                     then( (reponse)=>{setCompanyFilledeJobs(reponse.data)})
-                    Axios.post("http://localhost:3080/getConsultantByDepartment",{company_department:reponse.data.company_department}).
+                    Axios.post(`${api}/getConsultantByDepartment`,{company_department:reponse.data.company_department}).
                     then( (reponse)=>{setConsultant(reponse.data)})
                 }
             
@@ -93,14 +96,14 @@ export default function recrutor(){
         const [url,setUrl]=useState("")
 
         useEffect(() => {
-            Axios.post("http://localhost:3080/getConsultantCalendly",{consultant_id:company_info.consultant_id}).
+            Axios.post(`${api}/getConsultantCalendly`,{consultant_id:company_info.consultant_id}).
             then( (reponse)=>{setUrl(`https://calendly.com/${reponse.data.user_calendly}/30min`)})
             
         }, [company_info.consultant_id])
 
 
         const loadConsultant = (department)=>{
-            Axios.post("http://localhost:3080/getConsultantByDepartment",{company_department:department}).
+            Axios.post(`${api}/getConsultantByDepartment`,{company_department:department}).
             then( (reponse)=>{setConsultant(reponse.data)})
         }
 
@@ -206,7 +209,7 @@ export default function recrutor(){
         
             if(!company_presentation_video.new){
      
-                Axios.post('http://localhost:3080/updateCompanyInfo',{
+                Axios.post(`${api}/updateCompanyInfo`,{
                      company_id:company_id,
                      company_name:company_name,
                      company_nationality:company_nationality,
@@ -304,7 +307,7 @@ export default function recrutor(){
                 
             }else{
 
-                Axios.post('http://localhost:3080/createJob',{
+                Axios.post(`${api}/createJob`,{
                     
                     job_title:job_title,
                     job_contract_type:job_contract_type,
@@ -339,7 +342,7 @@ export default function recrutor(){
             if(confirm("Voulez-vous vraiment supprimer cette offre ?")){
                 if(confirm("Cette oppération est irréversible "))
 
-                Axios.post('http://localhost:3080/deleteJob',{
+                Axios.post(`${api}/deleteJob`,{
                         
                     job_id:id
 
@@ -765,61 +768,4 @@ export default function recrutor(){
         </div>
     )
 }
-
-
-
-// export async function getStaticProps() {
-
-//     let europe_country = [];
-//     const company_id=2
-//     var company_info = []
-//     var company_fillededJobs = []
-//     var company_unFilledJobs = []
-  
-//     ///Chargement des données régionnaux pour les formulaires
-
-//     await Axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {europe : europe_country})
-//     .then(async (reponse)=>{europe_country = await reponse.data})
-
-
-//     ///Chargement des donnéés concernant l'utilisateur
-
-//     await Axios.post("http://localhost:3080/getCompanyInfo",{company_id:company_id }).
-//     then(async (reponse)=>{company_info= await reponse.data})
-
-
-//     if(company_info.company_id){
-
-//         await Axios.post("http://localhost:3080/getUnFillededJobLimit4",{company_id:company_id }).
-//         then(async (reponse)=>{company_unFilledJobs= await reponse.data})
-//         await Axios.post("http://localhost:3080/getFillededJobLimit4",{company_id:company_id }).
-//         then(async (reponse)=>{company_fillededJobs= await reponse.data})
-
-//         return {
-//             props: {
-//                 data:{
-//                     company_info:company_info,
-//                     company_unFilledJobs:company_unFilledJobs,
-//                     company_fillededJobs:company_fillededJobs,
-//                     europe_country:europe_country,
-//                 }
-//             }, // will be passed to the page component as props
-//         }
-        
-
-//     }else {
-
-//         return{
-//             props: {
-//                 data:{
-//                     company_info:[],
-//                     company_unFilledJobs:[],
-//                     company_fillededJobs:[],
-//                     europe_country : [],
-//                 }
-//             }
-//         }
-//     }
-
-// }
 
