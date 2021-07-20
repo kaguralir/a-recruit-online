@@ -1,0 +1,135 @@
+.scroll{
+  padding-top: 50px;
+  width: 100%;
+  max-height: 100vh;
+}
+
+.HomeImageBackground{
+    background-image: url("../public/images/handshake.jpg");
+    background-position: center;
+    height: 100vh;
+}
+  
+.blure{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.542);
+}
+
+.logo{
+    padding: 1em;
+    position:absolute;
+    top: 0;
+}
+
+.textZone{
+    margin: 0 auto;
+    width: 90%;
+    height: 65%;
+    color: #fff;
+}
+
+.linkZone{
+    margin: 0 auto;
+    height: 50px;
+    width: 50%;
+    
+}
+
+.linkZone div:hover{
+  cursor: pointer;
+}
+
+//Flèche vers le bas animée 
+.arrow,.arrow:before{
+    position: absolute;
+    left: 50%
+}
+  
+.arrow{
+    width: 40px;
+    height: 40px;
+    top: 90%;
+    margin: -20px 0 0 -20px;
+    -webkit-transform: rotate(45deg);
+    border-left: none;
+    border-top: none;
+    border-right: 2px #fff solid;
+    border-bottom: 2px #fff solid;
+}
+  
+    
+.arrow:before{
+    content: '';
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    margin: -10px 0 0 -10px;
+    border-left: none;
+    border-top: none;
+    border-right: 1px #fff solid;
+    border-bottom: 1px #fff solid;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: arrow;
+}
+
+
+@keyframes arrow{
+    0%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+      transform: translate(-10px, -10px);
+    }
+}
+
+
+
+
+///Scrolle page 2
+.page2{
+  height: 100vh;
+}
+
+.video{
+  margin: 5% auto;
+  max-width: 70%;
+}
+
+.avisZone{
+  margin: 1em auto;
+  width: 70%;
+  height: 100%;
+  font-family: great vibes;
+}
+ 
+
+  @media screen and (max-width:500px){
+
+   
+    .HomeImageBackground{
+      background-image: url("../public/images/handshake_small_screen.jpg");
+    }
+
+    .linkZone{
+      flex-direction: column;
+      width: 90%;
+      div{
+        min-width: 100%;
+        text-align: center;
+        margin-bottom: 1em;
+      }
+    }
+    .page2{
+      height: max-content;
+    }
+    .video{
+      min-width: 90%;
+      max-height: 40%;
+    }
+
+  }
