@@ -9,6 +9,7 @@ import jwtDecode from 'jwt-decode';
 export default function Connect({dest}) {
 
     const api = "https://blooming-crag-03737.herokuapp.com"
+    let token = ""
 
     const [user_email,setUserEmail]=useState(false);
     const [user_password,setUserpassword]=useState(false);
@@ -28,6 +29,13 @@ export default function Connect({dest}) {
                 user_email:user_email,
                 user_password:user_password
 
+            },
+            {
+                headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer${token}` //Renvoi du token par l'api en cas d'authentification
+            }
+                
             }).then(resutlt=>{
 
                 if(!resutlt.data.err){

@@ -14,6 +14,7 @@ export default function inscription({dest}) {
     
     const router=useRouter();//donne la personne qui veut s'inscrire 
     const api = "https://blooming-crag-03737.herokuapp.com"
+    var token = ""
 
     const [user_name,setUserName]=useState(false);
     const [user_firstname,setUserFirstName]=useState(false);
@@ -45,6 +46,12 @@ export default function inscription({dest}) {
                 user_password:user_password1,
                 user_right:user_right
 
+            },
+            {
+                headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer${token}` //Renvoi du token par l'api en cas d'authentification
+            } 
             }).then((result)=>{
 
                 console.log(result)
