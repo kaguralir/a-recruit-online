@@ -38,7 +38,7 @@ export default function inscription({dest}) {
             setAlert(" Veuillez remplir tous les champs pour vous inscrire")
         }else{
 
-           Axios.post(`${api}/ signup`,{
+           Axios.post(`${api}/signup`,{
                 
                 user_name:user_name,
                 user_firstname:user_firstname,
