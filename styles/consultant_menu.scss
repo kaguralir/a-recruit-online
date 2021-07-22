@@ -1,0 +1,17 @@
+.Menu_Consultant{
+    width: 150px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: var( --color-primary-light);
+    color: #fff;
+
+    a{
+        text-decoration: none;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+    }
+}

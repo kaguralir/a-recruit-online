@@ -1,91 +1,155 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Link from 'next/link'
-import { redirect } from 'nextjs-redirect'
+import ReactLocalStorage from 'reactjs-localstorage'
+import jwt_decode from 'jwt-decode'
 
-export default function animated_home_header() {
+
+
+export default function Home_header(props) {
+
 
     return (
         <>
-            <header className="center">
-                <div className="home_logo">LOGO</div>
-                <div className="login_signin orientationH">
-                   
-                    <select className="home_menu_select">
-                        <option> S'inscrire ? </option>
-                        <option>&nbsp;&nbsp;Candidat&nbsp;&nbsp;</option>
-                        <option>&nbsp;&nbsp;Recruteur&nbsp;&nbsp;</option>
-                    </select>
-                   
-                    <Link href="/authentification/connexion">
-                        <a><div>Se connecter ?</div></a>
-                    </Link>
-                   
-                </div>
-            </header>
+            <div className="header orientationH spaceBetween">
+                <Link href="/">
+                    <a>
+                        <img className="h_logo" src="/images/A_Recruit.jpg" alt="LOGO"/>
+                    </a>
+                </Link>
+                <div className="orientationH ">
 
+                    <div className="user orientationV">
+                        <div className="user_name_z"></div>
+
+                        <ul>
+
+                            <li>Mon compte
+                                <ul>
+                                    <li className="center-H" >
+                                        <Link href="/profile[1]">
+                                            <a>
+                                                Collaborateur
+                                            </a>
+                                        </Link>
+                                    </li>
+                                    <li className="center-H" >
+                                        <Link href="/profile[1]">
+                                            <a>
+                                                Employeur
+                                            </a>
+                                        </Link>
+                                    </li>
+                                    <li className="center-H" >
+                                        <Link href="/profile[1]">
+                                            <a>
+                                                Candidat
+                                            </a>
+                                        </Link>
+                                    </li>
+                                    <li className="center-H" >
+                                        <Link href="/profile[1]">
+                                            <a>
+                                                Partenaire
+                                            </a>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+               
+            </div>
             <style jsx>{`
-                .home_logo{
-                    position:absolute;
-                    top: 0;
-                    padding:1em;
-                    animation: slideLogo 1s ease-out 1s forwards ; 
-                }
-                .login_signin{
-                    opacity:0;
-                    position:absolute;
-                    top: 0;
-                    padding:1em;
-                    color:#fff;
-                    animation: slideSigninLogin 1s ease-out 1s forwards ; 
-                }
-                .home_menu_select{
-                    background-color: transparent;
-                   
-                    outline: none;
-                    border: none;
+
+                .header{
+                    background-color: var(--color-primary-light);
+                    width: 100%;
+                    height : 40px;
+                    align-items: center;
                     color: #fff;
+                    z-index: 3;
                 }
-                .home_menu_select option{
-                    color:#000;
+                
+                
+                .notification_z span{
+                    position: relative;
+                    top: -6px; left: -5px;
+                    width: 20px;
+                    min-width: 15px;
+                    font-size: 0.8em;
+                    padding-left : 0.3em;
+                    padding-right : 0.3em;
+                    background-color: green;
+                    border-radius: 15px;
                 }
-                .home_menu_select option:nth-child(1){
-                    display:none;
-                    min-width:200px;
+                .h_logo{
+                    max-height: 40px;
                 }
-                .login_signin a,div{
+
+                .user_name_z{
+                    padding-right:1em;
+                    padding-left: 0.5em;
+                }
+                .user{
+                    display: flex;
+                    padding-right: 0.5em;
+                }
+                .user ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                }
+                .user ul li {
+                    min-width: 130px;
+                    text-align: center;
+                }
+                .user ul li a{
+                    color :  #fff;
                     text-decoration: none;
-                    padding-left: 10px;
-                    color:#fff;
+                    cursor : pointer;
                 }
-                @keyframes slideLogo{
-                    0% {
-                        left:50%
-                        display: flex;
-                    }
-                    100% {
-                        left:0%
-                    }
+                .user li ul {
+                    display: none;
+                    background-color: var(--color-primary-light);
+                    z-index: 10;
+                    
                 }
-                @keyframes slideSigninLogin{
-                    0% {
-                        right:40%;
-                    }
-                    10% {
-                        opacity:0.1
-                    }
-                    20% {
-                        opacity:1
-                    }
-                   
-                    100% {
-                        right:0%
-                        opacity:1
-                    }
+
+                .user li ul li{ 
+                    min-height: 30px;
+                    border-top:1px solid #fff;
+                    padding : 2px;
+                    cursor: pointer;
                 }
+
+                .user li ul li :nth-child(1){
+                    margin-top:0.7em;
+                }
+
+                .user li:hover ul {
+                    /* Ici l’affichage du sous-user */
+                    display: block;
+                    position: absolute;
+                }
+                .user li:hover li {
+                     float: none;
+                }
+                .user ul li ul li{
+                    padding-left: 1em;
+                    padding-right: 1em;
+                    padding-top: 0.5em;
+                    padding-bottom: 0.5em;
+
+                }
+                .user ul li ul li:hover{
+                    background: #999;
+                } 
+
 
             `}</style>
         </>
-
-            
     )
 }

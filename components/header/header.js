@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode'
 
 
 
-export default function header(props) {
+export default function Header(props) {
 
     const [user,setUser]=useState("");
 
@@ -40,7 +40,7 @@ export default function header(props) {
                 </Link>
                 <div className="orientationH ">
 
-                    <div className="notification_z" onClick={()=>{props.callback()}}>
+                    <div className="notification_z" onClick={()=>{props.callback && props.callback()}}>
                         <img className="icon" src="/images/icon_notification.png" alt='noti_icon'/>
                         <span>{nb_notif}</span>
                         
