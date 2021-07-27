@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function footer() {
+export default function Footer() {
     return (
         <>
         <div className="footer orientationV spaceBetween">
@@ -65,7 +65,7 @@ export default function footer() {
             <style jsx>{`
             
                     .footer{
-                        margin-top: 1em;
+                        
                         width:100%;
                         min-height: 150px;
                         background-color: var(--color-primary-light);

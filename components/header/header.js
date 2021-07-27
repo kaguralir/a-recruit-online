@@ -157,10 +157,7 @@ export default function Header(props) {
                 }
                 .user ul li ul li:hover{
                     background: #999;
-                } 
-                .user li:hover li a:hover {
-                    background: #555;
-                }​
+                } ​
 
             `}</style>
         </>

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Header from '../../../components/header/header'
 import Menu from '../../../components/menu_consultant/menu'
 
-export default class Consultant extends Component {
+export default class MonCompte extends Component {
     render() {
         return (
             <>
@@ -13,7 +13,7 @@ export default class Consultant extends Component {
                 <div className="gestionrecruteur">
                     <Header/>
                     <Menu
-                        pos="acceuil"
+                        pos="moncompte"
                     />
                 </div>
             </>
