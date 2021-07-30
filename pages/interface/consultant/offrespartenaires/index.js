@@ -36,7 +36,7 @@ export default function index() {
     };
 
     const partner =[
-        {id:1,logo:"/images/partner/partner_boursorama.jpg"},
+        {id:1,logo:"/images/partner/partner_boursorama.png"},
         {id:2,logo:"/images/partner/partner_algeco.png"},
         {id:3,logo:"/images/partner/partner_audi.svg"},
         {id:4,logo:"/images/partner/partner_ferrari.jpeg"},

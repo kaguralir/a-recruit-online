@@ -81,7 +81,7 @@ export default function inscription({dest}) {
                     ReactLocalStorage.reactLocalStorage.get('jwt', true);
 
 
-                    window.location.href = `../interface/recruteur`
+                    window.location.href = `../interface/${router.query.dest}`
 
                 }else {
                      setAlert("Deja inscrit")

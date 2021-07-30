@@ -1,5 +1,74 @@
 .recruteur{
 
+    .body{
+        display: flex;
+       .recutor-left{
+            width: 20%;
+            padding: 2em;
+            color: var(--color-primary-light);
+            overflow-y: scroll;
+            max-height:100%;
+            @media screen and (max-width:850px){
+                display: none;
+            }
+
+            span{
+                font-weight: 900;
+            }
+            .recrutor-consultant{
+                display: flex;
+                flex-direction: column;
+                margin: 1em auto;
+                .recrutor-consultant-img{
+                    margin: 0 auto;
+                }
+            }
+            .recrutor-help{
+                margin: 1em auto;
+            }
+       }
+    //    .recutor-left::-webkit-scrollbar{
+    //        display: none;
+    //    }
+
+        .recrutor-right{
+            width: 80%;
+            @media screen and (max-width:850px){
+               width: 100%;
+            }
+
+            .company_info{
+                padding: 2em;
+                display: flex;
+                .company_logo{
+                    width: 20%;
+                    height: 200px;
+                    padding: 2em;
+                    border: 5px solid var(--color-primary-light);
+                    background-color: #999;
+                }
+                .company{
+                    padding: 1em;
+                    color: var(--color-primary-light);
+                    border-top: 1px solid var(--color-primary-light);
+                    border-bottom: 1px solid var(--color-primary-light);
+                    border-right: 1px solid var(--color-primary-light);
+                    min-width: 80%;
+
+                    span{
+                        font-weight: 900;
+
+                    }
+                    div{
+                        margin-bottom: 0.5em;
+                    }
+                }
+            }
+
+        }
+
+    }
+
     .show_hide_layout{
         max-width: 95%;
         margin: 2em auto;

@@ -27,7 +27,8 @@ export default function Connect({dest}) {
            Axios.post(`${api}/login`,{
 
                 user_email:user_email,
-                user_password:user_password
+                user_password:user_password,
+               // right:dest
 
             },
             {
@@ -45,7 +46,7 @@ export default function Connect({dest}) {
                     ReactLocalStorage.reactLocalStorage.get('jwt', true);
                     //let user = jwtDecode(JSON.stringify(resutlt.data));
                     //console.log(user)
-                    window.location.href =`../interface/recruteur`;
+                    window.location.href =`../interface/${dest}`;
                 }else {
                     setAlert("Identifiants et / ou  mot de passe incorrects")
                 }

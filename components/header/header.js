@@ -61,7 +61,7 @@ export default function Header(props) {
                                         </Link>
                                     </li>
                                     <li className="disconnect" onClick={(e)=>{e.preventDefault();disconnect()}}>
-                                        <Link href="/profile[1]">
+                                        <Link href="/">
                                             <a>
                                                 Se deconnecter
                                             </a>

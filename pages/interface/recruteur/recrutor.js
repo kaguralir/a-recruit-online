@@ -10,6 +10,7 @@ import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import ReactLocalStorage  from 'reactjs-localstorage'
 import BigSizeScreenNotif from '../../../components/notification/bigSizeScreenNotif'
+import Image from 'next/image'
 
 
 
@@ -389,378 +390,427 @@ export default function recrutor(){
                 {/*---------------*/}
                 
                 <main className="body">
-
-                    <ShowOrHideLayout
-                        title = "TERMINER L'INSCRIPTION DE MON ENTREPRISE"
-                        statut = {register_todo}
-                        show_hide = {show_hide1}
-                        callback = {(state)=>setShow_hide1("")}
-                    >
-                        
-                        <div className="register_todo_container">
-                            <div className="underline register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Nom de l'entreprise :</label>
-                                    <input placeholder={company_info.company_name ? company_info.company_name : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyName(e.target.value)}}/>
-                                </div>
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Pays :</label>
-                                    <select className="form_select"  onChange={(e)=>{setCompanyCountry(e.target.value);loadDepartment(e.target.value)}}>
-                                        {europe_country.map((element, index) => {
-                                            if(company_info.company_country && element.name===company_info.company_country){
-                                                return <option className="option-selected" selected key={index} value={element.name}>{element.name}</option>
-                                            }else{
-                                                return <option key={index} value={element.name}>{element.name}</option>
-                                            }
-                                        })}
-                                    </select>
-                                </div>
-                            </div> 
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Département :</label>
-                                    {(departments.length!==0 || company_info.company_department)? 
-                                        <select className="form_select"  onChange={(e)=>{setCompanyDepartment(e.target.value);loadConsultant(e.target.value)}}>
-                                            <option>Selectionnez un departement</option>
-
-                                            {departments.map((element, index) => {
-                                                    if(company_info.company_department && element.nom===company_info.company_department){
-                                                        return <option className="option-selected" selected key={index}>{element.nom}</option>
-                                                    }else{
-                                                        return <option key={index}>{element.nom}</option>
-                                                    }
-                                                })}
-                                                
-                                        </select>
-                                    :                                
-                                    <input placeholder={company_info.company_department? company_info.company_department : "..."}type="text" name="ent_name"  onChange={(e)=>{setCompanyDepartment(e.target.value)}}/> 
-                                }
-
-                                </div>
-                                
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Adresse :</label><input placeholder={company_info.company_address ? company_info.company_address : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyAddress(e.target.value)}}/>
-                                </div>      
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Ville :</label><input placeholder={company_info.company_city ? company_info.company_city : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyCity(e.target.value)}}/>
-                                </div>
-                                
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Code postal :</label><input placeholder={company_info.company_zip_code ? company_info.company_zip_code : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyZipCode(e.target.value)}}/>
-                                </div> 
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Nationalité de l'entreprise :</label>
-                                    <input placeholder={company_info.company_nationality? company_info.company_nationality: "..."}type="text" name="ent_name"  onChange={(e)=>{setCompanyNationality(e.target.value)}}/>
-                                </div>      
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Siège social :</label><input placeholder={company_info.company_headquarters ? company_info.company_headquarters : "..."}type="text" name="ent_name"  onChange={(e)=>{setCompanyHeadquarters(e.target.value)}}/>
-                                </div>
-                                
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>RCS + Ville :</label><input placeholder={company_info.company_rcs ? company_info.company_rcs : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyRcs(e.target.value)}}/>
-                                </div>
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Qualité du signataire :</label>
-                                    <input placeholder={company_info.company_representative_status ? company_info.company_representative_status : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyRepresentativeStatus(e.target.value)}}/>
-                                </div>                         
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Tel :</label><input placeholder={company_info.company_phone_number ? company_info.company_phone_number : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyPhoneNumber(e.target.value)}}/>
-                                </div>        
-                            </div>
-                            <div className="register_todo w100 orientationH spaceBetween center">
-                                <div className="w100 orientationH spaceBetween center">
-                                    <label>Consultant :</label>
-                                    <select className="form_select" required onChange={(e)=>{setConsultantId(e.target.value)}}>
-                                        <option>Choisir mon consultant</option>
-
-                                        {consultants.map((element, index) => {
-                                                if(company_info.consultant_id && element.user_id===company_info.consultant_id){
-                                                    return <option className="option-selected" value={element.user_id} selected key={index}>{element.user_name}</option>
-                                                }else{
-                                                    return <option key={index} value={element.user_id}>{element.user_name}</option>
-                                                }
-                                        })}
-                                            
-                                    </select>
-
-                                </div>
-                                
-                            </div>
-                            <br></br>
-                            <div className="register_todo file w100 orientationH spaceBetween ">
-                                <label>Présentation de l'entreprise en pdf :</label>
-                                {(company_info && company_info.company_presentation_pdf  && !alterCompanyPresentationPdf)?
-
-                                    <div className="file_preview orientationH center spaceBetween">
-                                        <div className="pdf_view_icon" title="Ouvrir">Présentation PDF</div>
-                                        <div className="simpleButton center" onClick={()=>{setAlterCompanyPresentationPdf(true)}}>Modifier</div>
-                                    </div>
-                                :
-                                    <div className="  orientationH">
-                                        <input className="file_input" type="file"  name="avatar" accept="application/pdf,application/vnd.ms-excel" onChange={(e)=>{loadCompanyPresentationPdf(e)}}/>
-                                        {(company_info && company_info.company_presentation_pdf)&&
-                                            <div className="simpleButton center" onClick={()=>{setAlterCompanyPresentationPdf(false)}}>Annuler</div>
-                                        }
-                                    </div>
-                                }
-                            </div>
-
-                            <div className="register_todo  file w100 orientationH spaceBetween  ">
-                                <label>Présentation de l'entreprise en video :</label>
-                                {(company_info && company_info.company_presentation_video && !alterCompanyPresentationVideo)?
-
-                                    <div className="file_preview orientationH  spaceBetween">
-                                        <div className="video_view_icon" title="Ouvrir">Présentation VIDEO</div>
-                                        <div className="simpleButton center" onClick={()=>{setAlterCompanyPresentationVideo(true)}}>Modifier</div>
-                                    </div>
-                                :
-                                    <div className=" orientationH">
-                                        <input className="file_input" type="file"  name="avatar" accept="video/mp4,video/x-m4v,video/*" onChange={(e)=>{setCompanyPresentationVideo(e.target.value)}}/>
-                                        {(company_info && company_info.company_presentation_video)&&
-                                            <div className="simpleButton center" onClick={()=>{setAlterCompanyPresentationVideo(false)}}>Annuler</div>
-                                        }
-                                    </div>
-                                }
-                            </div>
-                            
-                            {
-                            register_todo === "A TERMINER"?
-                                <div className="orientationH spaceBetween fromRight ">
-                                    <input type="submit" value="VALIDER" className="button full mbem" onClick={(e)=>{finalization(e)}}/>
-                                </div>
-                            :     
-                            <div className="orientationH spaceBetween fromRight ">
-                                <input type="submit" value="MODIFIER" className="button full mbem" onClick={(e)=>{finalization(e)}}/>
-                            </div>                 
-                            }
-                        </div>
-                    </ShowOrHideLayout>
-                    
-
-                    {/* ZONE FAIRE MA DEMANDE */}
-                    <div className="show_hide_layout orientationH spaceBetween center demandes_link">
-                        <div className="w100 orientationH spaceBetween center"><label className="label">FAIRE MA DEMANDE</label></div>
-                        <div className="orientationH ">
-                            <Link href="#new_demande">
-                                <a onClick={()=>setShow_hide2(true)}> <div className="button full">DEMANDE EN LIGNE</div></a>
-                            </Link>
-                            <Link href="/">
-                                <a> <div className="button full">PRENDRE RENDEZ-VOUS AVEC UN CONSEILLER</div></a>
-                            </Link>
-                        </div>
-
-                    </div>
-
-                    {/* DEMANDE EN COURS */}
-                    <WrapListLayout
-                        title= "DEMANDES EN COURS ..............."
-                        linkForMore=""
-                    >
-                        {company_unFilledJobs.length!==0 ? company_unFilledJobs.map((job, index) => {
-                            return (
-                                <div className="demande" key={index}>
-                                    <div className="w100 orientationH">
-                                        <div className="demande_left w100">
-                                            <label>{job.job_title}</label>
-                                            <div className="w100"><label>Crée le :</label><label>{job.created_at}</label></div>
-                                            <div className="w100"><label>Retenue  : </label>{job.job_hire}</div>
-                                        </div>
-                                        <div className="demande_right orientationV spaceBetween">
-                                            <img title="Modifier" src="/images/icon_edit_white.png" className= "smallIcon"/>
-                                            <img title="Supprimer" src="/images/icon_delete_white.png" className= "smallIcon" onClick={()=>{deletejob(job.job_id)}}/>
-                                        </div>
-
-                                    </div>
-                                </div>
-    
-                                
-                            );
-                        })
-                        : <div>AUCUNE DEMANDE EN COURS</div>}
-                        {company_unFilledJobs.length === 4 && <Link  href={{pathname:"/interface/recruteur/allJobs",query:{dest:"unfilled",company_id:company_info.company_id}}}>
-                            <a>
-                                <div className="show_more">voir plus {">>"}</div>
-                            </a>
-                        </Link>}
-                    
-                    
-                    </WrapListLayout>
-                    
-
-                    {/*MES DEMANDE*/}
-                    <WrapListLayout
-                        title= "DERNIÈRES DEMANDES "
-                        linkForMore=""
-                    >
-                    {company_fillededJobs.length!==0 ? company_fillededJobs.map((job, index) => {
-                            return (
-                                <div className="demande" key={index}>
-                                    <label>{job.job_title}</label>
-                                    <div><label>Crée le :</label> {job.created_at}</div>
-                                    <div><label>Retenue  : </label>{" "+ job.job_hire}</div>
-                                </div>                      
-                            );
-                        })
-                        : <div></div>}
-                            
-                        <div className="demande more orientationV center">
-                            <Link  href="#new_demande">
-                                <a className="center orientationV" onClick={()=>setShow_hide2(true)} >
-                                    <div className="more_btn center">+</div>
-                                    Ajouter un poste
+                    <div className="recutor-left">
+                        <div className="recrutor-consultant">
+                            <span>Mon conseiller A RECRUIT</span>
+                            <p>M. Zinedine Piro</p>
+                            <Image className="recrutor-consultant-img" src ="/images/zinedine.png" width={150} height = {150}/>
+                            <Link href="#">
+                                <a>
+                                    Vers page A RECRUIT
                                 </a>
                             </Link>
                         </div>
-                        {company_fillededJobs.length === 4 && <Link  href={{pathname:"/interface/recruteur/allJobs",query:{dest:"filled",company_id:company_info.company_id}}}>
-                            <a>
-                                <div className="show_more">voir plus {">>"}</div>
-                            </a>
-                        </Link>}
-                    </WrapListLayout>
-                    
-                    {/* NOUVELLE DEMANDE FORMULAIRE */}
-                    <ShowOrHideLayout
-                        title = "NOUVELLE OFFRE D'EMPLOI"
-                        show_hide = {show_hide2}
-                        callback = {(e)=>setShow_hide2(e)}
-                    >
-                        <div id="new_demande">
-                            <div className="new_demande underline orientationH spaceBetween w100">
-                                {/* CHAMPS DU FORMULAIRE */}
-                                <div className="form_new_post orientationV">
-                                    <br></br>
-                                    <div className=" register_todo w100 orientationH spaceBetween center">
-                                        <div className="w100 orientationH spaceBetween center">
-                                            <label>Intitule du poste :</label>
-                                            <input type="text" name="ent_name" required onChange={(e)=>{setJobTitle(e.target.value)}}/>
-                                        </div>
-                                    </div>
+                        <div className="recrutor-help">
+                            <span>Conseils pratiques</span>
+                            <div className="recrutor-consultant">
+                                
+                                <Image className="recrutor-consultant-img" src ="/images/creer_offre.jpg" width={150} height = {150}/>
+                                <Link href="#">
+                                    <a>
+                                       {"Créer l'offre d'emploie"}
+                                    </a>
+                                </Link>
+                            </div>
+                            <div className="recrutor-consultant">
+                               
+                                <Image className="recrutor-consultant-img" src ="/images/creer_presentation.jpg" width={150} height = {150}/>
+                                <Link href="#">
+                                    <a>
+                                        {"Créer une présentation"}
+                                    </a>
+                                </Link>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div className="recrutor-right">
 
-                                    <div className="register_todo w100 orientationH spaceBetween center">
-                                        <div className="w100 orientationH spaceBetween center">
-                                            <label>Pays :</label>
-                                            <select className="form_select" required onChange={(e)=>{setJobCountry(e.target.value);loadDepartment(e.target.value)}}>
-                                                <option>--Pays--</option>
-                                                {europe_country.map((element, index) => {
-                                                    return <option key={index} value={element.name}>{element.name}</option>
-                                                })}
-                                            </select>
-                                        </div>
+                        <div className="company_info">
+                            <Image className="company_logo" src ="/images/partner/partner_audi.svg" width={200} height={200}/>
+                            <div className= "company">
+                                <div><span>{company_info.company_name}</span></div>
+                                <div>{company_info.company_rcs}</div>
+                                <div>{company_info.company_headquarters}</div>
+                                <div>{company_info.company_address}</div>
+                                <div>{company_info.company_zip_code}</div>
+                                <div>{company_info.company_city}</div>
+                                <div>{company_info.company_department}</div>
+                                <div>Tel :{company_info.company_phone_number}</div>
+                            </div>
+                        </div>
+                        <ShowOrHideLayout
+                            title = "TERMINER L'INSCRIPTION DE MON ENTREPRISE"
+                            statut = {register_todo}
+                            show_hide = {show_hide1}
+                            callback = {(state)=>setShow_hide1("")}
+                        >
+                            
+                            <div className="register_todo_container">
+                                <div className="underline register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Nom de l'entreprise :</label>
+                                        <input placeholder={company_info.company_name ? company_info.company_name : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyName(e.target.value)}}/>
                                     </div>
-                                    <div className="register_todo w100 orientationH spaceBetween center">
-                                        <div className="w100 orientationH spaceBetween center">
-                                            <label>Departement :</label>
-                                            {departments.length!==0 ?
-                                                <select className="form_select" required onChange={(e)=>{setJobDepartment(e.target.value)}}>
-                                                    <option>--Departement--</option>
-                                                    {departments.map((element, index) => {
-                                                            return <option key={index}>{element.nom}</option>
-                                                    })}
-                                                
-                                                </select>
-                                            :                                
-                                            <input placeholder={company_info.company_department? company_info.company_department : "..."}type="text" name="ent_name"  onChange={(e)=>{setCompanyDepartment(e.target.value)}}/> 
-                                        }
-                                        </div>
-                                    </div>
-                                    <div className="register_todo w100 orientationH spaceBetween center">
-                                        <div className="w100 orientationH spaceBetween center">
-                                            <label>Diplôme requis :</label>
-                                            <select className="form_select" required onChange={(e)=>{setJobRequiredGrade(e.target.value)}}>
-                                                <option>--Choix--</option>
-                                                {diplomes.map(diplomes => (
-                                                    <option key={diplomes}>{diplomes}</option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="register_todo w100 orientationH spaceBetween center">
-                                        <div className="w100 orientationH spaceBetween center">
-                                            <label>Niveau d'étude requis :</label>
-                                            <select className="form_select" required onChange={(e)=>{setJobRequiredLevel(e.target.value)}}>
-                                                <option>--Choix--</option>
-                                                {niveauEtudes.map(niveauEtudes => (
-                                                    <option key={niveauEtudes}>{niveauEtudes}</option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="register_todo w100 orientationH spaceBetween center">
-                                        <div className="w100 orientationH spaceBetween center">
-                                            <label>Expérience requise :</label>
-                                            <select className="form_select" required onChange={(e)=>{setJobRequiredExperience(e.target.value)}}>
-                                                <option>--Choix--</option>
-                                                {experience.map(experience => (
-                                                    <option key={experience}>{experience}</option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-
                                 </div>
-                                {/* CHAMPS DU FICHIERS */}
-                                <div className="orientationV">
-                                    <br></br>
-                                    <div className=" file w100 orientationV spaceBetween ">
-                                        <label>Fiche de poste :</label>
-                                        <input type="file"  name="avatar" accept="application/pdf,application/vnd.ms-excel" onChange={(e)=>{job_description_pdf_info( e);}}/>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Pays :</label>
+                                        <select className="form_select"  onChange={(e)=>{setCompanyCountry(e.target.value);loadDepartment(e.target.value)}}>
+                                            {europe_country.map((element, index) => {
+                                                if(company_info.company_country && element.name===company_info.company_country){
+                                                    return <option className="option-selected" selected key={index} value={element.name}>{element.name}</option>
+                                                }else{
+                                                    return <option key={index} value={element.name}>{element.name}</option>
+                                                }
+                                            })}
+                                        </select>
                                     </div>
+                                </div> 
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Département :</label>
+                                        {(departments.length!==0 || company_info.company_department)? 
+                                            <select className="form_select"  onChange={(e)=>{setCompanyDepartment(e.target.value);loadConsultant(e.target.value)}}>
+                                                <option>Selectionnez un departement</option>
 
-                                    <div className=" file w100 orientationV spaceBetween ">
-                                        <label>Présentation du poste en pdf:</label>
-                                        <input type="file"  name="avatar" accept="application/pdf,application/vnd.ms-excel" required onChange={(e)=>{job_presentation_pdf_info( e);}}/>
+                                                {departments.map((element, index) => {
+                                                        if(company_info.company_department && element.nom===company_info.company_department){
+                                                            return <option className="option-selected" selected key={index}>{element.nom}</option>
+                                                        }else{
+                                                            return <option key={index}>{element.nom}</option>
+                                                        }
+                                                    })}
+                                                    
+                                            </select>
+                                        :                                
+                                        <input placeholder={company_info.company_department? company_info.company_department : "..."}type="text" name="ent_name"  onChange={(e)=>{setCompanyDepartment(e.target.value)}}/> 
+                                    }
+
                                     </div>
                                     
-                                    <div className=" file w100 orientationV spaceBetween ">
-                                        <label>Présentation du poste en video :</label>
-                                        <input type="file"  name="avatar" accept="video/mp4,video/x-m4v,video/*"  onChange={(e)=>{setJobPresentationVideo(e.target.files[0])}}/>
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Adresse :</label><input placeholder={company_info.company_address ? company_info.company_address : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyAddress(e.target.value)}}/>
+                                    </div>      
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Ville :</label><input placeholder={company_info.company_city ? company_info.company_city : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyCity(e.target.value)}}/>
                                     </div>
+                                    
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Code postal :</label><input placeholder={company_info.company_zip_code ? company_info.company_zip_code : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyZipCode(e.target.value)}}/>
+                                    </div> 
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Nationalité de l'entreprise :</label>
+                                        <input placeholder={company_info.company_nationality? company_info.company_nationality: "..."}type="text" name="ent_name"  onChange={(e)=>{setCompanyNationality(e.target.value)}}/>
+                                    </div>      
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Siège social :</label><input placeholder={company_info.company_headquarters ? company_info.company_headquarters : "..."}type="text" name="ent_name"  onChange={(e)=>{setCompanyHeadquarters(e.target.value)}}/>
+                                    </div>
+                                    
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>RCS + Ville :</label><input placeholder={company_info.company_rcs ? company_info.company_rcs : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyRcs(e.target.value)}}/>
+                                    </div>
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Qualité du signataire :</label>
+                                        <input placeholder={company_info.company_representative_status ? company_info.company_representative_status : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyRepresentativeStatus(e.target.value)}}/>
+                                    </div>                         
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Tel :</label><input placeholder={company_info.company_phone_number ? company_info.company_phone_number : "..."} type="text" name="ent_name"  onChange={(e)=>{setCompanyPhoneNumber(e.target.value)}}/>
+                                    </div>        
+                                </div>
+                                <div className="register_todo w100 orientationH spaceBetween center">
+                                    <div className="w100 orientationH spaceBetween center">
+                                        <label>Consultant :</label>
+                                        <select className="form_select" required onChange={(e)=>{setConsultantId(e.target.value)}}>
+                                            <option>Choisir mon consultant</option>
 
+                                            {consultants.map((element, index) => {
+                                                    if(company_info.consultant_id && element.user_id===company_info.consultant_id){
+                                                        return <option className="option-selected" value={element.user_id} selected key={index}>{element.user_name}</option>
+                                                    }else{
+                                                        return <option key={index} value={element.user_id}>{element.user_name}</option>
+                                                    }
+                                            })}
+                                                
+                                        </select>
+
+                                    </div>
+                                    
+                                </div>
+                                <br></br>
+                                <div className="register_todo file w100 orientationH spaceBetween ">
+                                    <label>Présentation de l'entreprise en pdf :</label>
+                                    {(company_info && company_info.company_presentation_pdf  && !alterCompanyPresentationPdf)?
+
+                                        <div className="file_preview orientationH center spaceBetween">
+                                            <div className="pdf_view_icon" title="Ouvrir">Présentation PDF</div>
+                                            <div className="simpleButton center" onClick={()=>{setAlterCompanyPresentationPdf(true)}}>Modifier</div>
+                                        </div>
+                                    :
+                                        <div className="  orientationH">
+                                            <input className="file_input" type="file"  name="avatar" accept="application/pdf,application/vnd.ms-excel" onChange={(e)=>{loadCompanyPresentationPdf(e)}}/>
+                                            {(company_info && company_info.company_presentation_pdf)&&
+                                                <div className="simpleButton center" onClick={()=>{setAlterCompanyPresentationPdf(false)}}>Annuler</div>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+
+                                <div className="register_todo  file w100 orientationH spaceBetween  ">
+                                    <label>Présentation de l'entreprise en video :</label>
+                                    {(company_info && company_info.company_presentation_video && !alterCompanyPresentationVideo)?
+
+                                        <div className="file_preview orientationH  spaceBetween">
+                                            <div className="video_view_icon" title="Ouvrir">Présentation VIDEO</div>
+                                            <div className="simpleButton center" onClick={()=>{setAlterCompanyPresentationVideo(true)}}>Modifier</div>
+                                        </div>
+                                    :
+                                        <div className=" orientationH">
+                                            <input className="file_input" type="file"  name="avatar" accept="video/mp4,video/x-m4v,video/*" onChange={(e)=>{setCompanyPresentationVideo(e.target.value)}}/>
+                                            {(company_info && company_info.company_presentation_video)&&
+                                                <div className="simpleButton center" onClick={()=>{setAlterCompanyPresentationVideo(false)}}>Annuler</div>
+                                            }
+                                        </div>
+                                    }
+                                </div>
                                 
-
-                                </div>
-
-                                {/* CALENDRIER */}
-                                <div className="calendrier orientationV w100">
-                                    <br></br>
-                                    <div>Merci de choisir un créneau de RDV afin de finaliser votre demande</div>
-
-                                    <Agenda
-                                        url={url}
-                                    />
-                                </div>
-
+                                {
+                                register_todo === "A TERMINER"?
+                                    <div className="orientationH spaceBetween fromRight ">
+                                        <input type="submit" value="VALIDER" className="button full mbem" onClick={(e)=>{finalization(e)}}/>
+                                    </div>
+                                :     
+                                <div className="orientationH spaceBetween fromRight ">
+                                    <input type="submit" value="MODIFIER" className="button full mbem" onClick={(e)=>{finalization(e)}}/>
+                                </div>                 
+                                }
                             </div>
-                            <div className="orientationH spaceBetween fromRight ">
-                                <input className="button full mbem" type="submit" value="VALIDER" onClick={(e)=>{newJobPosting(e)}}/>
+                        </ShowOrHideLayout>
+                        
+
+                        {/* ZONE FAIRE MA DEMANDE */}
+                        <div className="show_hide_layout orientationH spaceBetween center demandes_link">
+                            <div className="w100 orientationH spaceBetween center"><label className="label">FAIRE MA DEMANDE</label></div>
+                            <div className="orientationH ">
+                                <Link href="#new_demande">
+                                    <a onClick={()=>setShow_hide2(true)}> <div className="button full">DEMANDE EN LIGNE</div></a>
+                                </Link>
+                                <Link href="/">
+                                    <a> <div className="button full">PRENDRE RENDEZ-VOUS AVEC UN CONSEILLER</div></a>
+                                </Link>
                             </div>
 
                         </div>
 
-                    </ShowOrHideLayout>
-                
-                    <BigSizeScreenNotif
-                        showHide = {show_hide3}
-                        callback = {()=>{setShow_hide3(!show_hide3)}}
-                    />
+                        {/* DEMANDE EN COURS */}
+                        <WrapListLayout
+                            title= "DEMANDES EN COURS ..............."
+                            linkForMore=""
+                        >
+                            {company_unFilledJobs.length!==0 ? company_unFilledJobs.map((job, index) => {
+                                return (
+                                    <div className="demande" key={index}>
+                                        <div className="w100 orientationH">
+                                            <div className="demande_left w100">
+                                                <label>{job.job_title}</label>
+                                                <div className="w100"><label>Crée le :</label><label>{job.created_at}</label></div>
+                                                <div className="w100"><label>Retenue  : </label>{job.job_hire}</div>
+                                            </div>
+                                            <div className="demande_right orientationV spaceBetween">
+                                                <img title="Modifier" src="/images/icon_edit_white.png" className= "smallIcon"/>
+                                                <img title="Supprimer" src="/images/icon_delete_white.png" className= "smallIcon" onClick={()=>{deletejob(job.job_id)}}/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+        
+                                    
+                                );
+                            })
+                            : <div>AUCUNE DEMANDE EN COURS</div>}
+                            {company_unFilledJobs.length === 4 && <Link  href={{pathname:"/interface/recruteur/allJobs",query:{dest:"unfilled",company_id:company_info.company_id}}}>
+                                <a>
+                                    <div className="show_more">voir plus {">>"}</div>
+                                </a>
+                            </Link>}
+                        
+                        
+                        </WrapListLayout>
+                        
+
+                        {/*MES DEMANDE*/}
+                        <WrapListLayout
+                            title= "DERNIÈRES DEMANDES "
+                            linkForMore=""
+                        >
+                        {company_fillededJobs.length!==0 ? company_fillededJobs.map((job, index) => {
+                                return (
+                                    <div className="demande" key={index}>
+                                        <label>{job.job_title}</label>
+                                        <div><label>Crée le :</label> {job.created_at}</div>
+                                        <div><label>Retenue  : </label>{" "+ job.job_hire}</div>
+                                    </div>                      
+                                );
+                            })
+                            : <div></div>}
+                                
+                            <div className="demande more orientationV center">
+                                <Link  href="#new_demande">
+                                    <a className="center orientationV" onClick={()=>setShow_hide2(true)} >
+                                        <div className="more_btn center">+</div>
+                                        Ajouter un poste
+                                    </a>
+                                </Link>
+                            </div>
+                            {company_fillededJobs.length === 4 && <Link  href={{pathname:"/interface/recruteur/allJobs",query:{dest:"filled",company_id:company_info.company_id}}}>
+                                <a>
+                                    <div className="show_more">voir plus {">>"}</div>
+                                </a>
+                            </Link>}
+                        </WrapListLayout>
+                        
+                        {/* NOUVELLE DEMANDE FORMULAIRE */}
+                        <ShowOrHideLayout
+                            title = "NOUVELLE OFFRE D'EMPLOI"
+                            show_hide = {show_hide2}
+                            callback = {(e)=>setShow_hide2(e)}
+                        >
+                            <div id="new_demande">
+                                <div className="new_demande underline orientationH spaceBetween w100">
+                                    {/* CHAMPS DU FORMULAIRE */}
+                                    <div className="form_new_post orientationV">
+                                        <br></br>
+                                        <div className=" register_todo w100 orientationH spaceBetween center">
+                                            <div className="w100 orientationH spaceBetween center">
+                                                <label>Intitule du poste :</label>
+                                                <input type="text" name="ent_name" required onChange={(e)=>{setJobTitle(e.target.value)}}/>
+                                            </div>
+                                        </div>
+
+                                        <div className="register_todo w100 orientationH spaceBetween center">
+                                            <div className="w100 orientationH spaceBetween center">
+                                                <label>Pays :</label>
+                                                <select className="form_select" required onChange={(e)=>{setJobCountry(e.target.value);loadDepartment(e.target.value)}}>
+                                                    <option>--Pays--</option>
+                                                    {europe_country.map((element, index) => {
+                                                        return <option key={index} value={element.name}>{element.name}</option>
+                                                    })}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="register_todo w100 orientationH spaceBetween center">
+                                            <div className="w100 orientationH spaceBetween center">
+                                                <label>Departement :</label>
+                                                {departments.length!==0 ?
+                                                    <select className="form_select" required onChange={(e)=>{setJobDepartment(e.target.value)}}>
+                                                        <option>--Departement--</option>
+                                                        {departments.map((element, index) => {
+                                                                return <option key={index}>{element.nom}</option>
+                                                        })}
+                                                    
+                                                    </select>
+                                                :                                
+                                                <input placeholder={company_info.company_department? company_info.company_department : "..."}type="text" name="ent_name"  onChange={(e)=>{setCompanyDepartment(e.target.value)}}/> 
+                                            }
+                                            </div>
+                                        </div>
+                                        <div className="register_todo w100 orientationH spaceBetween center">
+                                            <div className="w100 orientationH spaceBetween center">
+                                                <label>Diplôme requis :</label>
+                                                <select className="form_select" required onChange={(e)=>{setJobRequiredGrade(e.target.value)}}>
+                                                    <option>--Choix--</option>
+                                                    {diplomes.map(diplomes => (
+                                                        <option key={diplomes}>{diplomes}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="register_todo w100 orientationH spaceBetween center">
+                                            <div className="w100 orientationH spaceBetween center">
+                                                <label>Niveau d'étude requis :</label>
+                                                <select className="form_select" required onChange={(e)=>{setJobRequiredLevel(e.target.value)}}>
+                                                    <option>--Choix--</option>
+                                                    {niveauEtudes.map(niveauEtudes => (
+                                                        <option key={niveauEtudes}>{niveauEtudes}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="register_todo w100 orientationH spaceBetween center">
+                                            <div className="w100 orientationH spaceBetween center">
+                                                <label>Expérience requise :</label>
+                                                <select className="form_select" required onChange={(e)=>{setJobRequiredExperience(e.target.value)}}>
+                                                    <option>--Choix--</option>
+                                                    {experience.map(experience => (
+                                                        <option key={experience}>{experience}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    {/* CHAMPS DU FICHIERS */}
+                                    <div className="orientationV">
+                                        <br></br>
+                                        <div className=" file w100 orientationV spaceBetween ">
+                                            <label>Fiche de poste :</label>
+                                            <input type="file"  name="avatar" accept="application/pdf,application/vnd.ms-excel" onChange={(e)=>{job_description_pdf_info( e);}}/>
+                                        </div>
+
+                                        <div className=" file w100 orientationV spaceBetween ">
+                                            <label>Présentation du poste en pdf:</label>
+                                            <input type="file"  name="avatar" accept="application/pdf,application/vnd.ms-excel" required onChange={(e)=>{job_presentation_pdf_info( e);}}/>
+                                        </div>
+                                        
+                                        <div className=" file w100 orientationV spaceBetween ">
+                                            <label>Présentation du poste en video :</label>
+                                            <input type="file"  name="avatar" accept="video/mp4,video/x-m4v,video/*"  onChange={(e)=>{setJobPresentationVideo(e.target.files[0])}}/>
+                                        </div>
+
+                                    
+
+                                    </div>
+
+                                    {/* CALENDRIER */}
+                                    <div className="calendrier orientationV w100">
+                                        <br></br>
+                                        <div>Merci de choisir un créneau de RDV afin de finaliser votre demande</div>
+
+                                        <Agenda
+                                            url={url}
+                                        />
+                                    </div>
+
+                                </div>
+                                <div className="orientationH spaceBetween fromRight ">
+                                    <input className="button full mbem" type="submit" value="VALIDER" onClick={(e)=>{newJobPosting(e)}}/>
+                                </div>
+
+                            </div>
+
+                        </ShowOrHideLayout>
+                    
+                        <BigSizeScreenNotif
+                            showHide = {show_hide3}
+                            callback = {()=>{setShow_hide3(!show_hide3)}}
+                        />
+                    </div>
 
                 </main>
 
