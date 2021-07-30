@@ -1,4 +1,4 @@
-import React, { Component,useState } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Header from '../../../../../components/header/consultant_boite_a_outils_header'
 import Menu from '../../../../../components/menu_consultant/menu'
