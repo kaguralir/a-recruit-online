@@ -436,7 +436,7 @@ export default function recrutor(){
                                 <div>{company_info.company_zip_code}</div>
                                 <div>{company_info.company_city}</div>
                                 <div>{company_info.company_department}</div>
-                                <div>Tel :{company_info.company_phone_number}</div>
+                                <div>Tel :{company_info.company_phone_number}</div> 
                             </div>
                         </div>
                         <ShowOrHideLayout
