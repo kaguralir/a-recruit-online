@@ -54,6 +54,8 @@
                     border-bottom: 1px solid var(--color-primary-light);
                     border-right: 1px solid var(--color-primary-light);
                     min-width: 80%;
+                    display: flex;
+                    justify-content: space-between;
 
                     span{
                         font-weight: 900;

@@ -391,16 +391,7 @@ export default function recrutor(){
                 
                 <main className="body">
                     <div className="recutor-left">
-                        <div className="recrutor-consultant">
-                            <span>Mon conseiller A RECRUIT</span>
-                            <p>M. Zinedine Piro</p>
-                            <Image className="recrutor-consultant-img" src ="/images/zinedine.png" width={150} height = {150}/>
-                            <Link href="#">
-                                <a>
-                                    Vers page A RECRUIT
-                                </a>
-                            </Link>
-                        </div>
+                        
                         <div className="recrutor-help">
                             <span>Conseils pratiques</span>
                             <div className="recrutor-consultant">
@@ -429,14 +420,30 @@ export default function recrutor(){
                         <div className="company_info">
                             <Image className="company_logo" src ="/images/partner/partner_audi.svg" width={200} height={200}/>
                             <div className= "company">
-                                <div><span>{company_info.company_name}</span></div>
-                                <div>{company_info.company_rcs}</div>
-                                <div>{company_info.company_headquarters}</div>
-                                <div>{company_info.company_address}</div>
-                                <div>{company_info.company_zip_code}</div>
-                                <div>{company_info.company_city}</div>
-                                <div>{company_info.company_department}</div>
-                                <div>Tel :{company_info.company_phone_number}</div> 
+                                <div>
+                                    <div><span>{company_info.company_name}</span></div>
+                                    <div>{company_info.company_rcs}</div>
+                                    <div>{company_info.company_headquarters}</div>
+                                    <div>{company_info.company_address}</div>
+                                    <div>{company_info.company_zip_code}</div>
+                                    <div>{company_info.company_city}</div>
+                                    <div>{company_info.company_department}</div>
+                                    <div>Tel :{company_info.company_phone_number}</div> 
+
+                                </div>
+                                <div className="recrutor-consultant">
+
+                                    <span>Mon conseiller A RECRUIT</span>
+                                    <p>M. Zinedine Piro</p>
+                                    <div>
+                                        <Image className="recrutor-consultant-img" src ="/images/zinedine.png" width={100} height = {100}/>
+                                    </div>
+                                    <Link href="#">
+                                        <a>
+                                            Vers page A RECRUIT
+                                        </a>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                         <ShowOrHideLayout
