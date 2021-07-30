@@ -20,8 +20,6 @@ export default function Header(props) {
     const disconnect  = () =>{
         ReactLocalStorage.reactLocalStorage.remove('jwt')
 
-        window.location.href =`/`;
-
     }
 
    // console.log(user)
@@ -31,14 +29,30 @@ export default function Header(props) {
 
     
     return (
-        <>
-            <div className="header orientationH spaceBetween">
-                <Link href="/">
-                    <a>
-                        <img className="h_logo" src="/images/A_Recruit.jpg" alt="LOGO"/>
-                    </a>
-                </Link>
-                <div className="menu center orientationH ">
+           <div role="navigation" className=" header ">
+                <div className="menu">
+
+                    <ul>
+                        <li className="a_logo">
+                            <Link href="/">
+                                <a >
+                                    <img className="h_logo" src="/images/A_Recruit.jpg" alt="LOGO"/>
+                                </a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/interface/consultant">
+                                <a className={props.interface==="dashboard"?"locate":""}>
+                                Dashboard
+                                </a>
+                            </Link>
+                        </li>
+                       
+                    </ul>
+                    
+                </div>
+
+                <div className="menu center orientationH">
 
                     <div className="notification_z" onClick={()=>{props.callback && props.callback()}}>
                         <img className="icon" src="/images/icon_notification.png" alt='noti_icon'/>
@@ -75,9 +89,7 @@ export default function Header(props) {
                     </div>
                 </div>
 
-               
             </div>
-           
-        </>
+       
     )
 }

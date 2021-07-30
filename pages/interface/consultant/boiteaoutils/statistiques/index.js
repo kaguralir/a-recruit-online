@@ -1,8 +1,7 @@
 import React ,{useState} from 'react'
 import Head from 'next/head'
-import Header from '../../../../components/header/header'
-import Menu from '../../../../components/menu_consultant/menu'
-import Footer from '../../../../components/footer/footer'
+import Header from '../../../../../components/header/consultant_boite_a_outils_header'
+import Footer from '../../../../../components/footer/footer'
 
 import CA_vs_CA from './can_vs_can-1'
 import CA_vs_poste from './ca_vs_poste'
@@ -13,8 +12,8 @@ import TauxReussite from './tauxReussite'
 
 export default function statistiques() {
 
-    const [showhide,setShowHide]=useState(false)
     const [chart,setChart]=useState("ca_vs_ca")
+    
     return (
         <>
             <Head>
@@ -22,23 +21,15 @@ export default function statistiques() {
             </Head>
 
             <div className="statistiques">
-                <Header/>
+                <Header
+                    interface="statistiques"
+                />
                 <div className="orientationH">
-                    <Menu
-                        pos="statistiques"
-                        showHide={showhide}
-                    />
+                   
                      <div className="body">
 
-                        <div className="titleContainer center orientationH spaceBetween">
-                            <div className="nav-btn" onClick={()=>setShowHide(!showhide)}>
-                                <div className="nav-btn-span"></div>
-                                <div className="nav-btn-span"></div>
-                                <div className="nav-btn-span"></div>
-                            </div>
-                            <p className="recutor_title">ESPACE STATISTIQUES</p>
-                            <div></div>
-                        </div>
+                        <p className="recutor_title">ESPACE STATISTIQUES</p>
+                        
                         <div className="select">
                             <select onChange={(e)=>{setChart(e.target.value)}}>
                                 <option value="ca_vs_ca">CA N VS CA N-1</option>

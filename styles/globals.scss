@@ -55,6 +55,7 @@ a {
 }
 
 .spaceBetween{
+  display: flex;
   justify-content: space-between;
 }
 
@@ -237,4 +238,24 @@ a {
   background-color: #000;
   margin: 3px 0;
 
+}
+.view,.print,.edit{
+  width: 20px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+.view{
+  background-image: url("https://img.icons8.com/color/48/000000/search--v1.png");
+}
+
+.print{
+  background-image: url("https://img.icons8.com/color/48/000000/print.png");
+}
+
+.edit{
+  background-image: url("https://img.icons8.com/color/48/000000/edit--v1.png");
 }

@@ -7,8 +7,8 @@ export default function Footer() {
         <div className="footer orientationV spaceBetween">
             <div className="footer_links_container  orientationH spaceBetween">
                 <div className="footer_link orientationV">
-                    <Link href="/">
-                        <a>Lien 1</a>
+                    <Link href="/interface/consultant">
+                        <a>Je suis consultant</a>
                     </Link>
                     <Link href="/">
                         <a>Lien 1</a>

@@ -1,8 +1,8 @@
 import React, { Component,useState } from 'react'
 import Head from 'next/head'
-import Header from '../../../../components/header/header'
-import Menu from '../../../../components/menu_consultant/menu'
-import Footer from '../../../../components/footer/footer'
+import Header from '../../../../../components/header/consultant_boite_a_outils_header'
+import Menu from '../../../../../components/menu_consultant/menu'
+import Footer from '../../../../../components/footer/footer'
 import Link from 'next/link'
 
 
@@ -17,23 +17,15 @@ export default function gestionrecrutements() {
             </Head>
 
             <div className="gestionrecrutements">
-                <Header/>
+                <Header
+                    interface="gestionrecrutements"
+                />
                 <div className="orientationH">
-                    <Menu
-                        pos="gestionrecrutements"
-                        showHide={showhide}
-                    />
+                    
                     <div className="body">
                         
-                        <div className="titleContainer center orientationH spaceBetween">
-                            <div className="nav-btn" onClick={()=>setShowHide(!showhide)}>
-                                <div className="nav-btn-span"></div>
-                                <div className="nav-btn-span"></div>
-                                <div className="nav-btn-span"></div>
-                            </div>
-                            <p className="recutor_title">ESPACE DE GESTION DE RECRUTEMENT</p>
-                            <div></div>
-                        </div>
+                        <p className="recutor_title">ESPACE DE GESTION DE RECRUTEMENT</p>
+                        
                         
                         <div className="rechercher orientationH">
                             <div className="rechercherinput orientationV">
@@ -59,21 +51,21 @@ export default function gestionrecrutements() {
                                             <td>Item1</td>
                                             <td >Item1</td>
                                             <td className="td">
-                                                <Link href="/interface/consultant/gestionrecrutements/employeur">
+                                                <Link href="gestionrecrutements/employeur">
                                                     <a>
                                                         <div className="view"></div>
                                                     </a>
                                                 </Link>
                                             </td>
                                             <td className="td">
-                                                <Link href="/interface/consultant/gestionrecrutements/employeur">
+                                                <Link href="gestionrecrutements/employeur">
                                                     <a>
                                                         <div className="print"></div>
                                                     </a>
                                                 </Link>
                                             </td>
                                             <td className="td">
-                                                <Link href="/interface/consultant/gestionrecrutements/employeur">
+                                                <Link href="gestionrecrutements/employeur">
                                                     <a>
                                                         <div  className="edit"></div>
                                                     </a>
@@ -87,21 +79,21 @@ export default function gestionrecrutements() {
                                             <td>Item1</td>
                                             <td >Item1</td>
                                             <td className="td">
-                                                <Link href="/interface/consultant/gestionrecrutements/employeur">
+                                                <Link href="gestionrecrutements/employeur">
                                                     <a>
                                                         <div className="view"></div>
                                                     </a>
                                                 </Link>
                                             </td>
                                             <td className="td">
-                                                <Link href="/interface/consultant/gestionrecrutements/employeur">
+                                                <Link href="gestionrecrutements/employeur">
                                                     <a>
                                                         <div className="print"></div>
                                                     </a>
                                                 </Link>
                                             </td>
                                             <td className="td">
-                                                <Link href="/interface/consultant/gestionrecrutements/employeur">
+                                                <Link href="gestionrecrutements/employeur">
                                                     <a>
                                                         <div  className="edit"></div>
                                                     </a>
