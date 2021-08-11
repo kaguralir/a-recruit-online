@@ -8,7 +8,7 @@ export default function allJobs(info) {
     
    // console.log(info.query)
 
-   const api = "https://blooming-crag-03737.herokuapp.com"
+    const api = "https://blooming-crag-03737.herokuapp.com"
 
     const [unfilledJobs,setUnfilledJobs] =useState([]);
 

@@ -60,12 +60,12 @@ export default function Footer() {
                 </div>
             </div>
 
-            <span className="copyrigght center">© 2021 A-Recruit / Tous droits réservés</span>
+            <p className="center">© 2021 A-Recruit / Tous droits réservés</p>
 
             <style jsx>{`
             
                     .footer{
-                        
+                       
                         width:100%;
                         min-height: 150px;
                         background-color: var(--color-primary-light);

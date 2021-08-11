@@ -1,8 +1,7 @@
 import React,{useEffect,useState,Component} from 'react'
 import ReactLocalStorage from 'reactjs-localstorage'
 import jwt_decode from 'jwt-decode'
-
-import Connexion from '../../authentification/connexion'
+import Connexion from '../../auth/login'
 import Consultant from './dashboard'
 
 export default class index extends Component {

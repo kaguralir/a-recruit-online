@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-import Header from '../../../../../components/header/consultant_boite_a_outils_header'
+import Header from '../../../../../components/header/header'
 import Menu from '../../../../../components/menu_consultant/menu'
 import Footer from '../../../../../components/footer/footer'
 import Link from 'next/link'
@@ -16,10 +16,50 @@ export default function gestionrecrutements() {
                 <title>A recruit | Consultant</title>
             </Head>
 
-            <div className="gestionrecrutements">
+            <div className="gestionrecrutements consultant">
                 <Header
                     interface="gestionrecrutements"
-                />
+                >
+                    <li>
+                        <Link href="/interface/consultant">
+                            <a>
+                                Dashboard
+                            </a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/interface/consultant/boiteaoutils/gestionrecrutements">
+                            <a className="locate">
+                                Gestion recrutements
+                            </a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/">
+                            <a>
+                                CVthèque
+                            </a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/interface/consultant/boiteaoutils/statistiques">
+                            <a>
+                                Statistiques
+                            </a>
+                        </Link>
+                    </li>
+                    <li className="menu-menu"><a>Gestion Comptable</a>
+                        <ul>
+                            <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/factures"><a > Factures</a></Link> </li>
+                            <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/compteresultat"><a > Compte Résultat</a></Link> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <Link href="/interface/consultant/boiteaoutils/placeaffaire">
+                            <a> Place affaire</a>
+                        </Link>
+                    </li>
+                </Header>
                 <div className="orientationH">
                     
                     <div className="body">
@@ -51,21 +91,21 @@ export default function gestionrecrutements() {
                                             <td>Item1</td>
                                             <td >Item1</td>
                                             <td className="td">
-                                                <Link href="gestionrecrutements/employeur">
+                                                <Link href="/interface/consultant/boiteaoutils/gestionrecrutements/employeur">
                                                     <a>
                                                         <div className="view"></div>
                                                     </a>
                                                 </Link>
                                             </td>
                                             <td className="td">
-                                                <Link href="gestionrecrutements/employeur">
+                                                <Link href="/interface/consultant/boiteaoutils/gestionrecrutements/employeur">
                                                     <a>
                                                         <div className="print"></div>
                                                     </a>
                                                 </Link>
                                             </td>
                                             <td className="td">
-                                                <Link href="gestionrecrutements/employeur">
+                                                <Link href="/interface/consultant/boiteaoutils/gestionrecrutements/employeur">
                                                     <a>
                                                         <div  className="edit"></div>
                                                     </a>
@@ -79,21 +119,21 @@ export default function gestionrecrutements() {
                                             <td>Item1</td>
                                             <td >Item1</td>
                                             <td className="td">
-                                                <Link href="gestionrecrutements/employeur">
+                                                <Link href="/interface/consultant/boiteaoutils/gestionrecrutements/employeur">
                                                     <a>
                                                         <div className="view"></div>
                                                     </a>
                                                 </Link>
                                             </td>
                                             <td className="td">
-                                                <Link href="gestionrecrutements/employeur">
+                                                <Link href="/interface/consultant/boiteaoutils/gestionrecrutements/employeur">
                                                     <a>
                                                         <div className="print"></div>
                                                     </a>
                                                 </Link>
                                             </td>
                                             <td className="td">
-                                                <Link href="gestionrecrutements/employeur">
+                                                <Link href="/interface/consultant/boiteaoutils/gestionrecrutements/employeur">
                                                     <a>
                                                         <div  className="edit"></div>
                                                     </a>

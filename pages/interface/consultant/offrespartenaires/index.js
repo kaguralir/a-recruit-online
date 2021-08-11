@@ -41,8 +41,7 @@ export default function index() {
         {id:3,logo:"/images/partner/partner_audi.svg"},
         {id:4,logo:"/images/partner/partner_ferrari.jpeg"},
         {id:5,logo:"/images/partner/partner_carrefour.png"},
-        {id:6,logo:"/images/partner/partner_parions.png"},
-        {id:7,logo:"/images/partner/partner_paris.jpeg"}
+        {id:6,logo:"/images/partner/partner_parions.png"}
     ]
 
     return (
