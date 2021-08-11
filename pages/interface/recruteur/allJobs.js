@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import Axios from 'axios'
 import Head from 'next/head'
 import Header from '../../../components/header/header'
-import {api} from '../api/api'
+import {api} from '../../api/api'
 
 
 export default function allJobs(info) {

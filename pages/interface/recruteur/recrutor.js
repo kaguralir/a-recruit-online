@@ -11,7 +11,7 @@ import jwt_decode from 'jwt-decode'
 import ReactLocalStorage  from 'reactjs-localstorage'
 import BigSizeScreenNotif from '../../../components/notification/bigSizeScreenNotif'
 import Image from 'next/image'
-import {api} from '../api/api'
+import {api} from '../../api/api'
 
 
 
