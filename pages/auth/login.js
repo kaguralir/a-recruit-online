@@ -4,11 +4,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import ReactLocalStorage from 'reactjs-localstorage'
 import jwtDecode from 'jwt-decode';
+import {api} from '../api/api'
 
 
 export default function Connect({dest}) {
 
-    const api = "https://blooming-crag-03737.herokuapp.com"
     let token = ""
 
     const [user_email,setUserEmail]=useState(false);

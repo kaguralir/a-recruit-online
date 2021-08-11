@@ -11,6 +11,7 @@ import jwt_decode from 'jwt-decode'
 import ReactLocalStorage  from 'reactjs-localstorage'
 import BigSizeScreenNotif from '../../../components/notification/bigSizeScreenNotif'
 import Image from 'next/image'
+import {api} from '../api/api'
 
 
 export default class index extends Component {
@@ -18,7 +19,7 @@ export default class index extends Component {
     state={
 
         //Initial state
-        api : "https://blooming-crag-03737.herokuapp.com",
+        api : api,
         user : [],
         company_info:[],
         company_fillededJobs:[],

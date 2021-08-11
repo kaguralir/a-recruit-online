@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Axios from 'axios'
 import {useRouter} from 'next/router'
-
+import {api} from '../api/api'
 import ReactLocalStorage  from 'reactjs-localstorage';
 
 
@@ -13,7 +13,6 @@ import ReactLocalStorage  from 'reactjs-localstorage';
 export default function inscription({dest}) {
     
     const router=useRouter();//donne la personne qui veut s'inscrire 
-    const api = "https://blooming-crag-03737.herokuapp.com"
     var token = ""
 
     const [user_name,setUserName]=useState(false);

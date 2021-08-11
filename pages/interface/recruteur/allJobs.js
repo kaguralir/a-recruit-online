@@ -2,13 +2,12 @@ import React,{useEffect,useState} from 'react'
 import Axios from 'axios'
 import Head from 'next/head'
 import Header from '../../../components/header/header'
+import {api} from '../api/api'
 
 
 export default function allJobs(info) {
     
    // console.log(info.query)
-
-    const api = "https://blooming-crag-03737.herokuapp.com"
 
     const [unfilledJobs,setUnfilledJobs] =useState([]);
 
