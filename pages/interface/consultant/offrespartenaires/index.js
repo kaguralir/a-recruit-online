@@ -52,13 +52,13 @@ export default function index() {
 
         <div className="placeaffaire">
             <Header>
-            <li>
-                <Link href="/interface/consultant">
-                    <a className="locate">
-                        Dashboard
-                    </a>
-                </Link>
-            </li>
+                <li>
+                    <Link href="/interface/consultant">
+                        <a className="locate">
+                            Dashboard
+                        </a>
+                    </Link>
+                </li>
             </Header>
             <div className="body">
 

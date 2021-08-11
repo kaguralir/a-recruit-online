@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
-import Header from '../../../../components/header/consultant/consultant_header'
+import Header from '../../../../components/header/header'
 import Footer from '../../../../components/footer/footer'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -69,9 +69,15 @@ export function index() {
             </Head>
 
             <div className="consultant">
-                <Header
-                    interface="dashboard"
-                />
+                <Header>
+                    <li>
+                        <Link href="/interface/consultant">
+                            <a className="locate">
+                                Dashboard
+                            </a>
+                        </Link>
+                    </li>
+                </Header>
                 <div className="body ">
                     <div className="title center orientationV">
                         <span className="bold">{state.consultant.name}</span>
