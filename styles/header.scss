@@ -78,7 +78,9 @@
     
     }
     .locate{
-        background-color: rgb(84, 122, 247);
+        border-bottom: 2px solid rgb(84, 122, 247);
+        color: #fff;
+        
     }
     .menu ul .a_logo a{
         padding:0;
@@ -86,6 +88,7 @@
     }
     .menu ul li a:hover {
         background: #555;
+        color: #fff;
     }
    
     .menu li:hover ul {

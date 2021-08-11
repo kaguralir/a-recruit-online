@@ -1,6 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import Head from 'next/head'
-import Header from '../../../../components/header/consultant_header'
+import Header from '../../../../components/header/header'
 import Link from 'next/link'
 import Image from 'next/image'
 import Carousel from 'react-multi-carousel';
@@ -51,9 +51,15 @@ export default function index() {
         </Head>
 
         <div className="placeaffaire">
-            <Header
-                interface="placeaffaire"
-            />
+            <Header>
+            <li>
+                <Link href="/interface/consultant">
+                    <a className="locate">
+                        Dashboard
+                    </a>
+                </Link>
+            </li>
+            </Header>
             <div className="body">
 
                 <p className="recutor_title">OFFRES PARTENAIRE</p>
