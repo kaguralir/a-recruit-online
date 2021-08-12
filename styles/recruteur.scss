@@ -1,6 +1,15 @@
 .recruteur{
     .body{
         //display: flex;
+        .mbXl{
+            margin-bottom: 150px;
+            @media screen and (max-width:750px){
+                margin-bottom: 300px;
+            }
+             @media screen and (max-width:480px){
+                margin-bottom: 500px;
+            }
+        }
         .top{
     
             background-image: url("/images/top.png");
@@ -23,22 +32,41 @@
                 @media screen and (max-width:850px){
                     padding-left: 1em;
                     position: inherit;
+                    
                 }
             }
             .preview{
-                color: #000;
-                position: absolute;
-                top: 90px;
-                right: 5em;
-                background-color: #fff;
                 width: 25%;
                 max-width: 250px;
                 height: 200px;
+                right: 5em;
+
+            }
+            .previewXL{
+                width: 70%;
+                max-width: 90%;
+                left: 15%;
+                height: max-content;
+                display: flex;
+                align-items: center;
+                @media screen and (max-width:850px){
+                    margin: 0 auto;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    
+                }
+            }
+           
+            .preview,.previewXL{
+
+                color: #000;
+                position: absolute;
+                top: 90px;
+                background-color: #fff;
                 border-radius: 10px;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                 padding: 2em;
-                display: flex;
-                flex-direction: column;
+               
                 @media screen and (max-width:850px){
                     position: inherit;
                     width: max-content;
@@ -68,6 +96,7 @@
                 }
             
             }
+            
         }
         .bottom{
             padding: 2em;
