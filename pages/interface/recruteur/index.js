@@ -32,7 +32,9 @@ export default class index extends Component {
         diplomes : ['CAP', 'BEP', 'BAC', 'BTS/DUT', 'Licence', 'Master1', 'Master2', 'Doctorat'],
         niveauEtudes : ['BAC', 'BAC+1', 'BAC+2', 'BAC+3', 'BAC+4', 'BAC+5', 'BAC+6', 'BAC+7', 'BAC+8'],
         experience : ['débutant', '1 an à 2 ans', '2 ans à 3 ans', '3 ans à 4 ans', '4 ans à 5 ans' , '5 ans et plus (Senior)'],
-  
+        show_hide2:false,
+        show_hide3:false,
+
     }
 
     componentDidMount(){
@@ -116,20 +118,21 @@ export default class index extends Component {
             villes = reponse.data
         })
     }
-    
+
+    /* MENUS DEROULANTS  */ 
+    setShow_hide2 = (value)=>{
+        this.setState({show_hide3:!show_hide2})
+    }
+    setShow_hide3 = (value)=>{
+        this.setState({show_hide3:!show_hide3})
+    }        
+    /* FIN MENU DEROULANT */  
+
       
 
     render() {
 
-        /* MENUS DEROULANTS  */ 
-            var show_hide2=false;
-            const setShow_hide2 = (value)=>{
-                show_hide2=value
-            }
-            var show_hide3=false;
-            const setShow_hide3 = (value)=>{
-                show_hide3=value
-            }        /* FIN MENU DEROULANT */  
+
         return (
             <div className="recruteur">
 
@@ -295,7 +298,7 @@ export default class index extends Component {
                                 {/* NOUVELLE DEMANDE FORMULAIRE */}
                                 <ShowOrHideLayout
                                     title = "NOUVELLE OFFRE D'EMPLOI"
-                                    show_hide = {show_hide2}
+                                    show_hide = {this.state.show_hide2}
                                     callback = {(e)=>setShow_hide2(e)}
                                 >
                                     <div id="new_demande">
@@ -414,7 +417,7 @@ export default class index extends Component {
                                 </ShowOrHideLayout>
                             
                                 <BigSizeScreenNotif
-                                    showHide = {show_hide3}
+                                    showHide = {this.state.show_hide3}
                                     callback = {()=>{setShow_hide3(!show_hide3)}}
                                 />
                             </div>
