@@ -4,11 +4,9 @@
         .mbXl{
             margin-bottom: 150px;
             @media screen and (max-width:750px){
-                margin-bottom: 300px;
+                margin-bottom: 200px;
             }
-             @media screen and (max-width:480px){
-                margin-bottom: 500px;
-            }
+
         }
         .top{
     
@@ -51,15 +49,14 @@
                 align-items: center;
                 @media screen and (max-width:850px){
                     margin: 0 auto;
-                    flex-wrap: wrap;
-                    justify-content: center;
+                   
                     
                 }
             }
            
             .preview,.previewXL{
 
-                color: #000;
+                color: var(--color-primary-light);
                 position: absolute;
                 top: 90px;
                 background-color: #fff;
