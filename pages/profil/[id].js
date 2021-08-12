@@ -70,7 +70,7 @@ class index extends Component {
                             <div className=" company_desc auto border">
                                 {this.props.data.profile.company_history}  
                             </div>
-                            <div className="center orientationV">
+                            <div className="overflowH center orientationV">
                                 <div className="maps">
                                     <Map
                                         style={this.state.mapStyles}
