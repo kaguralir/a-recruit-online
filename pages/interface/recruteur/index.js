@@ -171,7 +171,7 @@ export default class index extends Component {
                                         <Link href="#">
                                             <a>
                                                 Vers page A RECRUIT
-                                            </a>
+                                        </a>
                                         </Link>
 
                                     </div>

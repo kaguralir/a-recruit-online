@@ -6,6 +6,7 @@ import Footer from '../../components/footer/footer'
 import Axios from 'axios'
 import Image from 'next/image'
 import {getProfilesName,getProfileData} from '../../lib/profil'
+import GoogleMapReact from 'google-map-react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 
 const key = "AIzaSyBeM-wkqt3uIlMXGxnCHAvlsI8EBqXLOQI"
@@ -23,8 +24,26 @@ class index extends Component {
             position:'relative'
         },
         location : JSON.parse(`${this.props.data.profile.company_location}`),
-        
+        showingInfoWindow: false,  // Hides or shows the InfoWindow
+        activeMarker: {},          // Shows the active marker upon click
+        selectedPlace: {}
     }
+
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
+     });
+
+    onClose = props => {
+        if (this.state.showingInfoWindow) {
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null
+            });
+        }
+    };
 
 
     render() {
@@ -73,17 +92,40 @@ class index extends Component {
                             <div className="overflowH center orientationV">
                                 <div className="maps">
                                     <Map
+                                        google={this.props.google}
+                                        zoom={14}
                                         style={this.state.mapStyles}
-                                        google={google}
+                                        initialCenter={this.state.location.pos}
+                                    >
+                                        <Marker
+                                            onClick={this.onMarkerClick}
+                                            name={'Kenyatta International Convention Centre'}
+                                        />
+                                        <InfoWindow
+                                            marker={this.state.activeMarker}
+                                            visible={this.state.showingInfoWindow}
+                                            onClose={this.onClose}
+                                        >
+                                            <div>
+                                                <h4>{this.state.selectedPlace.name}</h4>
+                                            </div>
+                                        </InfoWindow>
+                                    </Map>
+
+                                   
+                                    {/* <Map
+                                        style={this.state.mapStyles}
+                                        google={this.props.google}
                                         zoom={14}
                                         initialCenter={this.state.location.pos}
                                     >
                                         <Marker
                                             position={this.state.location.pos}
                                             name={this.state.location.address}
+                                            text="My Marker"
                                         />
                                     
-                                    </Map>
+                                    </Map> */}
                                 </div>
                                 <br></br>
                                 <div className="company_data ">
