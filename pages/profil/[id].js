@@ -7,6 +7,7 @@ import Axios from 'axios'
 import Image from 'next/image'
 import {getProfilesName,getProfileData} from '../../lib/profil'
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+
 const key = "AIzaSyBeM-wkqt3uIlMXGxnCHAvlsI8EBqXLOQI"
 
 
@@ -21,18 +22,13 @@ class index extends Component {
             overflow: 'hidden',
             position:'relative'
         },
-        location : {
-            address: '1600 Amphitheatre Parkway, Mountain View, california.',
-            pos:{
-                lat: 37.42216,
-                lng: -122.08427,
-            }
-        }
+        location : JSON.parse(`${this.props.data.profile.company_location}`),
+        
     }
 
 
     render() {
-       // console.log(this.props.data.profile)
+        console.log(this.state.location)
         return (
             <div className="recruteur">
 
@@ -53,7 +49,7 @@ class index extends Component {
                         <div className="top">
                             <div className="title">
                                 <div>
-                                    <span>Expert en recrutement</span>
+                                    <span>{this.props.data.profile.company_activity}</span>
                                 </div>
                                 <div>
                                     <br></br>
@@ -72,7 +68,7 @@ class index extends Component {
                         </div>
                         <div className="bottom color-primary">
                             <div className=" company_desc auto border">
-                                {"Fondé en 2010 par M. DRISSI Gherici Christophe, le cabinet GCD Conseil était au départ, un cabinet spécialisé dans le conseil en affaire pour les professionnels, intervenant principalement dans le cadre de : la création, la mise en place et le développement réseau, franchise, licence, concession, mandataires,En 2013, M. DRISSI décide d’enregistrer son cabinet en tant que centre de formation professionnel, intervenant dans les branches métier de : l’immobilier, la vente, la création d’entreprises, le courtage."}  
+                                {this.props.data.profile.company_history}  
                             </div>
                             <div className="center orientationV">
                                 <div className="maps">
@@ -84,7 +80,7 @@ class index extends Component {
                                     >
                                         <Marker
                                             position={this.state.location.pos}
-                                            name={'Kenyatta International Convention Centre'}
+                                            name={this.state.location.address}
                                         />
                                     
                                     </Map>
