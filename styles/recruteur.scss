@@ -1,10 +1,11 @@
 .recruteur{
+
     .body{
-        //display: flex;
+        
         .mbXl{
-            margin-bottom: 150px;
+            margin-bottom: 200px;
             @media screen and (max-width:750px){
-                margin-bottom: 200px;
+                margin-bottom: 250px;
             }
 
         }
@@ -49,7 +50,9 @@
                 align-items: center;
                 @media screen and (max-width:850px){
                     margin: 0 auto;
-                   
+                   div{
+                       margin-right: 5px;
+                   }
                     
                 }
             }
@@ -73,6 +76,10 @@
                     right: 1em;
                     margin-top: 50px;
                     margin-right: 1em;
+                    div{
+                        margin: 1em;
+                        min-width: 90px;
+                    }
                 }
     
     
@@ -93,11 +100,11 @@
                 }
             
             }
+
+            
             
         }
-        .bottom{
-            padding: 2em;
-        }
+       
         .recutor-left{
             width: 20%;
             padding: 2em;
@@ -210,18 +217,39 @@
     .bottom5{
         margin-bottom: 5px;
     }
-
+    .register_todo_container{        
+        @media screen and (max-width:500px){
+            display: flex;
+            flex-direction: column;
+            div{
+                height: max-content;
+            
+            }
+            
+        }
+    }
     .register_todo {
         width: 100%;
         height: 40px;
+        div{
+            @media screen and (max-width:500px){
+                height: max-content;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 5px;
 
+            }
+        }
+        label{
+            text-align: left;
+            align-items: flex-start;
+            @media screen and (max-width:500px){
+                margin-bottom: 3px;
+            }
+        }
     }
 
-    .register_todo label{
-        text-align: left;
-        align-items: center;
-
-    }
+   
 
     .register_todo input,.form_select{
         outline: none;
@@ -232,26 +260,43 @@
         padding-left: var(--font-M);
         padding-right: var(--font-M);
         width: 20em;
+       
     }
 
     .file{
         background-color: none  ;
         align-items: flex-start;
         margin-bottom: 2em;
+        @media screen and (max-width:500px){
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
     .register_todo .file_input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         max-width: 40em;
-        height: 30px;
     }
     .register_todo .file_preview{
         width: 20em;
         max-width: 40em;
     }
 
-
+    .new_demande{
+        @media screen and (max-width:500px){
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 
     .calendrier{
-        width: 30%;
+        margin: 0 auto;
+        width: 90%;
     }
 
     .demandes_head{         
@@ -272,7 +317,9 @@
         text-align: left;
     }
 
-
+    .demandes_link{
+        flex-wrap: wrap;
+    }
 
     .more {
         margin-left: var(--font-M);
@@ -304,91 +351,36 @@
         width: calc(100% -30px)       
     }
 
-    @media screen and (max-width:1070px){
-
-        .new_demande{
-            display: flex;
-            flex-direction: column;
+    .conseils{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2em;
+      
+        span{
+            color: var(--color-primary-light);
+            margin-bottom: 1em;
         }
-
-        .calendrier{
-            margin: 0 auto;
-            width: 90%;
+        div{
+            display: flex;
         }
     }
 
-    @media screen and (max-width:500px){
-    
-        .show_hide_layout div{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin: 0.3em;
-        }
-    
-        .demandes_link{
-            display: flex;
-            flex-direction: column;
-        }
-
-        .register_todo_container .register_todo{
-            width: 100%;
-            display: flex;
-            height: max-content;
-        }
-
-        .register_todo_container .register_todo{
-            margin-bottom: 10px;
-        }
-
-        .register_todo div{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: left;
-            width: 100%;
-            align-items: flex-start;
-        }
-
-        .register_todo .file_preview{
-            display: flex;
-            flex-direction: initial;
-        }
-
-        .register_todo .simpleButton{
-            text-align: justify;
-        }
-
-
-        .register_todo_container .underline{
-            padding-top: var(--font-M);
-        }
-        .statut{
-            position: absolute;
-            right: 0;
-        }
-        .show_more{
-            max-height: 10px;
-            padding: 1em;
-        }
-        .calendrier{
-            margin: 0 auto;
-            width: 90%;
-        }
-
-        .file div, .file label{
-            margin: 0 auto;
-            justify-content: flex-start;
-            align-items: flex-start;
-            
-        }
-        .file_input{
-            margin-top: 1em;
-        }
-        .demande{
-            max-width: 100%;
-        }
-        
-
+    .btn{
+        margin: 1em; 
+        min-width: 100px;
+        background-color: var(--color-primary-light);
+        height: 40px;
+        color: #fff;
     }
+
+    .white{
+        color: #fff;
+    }
+
+    .p2em{
+        padding: 2em;
+    }
+
+    
+   
 }

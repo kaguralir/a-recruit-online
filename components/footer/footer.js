@@ -65,12 +65,14 @@ export default function Footer() {
             <style jsx>{`
             
                     .footer{
-                       
+                        
                         width:100%;
+                        height: max-content;
                         min-height: 150px;
                         background-color: var(--color-primary-light);
                         padding: 1em;
                         color: #fff;
+                       
                     }
 
                     .footer_link a{

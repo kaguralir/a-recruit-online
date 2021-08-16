@@ -22,7 +22,6 @@ export default function agenda(props) {
         data-url={props.url}
         style={{ 
               marginTop:'1em',
-              width:'90%',
               minWidth: '300px', 
               height: '40em'
           }} />

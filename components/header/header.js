@@ -39,7 +39,6 @@ export default function Header(props) {
 
 
     }, [])
-    console.log(user)
 
     const disconnect  = () =>{
         ReactLocalStorage.reactLocalStorage.remove('jwt')
@@ -70,14 +69,14 @@ export default function Header(props) {
                             {(largeur < 1075) &&
                                 <>                  
                                     <li  >
-                                        <Link href="/profile[1]">
+                                        <Link href={"/members/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
                                             <a>
                                             Mon profile
                                             </a>
                                         </Link>
                                     </li>
-                                    <li onClick={(e)=>{e.preventDefault();disconnect()}}>
-                                        <Link href="/profile[1]">
+                                    <li className="last" onClick={(e)=>{e.preventDefault();disconnect()}}>
+                                        <Link href="/">
                                             <a>
                                                 Se deconnecter
                                             </a>
@@ -105,24 +104,24 @@ export default function Header(props) {
                                 <a className="first">
                                     <div className="user_img" style={{backgroundColor:user.color}}>
                                         {user.img ?
-                                                <img className="icon" src="/images/icon_def_usr.png" alt='noti_icon'/>
-                                            :
-                                                <div>{user.user_name && user.user_name.charAt(0)+ user.user_firstname.charAt(0)}</div>
-                                            }
+                                            <img className="icon" src="/images/icon_def_usr.png" alt='noti_icon'/>
+                                        :
+                                            <div>{user.user_name && user.user_name.charAt(0)+ user.user_firstname.charAt(0)}</div>
+                                        }
                                     </div>  
                                 </a>
                                 {(largeur > 1075) &&
                                     <>
                                         <ul>
                                             <li className="center-H" >
-                                                <Link href="/profile[1]">
+                                                <Link href={"/members/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
                                                     <a>
                                                     Mon profile
                                                     </a>
                                                 </Link>
                                             </li>
-                                            <li className="disconnect" onClick={(e)=>{e.preventDefault();disconnect()}}>
-                                                <Link href="/profile[1]">
+                                            <li className="last disconnect" onClick={(e)=>{e.preventDefault();disconnect()}}>
+                                                <Link href="/">
                                                     <a>
                                                         Se deconnecter
                                                     </a>

@@ -1,12 +1,10 @@
 import React ,{useState,useEffect,Component}from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import Header from '../../components/header/public_header'
+import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
-import Axios from 'axios'
 import Image from 'next/image'
-import {getProfilesName,getProfileData} from '../../lib/profil'
-import GoogleMapReact from 'google-map-react';
+import {getProfilesName,getCompanyData} from '../../lib/profil'
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 
 const key = "AIzaSyBeM-wkqt3uIlMXGxnCHAvlsI8EBqXLOQI"
@@ -45,9 +43,13 @@ class index extends Component {
         }
     };
 
+    customImgLoader = ({ src }) => {
+        return `${src}`
+    }
+
 
     render() {
-        console.log(this.state.location)
+
         return (
             <div className="recruteur">
 
@@ -59,14 +61,13 @@ class index extends Component {
                     </Head>
                     {/*---------------*/}
                     <Header
-                        callback = {()=>{setShow_hide3(!show_hide3);}}
                     />
                     {/*---------------*/}
                     
                     <main className="body">
 
                         <div className="top">
-                            <div className="title">
+                            <div className="title white">
                                 <div>
                                     <span>{this.props.data.profile.company_activity}</span>
                                 </div>
@@ -80,12 +81,12 @@ class index extends Component {
                                 <div><span>{this.props.data.profile.company_name}</span></div>
                                 <br></br>
                                 <div className="company_logo">
-                                    <Image alt = "company logo" src="/images/partner/partner_audi.svg" width={150} height={50}/>
+                                    <Image alt = "company logo" loader={this.customImgLoader} src={this.props.data.profile.company_logo} width={150} height={50}/>
                                 </div>
                                 <div className="ovale fill">Contacter</div>
                             </div>
                         </div>
-                        <div className="bottom color-primary">
+                        <div className="bottom p2em color-primary">
                             <div className=" company_desc auto border">
                                 {this.props.data.profile.company_history}  
                             </div>
@@ -111,21 +112,6 @@ class index extends Component {
                                             </div>
                                         </InfoWindow>
                                     </Map>
-
-                                   
-                                    {/* <Map
-                                        style={this.state.mapStyles}
-                                        google={this.props.google}
-                                        zoom={14}
-                                        initialCenter={this.state.location.pos}
-                                    >
-                                        <Marker
-                                            position={this.state.location.pos}
-                                            name={this.state.location.address}
-                                            text="My Marker"
-                                        />
-                                    
-                                    </Map> */}
                                 </div>
                                 <br></br>
                                 <div className="company_data ">
@@ -137,15 +123,15 @@ class index extends Component {
                                     <div>&nbsp;{this.props.data.profile.company_city}</div>
                                     <div>&nbsp;{this.props.data.profile.company_department}</div>
                                     <div>&nbsp;Tel :{this.props.data.profile.company_phone_number}</div> 
+                                    <br></br>
                                 </div>
                             </div>
                         </div>
                     </main>
 
-                    {/*---------------*/}
-                    <Footer/>
 
                 </div>
+                <Footer/>
             </div>
         )
     }
@@ -168,7 +154,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 
-    const data = await getProfileData(params.id)
+    const data = await getCompanyData(params.id)
 
     return {
       props: {

@@ -12,11 +12,14 @@
     z-index: 200000;
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     @media screen and (max-width:1075px){
-        height: 50px;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+    @media screen and (max-width:550px){
+        height: 50px;
+ 
     }
     .user_img{
         position: relative;
@@ -27,21 +30,26 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        @media screen and (max-width:1075px){
+        @media screen and (max-width:550px){
             border-radius: 40px;
             height: 40px;
             width: 40px;
         }
     }
+    .user_img:hover{
+        background-color: transparent;
+    }
     .h_logo{
         max-height: 40px;
         max-width: max-content;
+        outline: none;
         @media screen and (max-width:1075px){
             height: 50px;
         }
         
     }
     .menu{
+        height: 100%;
         @media screen and (max-width:1075px){
             width: 100%;
         }
@@ -50,6 +58,9 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        justify-content: center;
+        background-color: #fff;
+
         @media screen and (max-width:1075px){
             width: 100%;
             display: flex;
@@ -61,6 +72,7 @@
         display: block;
         position: relative;
         float: left;
+        color: #999;
         @media screen and (max-width:1075px){
             width: 100%;
             display: flex;
@@ -84,6 +96,10 @@
         min-width: max-content;
         text-align: center;
         padding: 1em;
+        height: 40px;
+        @media screen and (max-width:550px){
+            height: 50px;
+        }
         
     
     }
@@ -152,6 +168,8 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        background-color: transparent;
+        max-height: 100%;
     }
     
     .user ul li a{
@@ -163,6 +181,13 @@
     }
     .user ul li {
         position: relative;
+        height: 40px;
+        color: #999;
+
+        @media screen and (max-width:550px){
+           height: 50px;
+        }
+
     }
     .user li ul {
         position: relative;
@@ -170,12 +195,17 @@
         display: none;
         background-color: var(--color-primary-light);
         z-index: 10;
+
         
     }
     
     .user li ul li{ 
         min-height: 30px;
         cursor: pointer;
+        height: 40px;
+        @media screen and (max-width:550px){
+            height: 50px;
+         }
     }
     
     .disconnect{
@@ -197,9 +227,12 @@
     }
 
     .menu_btn{
-        font-size: 2.5em;
+        font-size: 2em;
         margin-right: 0.5em;
         cursor: pointer;
+        @media screen and (max-width:550px){
+            font-size: 2.5em;
+        }
     }
     
     .bottom{
@@ -207,6 +240,11 @@
         background-color: var(--color-primary-light);
         width: 100%;
         height: 200px;
+    }
+    .last{
+        border-bottom: 1px solid var(--color-primary-light);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
     }
 
 }
