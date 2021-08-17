@@ -56,7 +56,7 @@ export default function inscription({dest}) {
                 
                 if(!result.data.err){
 
-                    /console.log(result.data)
+                    //console.log(result.data)
 
                     if(router.query.dest==="recruteur"){
 
