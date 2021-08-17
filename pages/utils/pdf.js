@@ -24,12 +24,15 @@ export default function contrat({data}) {
                     <div className="w100 center title">
                         MON CONTRAT
                     </div>
-                    <div className="pdf-pages">
+                    <div className="embed-responsive embed-responsive-16by9">
+                      
                         <iframe
                             src={data.url+'#toolbar=1'}
                             width="100%"
                             height='600px'
+                            className="embed-responsive-item"
                             style={{minHeight:'max-content'}}
+                            allowfullscreen
                         />
                     </div>
                     <div className="w100 center pdfbtn" >
@@ -37,7 +40,11 @@ export default function contrat({data}) {
                             <div className="btn">Signer</div>
                         }
                     </div>
-                   
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
                 </main>
             </div>
         </div>
