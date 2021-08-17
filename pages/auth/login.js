@@ -2,8 +2,7 @@ import { useState } from 'react';
 import Axios from 'axios'
 import Head from 'next/head';
 import Link from 'next/link';
-import ReactLocalStorage from 'reactjs-localstorage'
-import jwtDecode from 'jwt-decode';
+import Image from 'next/image'
 import {api} from '../api/api'
 import {useCookies} from 'react-cookie';
 
@@ -69,7 +68,7 @@ export default function Connect({dest}) {
 
             <main className="login_signin_background center orientationV">
 
-                  
+                  <Image alt="logo" src="/images/A_Recruit.jpg" width={200} height={100}/>
 
                     <div className="login-root">
 

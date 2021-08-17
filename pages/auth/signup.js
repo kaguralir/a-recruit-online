@@ -4,9 +4,7 @@ import Link from 'next/link';
 import Axios from 'axios'
 import {useRouter} from 'next/router'
 import {api} from '../api/api'
-import ReactLocalStorage  from 'reactjs-localstorage';
-
-
+import {useCookies} from 'react-cookie';
 
 
 
@@ -22,6 +20,7 @@ export default function inscription({dest}) {
     const [user_password2,setUserpassword2]=useState(false);
     const [user_right,setUserRight]=useState(dest);
     const [alert,setAlert]=useState(false);
+    const [cookie, setCookie] = useCookies(["me"])
 
    
 
@@ -57,7 +56,7 @@ export default function inscription({dest}) {
                 
                 if(!result.data.err){
 
-                    console.log(result.data)
+                    /console.log(result.data)
 
                     if(router.query.dest==="recruteur"){
 
@@ -76,9 +75,11 @@ export default function inscription({dest}) {
                     });
 
 
-                    ReactLocalStorage.reactLocalStorage.setObject('jwt',{jwt:result.data.jwt});
-                    ReactLocalStorage.reactLocalStorage.get('jwt', true);
-
+                    setCookie("me", JSON.stringify(result.data.jwt), {
+                        path: "/",
+                        maxAge: 3600, // Expires after 1hr
+                        sameSite: true,
+                    })
 
                     window.location.href = `../interface/${router.query.dest}`
 
@@ -103,7 +104,8 @@ export default function inscription({dest}) {
             </Head>
 
             <main className="login_signin_background center orientationV">
-               
+            <Image alt="logo" src="/images/A_Recruit.jpg" width={200} height={100}/>
+
                 <div className="login-root">
 
                     <div className="box-root flex-flex flex-direction--column style1" >

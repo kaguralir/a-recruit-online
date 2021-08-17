@@ -326,7 +326,7 @@ export async function getServerSideProps({ req }) {
     return {
         redirect: {
             permanent: false,
-            destination: "/auth/login",
+            destination: "/auth/login?dest=recruteur",
         },
         props:{message:"redirect"},
     }
