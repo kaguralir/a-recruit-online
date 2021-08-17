@@ -218,9 +218,9 @@ export default function newjobposting({data}) {
                             <Agenda
                                 url={`https://calendly.com/${data.company_consultant_calendly}/30min`}
                             />
-                        </div>
-                        <div className="orientationH spaceBetween fromRight ">
-                            <input className="button full mbem" type="submit" value="VALIDER" onClick={(e)=>{newJobPosting(e)}}/>
+                            <div className="orientationH spaceBetween fromRight ">
+                                <input className="button full mbem" type="submit" value="VALIDER" onClick={(e)=>{newJobPosting(e)}}/>
+                            </div>
                         </div>
 
                     </div>

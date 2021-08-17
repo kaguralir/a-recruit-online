@@ -14,7 +14,7 @@
                 height: fit-content;
                 .wave{
                     position: absolute;
-                    top:141px;
+                    top:192px;
                     width: 100%;
                     transform: rotate(0deg);
                    
@@ -24,8 +24,8 @@
                     width: max-content;
                     max-width: 100%;
                     padding-top: 0.5em;
-                    padding: 1em;
-                    height: 150px;
+                    padding: 2em;
+                    height: 200px;
                     color: #fff;
                 
                     .item{
@@ -35,7 +35,7 @@
                     .profile-image-container{
                         position: absolute;
                         right: 1em;
-                        top: 110px;
+                        top: 150px;
                         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                         z-index: 2;
                         display: flex;

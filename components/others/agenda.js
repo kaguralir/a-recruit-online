@@ -23,7 +23,7 @@ export default function agenda(props) {
         style={{ 
               marginTop:'1em',
               minWidth: '300px', 
-              height: '40em'
+              height: 'max-content'
           }} />
       :<div>VEUILLEZ CHOISIR UN CONSULTANT DANS LA SECTION INFO SUR MON ENTREPRISE</div>}
     </div>

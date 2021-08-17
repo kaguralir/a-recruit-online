@@ -30,10 +30,7 @@ export default function edit({data}) {
     //Variables de changement 
     const [alterCompanyPresentationPdf,setAlterCompanyPresentationPdf]=useState(false)
     const [alterCompanyPresentationVideo,setAlterCompanyPresentationVideo]=useState(false)
-    const [reload,setReload]=useState(false)
-    useEffect(()=>{
-
-    },[reload])
+ 
     
     const loaded_file = (e) => {
 
@@ -81,7 +78,6 @@ export default function edit({data}) {
             }).then((result)=>{
 
                 if(result.data){
-                    setReload(true)
                     window.location.reload(true)
                     
                 }else {
@@ -388,21 +384,22 @@ export default function edit({data}) {
 
 
 export async function getServerSideProps({ query }) {
+    
     let data=[]
     let europe_country=[]
     let consultants=[]
     let departements=[]
+
     await axios.post(`${api}/getCompanyInfo`,{
         user_id:query.companyInfo,
     }).then((reponse)=>{
         data= reponse.data
     })
 
-
     await axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
         europe : europe_country
     }).then( (reponse)=>{
-         europe_country = reponse.data
+        europe_country = reponse.data
     })
 
     await axios.get("https://geo.api.gouv.fr/departements")
