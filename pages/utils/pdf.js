@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import Header from '../../components/header/header'
-import PDFPreview from '../../components/others/pdfPreview'
 
 export default function contrat({data}) {
     return (
@@ -25,18 +24,18 @@ export default function contrat({data}) {
                     <div className="w100 center title">
                         MON CONTRAT
                     </div>
-                    <div  className="pdf-pages center">
-
-                        <PDFPreview
-                            url= {data.url}
+                    <div className="pdf-pages">
+                        <iframe
+                            src={data.url}
+                            width="100%"
+                            height='600px'
+                            style={{minHeight:'max-content'}}
                         />
                     </div>
-                
                     <div className="w100 center pdfbtn" >
                         {data.tobesigned&&
                             <div className="btn">Signer</div>
                         }
-                        <div className="btn">Télécharger</div>
                     </div>
                    
                 </main>

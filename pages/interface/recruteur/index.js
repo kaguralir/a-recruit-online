@@ -1,10 +1,13 @@
 import React ,{useState,useEffect,Component}from 'react'
+import cookie from 'cookie'
+import jwtDecode from 'jwt-decode';
 import Head from 'next/head'
 import Link from 'next/link'
 import Header from '../../../components/header/header'
 import Footer from '../../../components/footer/footer'
 import WrapListLayout from '../../../components/layouts/wrap_list_layout'
 import Axios from 'axios'
+import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import ReactLocalStorage  from 'reactjs-localstorage'
 import BigSizeScreenNotif from '../../../components/notification/bigSizeScreenNotif'
@@ -29,66 +32,7 @@ export default class index extends Component {
     }
 
 
-    componentDidMount(){
-
-        //Recupérer les informations sur l'utilisateur
-        let user=[];
-        const  localdata= ReactLocalStorage.reactLocalStorage.getObject('jwt')
-        user=jwt_decode(JSON.stringify(localdata)) 
-        this.setState({user:user})
-
-        ///Chargement des donnéés concernant l'utilisateur*
-
-        Axios.post(`${api}/getCompanyInfo`,
-        {
-            user_id:user.user_id,
-
-        }). then( (reponse)=>{
-
-            this.setState({company_info:reponse.data});
-
-            if(reponse.data.company_id){
-
-                if(reponse.data.company_country==="France"){
-                    Axios.get("https://geo.api.gouv.fr/departements")
-                    .then((reponse)=>{
-                        this.setState({company_department:reponse.data})
-                    });
-                }
-
-                Axios.post(`${this.state.api}/getUnFillededJobLimit4`,
-                {
-                    company_id:reponse.data.company_id 
-                }).then((reponse)=>{
-                    this.setState({company_unFilledJobs:reponse.data})
-                })
-
-                Axios.post(`${this.state.api}/getFillededJobLimit4`,
-                {
-                    company_id:reponse.data.company_id
-                }).then((reponse)=>{
-                    this.setState({company_fillededJobs:reponse.data})
-                })
-
-                Axios.post(`${this.state.api}/getConsultantByDepartment`,
-                {
-                    company_department:reponse.data.company_department
-                }).then((reponse)=>{
-                    this.setState({consultants:reponse.data});
-                })
-
-                ///Chargement des données régionnaux pour les formulaires
-        
-                Axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
-                    europe : this.state.europe_country
-                }).then( (reponse)=>{ 
-                    this.setState({europe_country:reponse.data})
-                })
-        
-            }
-        
-        })
-    }
+    
     customImgLoader = ({ src }) => {
         return `${src}`
     }
@@ -137,7 +81,7 @@ export default class index extends Component {
 
     render() {
 
-       // console.log(this.state.company_info)
+       // console.log(this.props.data.company_info)
 
         return (
             <div className="recruteur">
@@ -158,26 +102,26 @@ export default class index extends Component {
                         <div className="top mbXl">
                          
                             <div className="previewXL orientationH">
-                                {!this.state.company_info.company_logo ?
-                                    <div className="defaultLogo"><div>{this.state.company_info.company_name && this.state.company_info.company_name.charAt(0)}</div></div>
+                                {!this.props.data.company_info.company_logo ?
+                                    <div className="defaultLogo"><div>{this.props.data.company_info.company_name && this.props.data.company_info.company_name.charAt(0)}</div></div>
                                     :
-                                    <Image alt="logo" loader={this.customImgLoader} src={this.state.company_info.company_logo} width={200} height={200}/>
+                                    <Image alt="logo" loader={this.customImgLoader} src={this.props.data.company_info.company_logo} width={200} height={200}/>
                                 }                                
                                 <div style={{marginLeft:'1em'}}>
-                                    <div><span>{this.state.company_info.company_name}</span></div>
-                                    <div>{this.state.company_info.company_rcs}</div>
-                                    <div>{this.state.company_info.company_headquarters}</div>
-                                    <div>{this.state.company_info.company_address}</div>
-                                    <div>{this.state.company_info.company_zip_code}</div>
-                                    <div>{this.state.company_info.company_city}</div>
-                                    <div>{this.state.company_info.company_department}</div>
-                                    <div>Tel :{this.state.company_info.company_phone_number}</div> 
+                                    <div><span>{this.props.data.company_info.company_name}</span></div>
+                                    <div>{this.props.data.company_info.company_rcs}</div>
+                                    <div>{this.props.data.company_info.company_headquarters}</div>
+                                    <div>{this.props.data.company_info.company_address}</div>
+                                    <div>{this.props.data.company_info.company_zip_code}</div>
+                                    <div>{this.props.data.company_info.company_city}</div>
+                                    <div>{this.props.data.company_info.company_department}</div>
+                                    <div>Tel :{this.props.data.company_info.company_phone_number}</div> 
 
                                 </div>
                                 <div className="recrutor-consultant center">
                                     <div>
                                         <span>Mon conseiller A RECRUIT</span>
-                                        <p>{this.state.company_info.company_consultant_name+ " " +this.state.company_info.company_consultant_firstname}</p>
+                                        <p>{this.props.data.company_info.company_consultant_name+ " " +this.props.data.company_info.company_consultant_firstname}</p>
                                         <div>
                                             <Image className="recrutor-consultant-img" src ="/images/zinedine.png" width={100} height = {100}/>
                                         </div>
@@ -196,16 +140,16 @@ export default class index extends Component {
                         </div>
                         {/* ZONE FAIRE MA DEMANDE */}
                         <div className="show_hide_layout orientationH  center demandes_link">
-                            <Link href={{pathname:"/interface/recruteur/edit",query:{companyInfo:this.state.company_info.company_representative_id}}}>
+                            <Link href={{pathname:"/interface/recruteur/edit",query:{companyInfo:this.props.data.company_info.company_representative_id}}}>
                                 <a > <div className="button full">{"MA SOCIÉTÉ"}</div></a>
                             </Link>
-                            <Link href={{pathname:"/interface/recruteur/newjobposting",query:{by:this.state.company_info.company_id}}}>
+                            <Link href={{pathname:"/interface/recruteur/newjobposting",query:{by:this.props.data.company_info.company_id}}}>
                                 <a> <div className="button full">DEMANDE EN LIGNE</div></a>
                             </Link>
                             <Link href="/">
                                 <a> <div className="button full">PRENDRE RENDEZ-VOUS AVEC UN CONSEILLER</div></a>
                             </Link>
-                            <Link href={{pathname:"/utils/pdf",query:{url:this.state.company_info.company_contrat,tobesigned:true,by: this.state.company_info.company_id}}}>
+                            <Link href={{pathname:"/utils/pdf",query:{url:this.props.data.company_info.company_contrat,tobesigned:true,by: this.props.data.company_info.company_id}}}>
                                 <a> <div className="button full">MON CONTRAT</div></a>
                             </Link>
                         </div>
@@ -216,7 +160,7 @@ export default class index extends Component {
                                 title= "DEMANDES EN COURS ..............."
                                 linkForMore=""
                             >
-                                {this.state.company_unFilledJobs.length!==0 ? this.state.company_unFilledJobs.map((job, index) => {
+                                {this.props.data.company_unFilledJobs.length!==0 ? this.props.data.company_unFilledJobs.map((job, index) => {
                                     return (
                                         <div className="demande" key={index}>
                                             <div className="w100 orientationH">
@@ -237,7 +181,7 @@ export default class index extends Component {
                                     );
                                 })
                                 : <div>AUCUNE DEMANDE EN COURS</div>}
-                                {this.state.company_unFilledJobs.length === 4 && <Link  href={{pathname:"/interface/recruteur/allJobs",query:{dest:"unfilled",company_id:this.state.company_info.company_id}}}>
+                                {this.props.data.company_unFilledJobs.length === 4 && <Link  href={{pathname:"/interface/recruteur/allJobs",query:{dest:"unfilled",company_id:this.props.data.company_info.company_id}}}>
                                     <a>
                                         <div className="show_more">voir plus {">>"}</div>
                                     </a>
@@ -252,7 +196,7 @@ export default class index extends Component {
                                 title= "DERNIÈRES DEMANDES "
                                 linkForMore=""
                             >
-                            {this.state.company_fillededJobs.length!==0 ? company_fillededJobs.map((job, index) => {
+                            {this.props.data.company_fillededJobs.length!==0 ? company_fillededJobs.map((job, index) => {
                                     return (
                                         <div className="demande" key={index}>
                                             <label>{job.job_title}</label>
@@ -264,14 +208,14 @@ export default class index extends Component {
                                 : <div></div>}
                                     
                                 <div className="demande more orientationV center">
-                                    <Link  href={{pathname:"/interface/recruteur/newjobposting",query:{by:this.state.company_info.company_id}}}>
+                                    <Link  href={{pathname:"/interface/recruteur/newjobposting",query:{by:this.props.data.company_info.company_id}}}>
                                         <a className="center orientationV" >
                                             <div className="more_btn center">+</div>
                                             Ajouter un poste
                                         </a>
                                     </Link>
                                 </div>
-                                {this.state.company_fillededJobs.length === 4 && <Link  href={{pathname:"/interface/recruteur/allJobs",query:{dest:"filled",company_id:this.state.company_info.company_id}}}>
+                                {this.props.data.company_fillededJobs.length === 4 && <Link  href={{pathname:"/interface/recruteur/allJobs",query:{dest:"filled",company_id:this.props.data.company_info.company_id}}}>
                                     <a>
                                         <div className="show_more">voir plus {">>"}</div>
                                     </a>
@@ -279,7 +223,7 @@ export default class index extends Component {
                             </WrapListLayout>
                             
                             <BigSizeScreenNotif
-                                showHide = {this.state.show_hide3}
+                                showHide = {this.props.data.show_hide3}
                                 callback = {()=>{setShow_hide3(!show_hide3)}}
                             />
                             <div className="conseils w90">
@@ -322,15 +266,72 @@ export default class index extends Component {
     }
 }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ req }) {
+    
+    
+    const user_cookie = cookie.parse(req ? req.headers.cookie || "" : document.cookie)
+    
+    if(user_cookie.me){
+        
+        const user = jwt_decode(JSON.stringify(user_cookie))
+        let data=[]
+        let company_info=[]
+        let company_unFilledJobs=[]
+        let company_fillededJobs=[]
+        let company_department=[]
+        let europe_country=[]
 
-    const data = 'a'//await logedUder()
+        await axios.post(`${api}/getCompanyInfo`,{
+            user_id:user.user_id,
+        }).then((reponse)=>{
+            company_info= reponse.data
+        })    
 
-    return {
-      props: {
-        data
-      }
+        await axios.post(`${api}/getUnFillededJobLimit4`,
+        {
+            company_id:company_info.company_id 
+        }).then((reponse)=>{
+            company_unFilledJobs=reponse.data
+        })
+
+        await axios.post(`${api}/getFillededJobLimit4`,
+        {
+            company_id:company_info.company_id
+        }).then((reponse)=>{
+            company_fillededJobs=reponse.data
+        })
+
+        await axios.get("https://geo.api.gouv.fr/departements")
+        .then((reponse)=>{
+            company_department=reponse.data
+        });
+
+        ///Chargement des données régionnaux pour les formulaires
+
+        await axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
+            europe : europe_country
+        }).then( (reponse)=>{ 
+            europe_country=reponse.data
+        })
+
+        data = await {...data,company_info:company_info,company_unFilledJobs:company_unFilledJobs,company_fillededJobs:company_fillededJobs,company_department:company_department,europe_country:europe_country}
+    
+       // console.log(data)
+        return {
+            props: {
+                data
+            }
+        }
     }
+    return {
+        redirect: {
+            permanent: false,
+            destination: "/auth/login",
+        },
+        props:{message:"redirect"},
+    }
+   
+   
 }
 
 

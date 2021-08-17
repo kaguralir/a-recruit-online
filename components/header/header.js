@@ -5,21 +5,21 @@ import PersonIcon from '@material-ui/icons/Person';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import ReactLocalStorage from 'reactjs-localstorage'
 import jwt_decode from 'jwt-decode'
-
-
+import { useCookies } from "react-cookie";
+import cookie from 'cookie';
 
 export default function Header(props) {
 
     const [user,setUser]=useState("");
     const [largeur,setLargeur]=useState(2000);
     const [toggleMenu,setToggleMenu]=useState(false);
+    const [cookies, setCookie, removeCookie] = useCookies(["me"]);
 
 
     useEffect(() => {
 
         //Chargement des informations de l'utilisateur
-            let data={};
-            data= ReactLocalStorage.reactLocalStorage.getObject('jwt');
+            let data=cookies
             let decoded = jwt_decode(JSON.stringify(data))
             const random = Math.floor(((decoded.user_name.length+decoded.user_firstname.length)/(decoded.user_name.length*decoded.user_firstname.length))*16777215).toString(16);
             setUser({...decoded,color:'#' +random.toString(16)})
@@ -44,11 +44,8 @@ export default function Header(props) {
     }, [])
 
     const disconnect  = () =>{
-        ReactLocalStorage.reactLocalStorage.remove('jwt')
-
-    }
-
-   // console.log(user)
+        document.cookie = 'me' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }   
 
 
     const nb_notif = 1;

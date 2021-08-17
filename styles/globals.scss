@@ -441,8 +441,7 @@ a{
     
   }
   .pdfbtn{
-    position: fixed;
-    top: 90%;
+    margin-top: 1em;
     .btn{
       padding: 5px;
       display: flex;
@@ -460,10 +459,8 @@ a{
 
   .pdf-pages{
     margin: 0 auto;
-    max-width: 100%;
-    div{
-      width: 100%;
-    }
+    max-width: 90%;
+ 
   }
 
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ReactLocalStorage from 'reactjs-localstorage'
 import jwtDecode from 'jwt-decode';
 import {api} from '../api/api'
+import {useCookies} from 'react-cookie';
 
 
 export default function Connect({dest}) {
@@ -14,6 +15,7 @@ export default function Connect({dest}) {
     const [user_email,setUserEmail]=useState(false);
     const [user_password,setUserpassword]=useState(false);
     const [alert,setAlert]=useState(false);
+    const [cookie, setCookie] = useCookies(["me"])
 
     const connexion = (e)=>{
 
@@ -37,16 +39,18 @@ export default function Connect({dest}) {
                 'Authorization': `Bearer${token}` //Renvoi du token par l'api en cas d'authentification
             }
                 
-            }).then(resutlt=>{
+            }).then(result=>{
 
-                if(!resutlt.data.err){
-                    //resutlt.redirect("/")
-                    //console.log(resutlt.data)
-                    ReactLocalStorage.reactLocalStorage.setObject('jwt',{jwt:resutlt.data});
-                    ReactLocalStorage.reactLocalStorage.get('jwt', true);
-                    //let user = jwtDecode(JSON.stringify(resutlt.data));
-                    //console.log(user)
+                if(!result.data.err){
+
+                    setCookie("me", JSON.stringify(result.data), {
+                        path: "/",
+                        maxAge: 3600, // Expires after 1hr
+                        sameSite: true,
+                    })
+
                     window.location.href =`../interface/${dest}`;
+               
                 }else {
                     setAlert("Identifiants et / ou  mot de passe incorrects")
                 }
