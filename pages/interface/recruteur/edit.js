@@ -368,9 +368,7 @@ export default function edit({data}) {
                         </div>
                         
                           
-                        <div className="orientationH spaceBetween fromRight ">
-                            <input type="submit" value="MODIFIER" className="button full mbem" onClick={(e)=>{finalization(e)}}/>
-                        </div>                 
+                        <div className="submitButton  center" onClick={(e)=>{finalization(e)}}>MODIFIER</div>                 
                         
                     </div>
                 </main>

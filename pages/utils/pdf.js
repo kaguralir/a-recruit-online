@@ -25,10 +25,12 @@ export default function contrat({data}) {
                     <div className="w100 center title">
                         MON CONTRAT
                     </div>
-                    <PDFPreview
-                        url= {data.url}
+                    <div  className="pdf-pages center">
 
-                    />
+                        <PDFPreview
+                            url= {data.url}
+                        />
+                    </div>
                 
                     <div className="w100 center pdfbtn" >
                         {data.tobesigned&&
