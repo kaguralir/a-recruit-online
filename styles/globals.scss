@@ -7,6 +7,8 @@ body {
 .body{
   margin-top: 40px;
 }
+// @import url('bulma/css/bulma.css');
+// @import url('material-design-icons/iconfont/material-icons.css');
 
 main{
   height: 100%;
@@ -405,15 +407,22 @@ a{
       align-items: center;   
     }
   }
-  .pdf_btn{
-    padding: 5px;
-    background-color: transparent;
-    border: none;
-    margin: 5px ;
-    background-color: #999;
-    padding-left: 1em;
-    padding-right: 1em;
-    //color: transparent;
+  .pdfbtn{
+    position: fixed;
+    top: 90%;
+    .btn{
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+      margin: 5px ;
+      background-color: var(--color-primary-light);
+      padding-left: 1em;
+      padding-right: 1em;
+      //color: transparent;
+    }
   }
 
   .signatureZ{

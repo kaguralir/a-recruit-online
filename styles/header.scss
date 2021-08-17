@@ -30,11 +30,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        @media screen and (max-width:550px){
-            border-radius: 40px;
-            height: 40px;
-            width: 40px;
-        }
+        
     }
     .user_img:hover{
         background-color: transparent;
@@ -144,26 +140,34 @@
     .icon{
         width: 20px;
     }
-    .notification_z span{
+    .notification_z {
         position: relative;
-        top: -6px; left: -5px;
+        max-width: 40px;
+        top: 10%;
+        right: 10%;
+    }
+    .notification_z span{
+        font-size: initial;
+        font-weight: initial;
+        padding: 0.5em;
+        position: absolute;
         width: 20px;
-        min-width: 15px;
-        font-size: 0.9em;
-        padding-left : 0.3em;
-        padding-right : 0.3em;
-        border-radius: 15px;
-        color: red;
+        height: 20px;
+        left: 18px;
+        top: -5px;
+        border-radius: 17px;
+        color: #fff;
+        background-color: rgb(235, 15, 15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .user_name_z{
         padding-right:1em;
         padding-left: 0.5em;
     }
     
-    .notification_z{
-        padding-right:0.7em;
-        cursor:pointer;
-    }
+
     .user ul {
         margin: 0;
         padding: 0;

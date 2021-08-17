@@ -27,9 +27,10 @@ export default function contrat({data}) {
                     </div>
                     <PDFPreview
                         url= {data.url}
+
                     />
                 
-                    <div className="w100 center">
+                    <div className="w100 center pdfbtn" >
                         {data.tobesigned&&
                             <div className="btn">Signer</div>
                         }

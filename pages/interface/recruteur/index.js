@@ -137,7 +137,7 @@ export default class index extends Component {
 
     render() {
 
-        console.log(this.state.company_info)
+       // console.log(this.state.company_info)
 
         return (
             <div className="recruteur">

@@ -6,14 +6,17 @@
         min-height: 100vh;
         .head{
             .top{
+
                 width: 100%; 
                 background-image: url("/images/top.png");
                 background-size: cover;
                 background-repeat: no-repeat;
+                height: fit-content;
                 .wave{
+                    position: absolute;
+                    top:141px;
                     width: 100%;
                     transform: rotate(0deg);
-                    margin-bottom: -1px;
                    
                 }         
                 .info{
@@ -22,7 +25,7 @@
                     max-width: 100%;
                     padding-top: 0.5em;
                     padding: 1em;
-                    height: 130px;
+                    height: 150px;
                     color: #fff;
                 
                     .item{
@@ -32,7 +35,7 @@
                     .profile-image-container{
                         position: absolute;
                         right: 1em;
-                        top: 130px;
+                        top: 110px;
                         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                         z-index: 2;
                         display: flex;

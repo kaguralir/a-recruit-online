@@ -1,5 +1,8 @@
 import React,{useEffect,useState} from 'react'
 import Link from 'next/link'
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import PersonIcon from '@material-ui/icons/Person';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import ReactLocalStorage from 'reactjs-localstorage'
 import jwt_decode from 'jwt-decode'
 
@@ -48,7 +51,7 @@ export default function Header(props) {
    // console.log(user)
 
 
-    const nb_notif = 5;
+    const nb_notif = 1;
 
     
     return (
@@ -71,14 +74,14 @@ export default function Header(props) {
                                     <li  >
                                         <Link href={"/members/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
                                             <a>
-                                            Mon profile
+                                                <div className="center"><PersonIcon/>&#160;Mon profile  </div>
                                             </a>
                                         </Link>
                                     </li>
                                     <li className="last" onClick={(e)=>{e.preventDefault();disconnect()}}>
                                         <Link href="/">
                                             <a>
-                                                Se deconnecter
+                                                <div className="center"><PowerSettingsNewIcon/>&#160;Se deconnecter</div>          
                                             </a>
                                         </Link>
                                     </li>
@@ -93,7 +96,7 @@ export default function Header(props) {
                 <div className="user-menu-info menu center orientationH">
 
                     <div className="notification_z" onClick={()=>{props.callback && props.callback()}}>
-                        <img className="icon" src="/images/icon_notif.png" alt='noti_icon'/>
+                        <NotificationsIcon/>
                         <span>{nb_notif}</span>
                         
                     </div>
@@ -113,17 +116,17 @@ export default function Header(props) {
                                 {(largeur > 1075) &&
                                     <>
                                         <ul>
-                                            <li className="center-H" >
+                                            <li  >
                                                 <Link href={"/members/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
                                                     <a>
-                                                    Mon profile
+                                                        <div className="center"><PersonIcon/>&#160;Mon profile  </div>
                                                     </a>
                                                 </Link>
                                             </li>
-                                            <li className="last disconnect" onClick={(e)=>{e.preventDefault();disconnect()}}>
+                                            <li className="last" onClick={(e)=>{e.preventDefault();disconnect()}}>
                                                 <Link href="/">
                                                     <a>
-                                                        Se deconnecter
+                                                        <div className="center"><PowerSettingsNewIcon/>&#160;Se deconnecter</div>          
                                                     </a>
                                                 </Link>
                                             </li>
