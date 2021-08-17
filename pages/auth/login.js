@@ -101,7 +101,7 @@ export default function Connect({dest}) {
                                                     </label>
                                                 </div>
                                             <div className="field padding-bottom--24">
-                                                <input type="submit" name="submit" value="Continuer" onClick={(e)=>{connexion(e)}}/>
+                                                <div   onClick={(e)=>{connexion(e)}}>Continuer</div>
                                             </div>
         
                                         </form>

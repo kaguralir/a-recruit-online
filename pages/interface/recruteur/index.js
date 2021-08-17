@@ -125,10 +125,11 @@ export default class index extends Component {
                                         <div>
                                             <Image className="recrutor-consultant-img" src ="/images/zinedine.png" width={100} height = {100}/>
                                         </div>
-                                        <Link href="#">
-                                            <a>
-                                                Vers page A RECRUIT
-                                        </a>
+                                        <br></br>
+                                        <Link href="/">
+                                            <a className="center">
+                                                Vers page A RECRUIT &#8594;
+                                            </a>
                                         </Link>
 
                                     </div>
@@ -233,8 +234,8 @@ export default class index extends Component {
                                     <div className=" orientationV">
                                         
                                         <Image className="" src ="/images/creer_offre.jpg" width={150} height = {150}/>
-                                        <Link href="#">
-                                            <a>
+                                        <Link href="/">
+                                            <a className="a">
                                             {"Créer l'offre d'emploie"}
                                             </a>
                                         </Link>
@@ -242,8 +243,8 @@ export default class index extends Component {
                                     <div className=" orientationV">
                                         
                                     <Image className="" src ="/images/creer_presentation.jpg" width={150} height = {150}/>
-                                        <Link href="#">
-                                            <a>
+                                        <Link href="/">
+                                            <a className="a">
                                             {"Créer une présentation"}
                                             </a>
                                         </Link>

@@ -26,7 +26,7 @@ export default function contrat({data}) {
                     </div>
                     <div className="pdf-pages">
                         <iframe
-                            src={data.url}
+                            src={data.url+'#toolbar=1'}
                             width="100%"
                             height='600px'
                             style={{minHeight:'max-content'}}

@@ -85,7 +85,7 @@ export default function Header(props) {
                             <>{user?
                                 <>
                                     <li  >
-                                        <Link href={"/members/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
+                                        <Link href={"/profil/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
                                             <a>
                                                 <div className="center"><PersonIcon/>&#160;Mon profile  </div>
                                             </a>
@@ -102,7 +102,7 @@ export default function Header(props) {
                             :
                                 <>
                                     <li  >
-                                        <Link href={"/members/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
+                                        <Link href="">
                                             <a>
                                                 <div className="center"><PersonIcon/>&#160;Se connecter  </div>
                                             </a>
@@ -171,7 +171,7 @@ export default function Header(props) {
                                <>{user?
                                     <>
                                         <li  >
-                                            <Link href={"/members/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
+                                            <Link href={"/profil/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
                                                 <a>
                                                     <div className="center"><PersonIcon/>&#160;Mon profile  </div>
                                                 </a>

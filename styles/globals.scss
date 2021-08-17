@@ -184,6 +184,7 @@ main{
   cursor: pointer;
   background-color: transparent;
   margin: 0.5em;
+
 }
 
 .sh_button{
@@ -342,6 +343,11 @@ span{
 }
 a{
   cursor: pointer;
+  text-decoration: none;
+}
+.a{
+  text-decoration: underline;
+  color: var(--color-primary-light);
 }
 .maps{
   
@@ -433,8 +439,9 @@ a{
 .pdf{
   width: 100%;
   max-width: 100vw;
+  overflow-y: scroll;
   @media screen and (max-width:850px){
-   flex-direction: column;
+    flex-direction: column;
     justify-content: center;
     
   }
