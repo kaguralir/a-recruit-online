@@ -1,162 +1,102 @@
 .Home{
-  .head{
-    width: 100%;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.411);
-    position: absolute;
-    z-index: 3;
-  }
-  .scroll{
-    padding-top: 50px;
-    width: 100%;
-    max-height: 100vh;
-  }
+  max-height: 100vh;
+  overflow-y: scroll;
 
-  .HomeImageBackground{
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      height: 100vh;
-      background-image: url("../public/images/home.jpg");
-      background-size: cover;
-      background-attachment: fixed;
-  }
-    
-  .blure{
-      // 
-      // background-position: center;
-      // position: absolute;
-      // top: 0;
-      width: 100%;
-      height: 100vh;
-      // shape-outside: circle(50%);
-      // z-index: -1000;
-
-      .robot{
-        background-image: url("../public/images/robot.png");
-        background-position: center;
-        position: absolute;
-        bottom: 0;
-        width: 350px;
-        min-height: 350px;
-        background-size: 100%;
-        z-index: 1;
-      }
-  }
-
-  .logo{
-      padding: 1em;
-      position:absolute;
-      top: 0;
-  }
-
-  .textZone{
-      margin: 0 auto;
-      width: 90%;
-      height: 65%;
-      color: #fff;
-  }
-
-  .linkZone{
-      margin: 0 auto;
-      height: 50px;
-      width: 50%;
-      
-  }
-
-  .linkZone div:hover{
-    cursor: pointer;
-  }
-
-  //Flèche vers le bas animée 
-  .arrow,.arrow:before{
-      position: absolute;
-      left: 50%
-  }
-    
-  .arrow{
-      width: 40px;
-      height: 40px;
-      top: 90%;
-      margin: -20px 0 0 -20px;
-      -webkit-transform: rotate(45deg);
-      border-left: none;
-      border-top: none;
-      border-right: 2px #fff solid;
-      border-bottom: 2px #fff solid;
-  }
-    
-      
-  .arrow:before{
-      content: '';
-      width: 20px;
-      height: 20px;
-      top: 50%;
-      margin: -10px 0 0 -10px;
-      border-left: none;
-      border-top: none;
-      border-right: 1px #fff solid;
-      border-bottom: 1px #fff solid;
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-      animation-name: arrow;
-  }
-
-
-  @keyframes arrow{
-      0%{
-        opacity: 1;
-      }
-      100%{
-        opacity: 0;
-        transform: translate(-10px, -10px);
-      }
-  }
-
-
-
-
-  ///Scrolle page 2
-  .page2{
-    height: 100vh;
-  }
-
-  .video{
-    margin: 5% auto;
-    max-width: 70%;
-  }
-
-  .avisZone{
-    margin: 1em auto;
-    width: 70%;
+  .container{
+    min-height: 100vh;
     height: 100%;
-    font-family: great vibes;
-  }
-  
-
-  @media screen and (max-width:500px){
-
-   
-    .HomeImageBackground{
-      background-image: url("../public/images/handshake_small_screen.jpg");
+    .head{
+      height: 400px;
+      width: 100%;
+      .background{
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-image: url("/images/home.jpg");
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        filter: blur(0px);
+        height: 400px;
+        width: 100%;
+      }
+      .head-head{
+        position: relative;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.384);
+        height: 400px;
+        width: 100%;
+        flex-direction: column;
+        a{
+          color: #fff;
+        }
+        .head-txt{
+          height: 100%;
+          justify-content: center;
+        }
+        .lead{
+          font-family:"Open sans", Helvetica, Arial; font-size:44px; margin-bottom:6px; color:white; line-height:1.15em; 
+          margin-bottom: 1em;
+        }
+        .redirect{
+          div{
+            background-color: var(--color-primary-light);
+            padding: 0.5em;
+            font-weight: bold;
+            margin: 1em;
+            border-radius: 5px;
+            min-width: 300px;
+            cursor: pointer;
+          }
+        }
+      }
+      .wave{
+        position: absolute;
+        top:350px;
+        width: 100%;
+        transform: rotate(0deg);
+       
+      }    
+    }
+    .bigTitle{
+      font-family: "Open sans", Helvetica, Arial;
+      font-weight: 300;
+      font-size: 22px;
+      max-width: 50%;
+      color: #333;
+      width: 100%;
+      text-align: center;
+      margin: 2em auto;
+    }
+    .smallTitle{
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 14px;
+      margin: 0em auto;
+      color: #888;
+      max-width: 50%;
     }
 
-    .linkZone{
-      flex-direction: column;
-      width: 90%;
-      div{
-        min-width: 100%;
-        text-align: center;
-        margin-bottom: 1em;
+    .steps{
+      width: 100%;
+      min-height: 300px;
+      background-color: #F7F5F4;
+      padding-top: 10px;
+      padding-bottom: 30px;
+      margin-top: 5em;
+      margin-bottom: 0;
+ 
+      .steps-steps{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        .step{
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+        }
+
       }
     }
-    .page2{
-      height: max-content;
-    }
-    .video{
-      min-width: 90%;
-      max-height: 40%;
-    }
-
   }
 }

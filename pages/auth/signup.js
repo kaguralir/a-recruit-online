@@ -88,9 +88,6 @@ export default function inscription({dest}) {
                 }
             });
         }
-
-       
-
         
     }
 
@@ -104,7 +101,6 @@ export default function inscription({dest}) {
             </Head>
 
             <main className="login_signin_background center orientationV">
-            <Image alt="logo" src="/images/A_Recruit.jpg" width={200} height={100}/>
 
                 <div className="login-root">
 
@@ -152,9 +148,11 @@ export default function inscription({dest}) {
                                             </div>
                                         </div>
 
-                                        <div className="center">
-                                            <button  type="submit" className="btn btn-primary mt-4 mb-4 " onClick={(e)=>{inscription(e)}}>Inscription</button>
+
+                                        <div className="field padding-bottom--24">
+                                            <div className="button"   onClick={(e)=>{inscription(e)}}>S'inscrire</div>
                                         </div>
+        
                                     </form>
                                 </div>
                             </div>

@@ -1,7 +1,8 @@
 .recruteur{
-
+    max-height: 100vh;
+    overflow-y: scroll;
     .body{
-        
+        position: relative;
         .mbXl{
             margin-bottom: 200px;
             @media screen and (max-width:750px){
@@ -9,101 +10,7 @@
             }
 
         }
-        .top{
-    
-            background-image: url("/images/top.png");
-            width: 100%;
-            height: 150px;
-            color: #fff;
-            @media screen and (max-width:850px){
-                display: flex;
-            }
-            .title{
-                position: absolute;
-                left: 10%;
-                top: 70px;
-                width: max-content;
-                height: 100%;
-                display: flex;
-                justify-content: flex-start;
-                flex-direction: column;
-                font-size: 1.2em;
-                @media screen and (max-width:850px){
-                    padding-left: 1em;
-                    position: inherit;
-                    
-                }
-            }
-            .preview{
-                width: 25%;
-                max-width: 250px;
-                height: 200px;
-                right: 5em;
-
-            }
-            .previewXL{
-                width: 70%;
-                max-width: 90%;
-                left: 15%;
-                height: max-content;
-                display: flex;
-                align-items: center;
-                @media screen and (max-width:850px){
-                    margin: 0 auto;
-                   div{
-                       margin-right: 5px;
-                   }
-                    
-                }
-            }
-           
-            .preview,.previewXL{
-
-                color: var(--color-primary-light);
-                position: absolute;
-                top: 90px;
-                background-color: #fff;
-                border-radius: 10px;
-                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-                padding: 2em;
-               
-                @media screen and (max-width:850px){
-                    position: inherit;
-                    width: max-content;
-                    max-width: 90%;
-                    height: max-content;
-                    top:100px;
-                    right: 1em;
-                    margin-top: 50px;
-                    margin-right: 1em;
-                    div{
-                        margin: 1em;
-                        min-width: 90px;
-                    }
-                }
-    
-    
-                div{
-                    margin: 0 auto;
-                }
-                .ovale{
-                    width: 100%;
-                    border-radius: 10px;
-                    text-align: center;
-                    border: 2px solid var(--color-primary-light);
-                    margin-top: 10px;
-                    color: var(--color-primary-light);
-                }
-                .fill{
-                    background-color: var(--color-primary-light);
-                    color: #fff;
-                }
-            
-            }
-
-            
-            
-        }
+        
        
         .recutor-left{
             width: 20%;
@@ -173,6 +80,7 @@
         }
 
     }
+   
 
     .show_hide_layout{
         max-width: 95%;

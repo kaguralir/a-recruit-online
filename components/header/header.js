@@ -80,7 +80,7 @@ export default function Header(props) {
                         </Link>
                     </li>
                     { (toggleMenu || largeur > 1075) && <>
-                        
+                        {props.children}
                         {(largeur < 1075) &&
                             <>{user?
                                 <>
@@ -102,7 +102,7 @@ export default function Header(props) {
                             :
                                 <>
                                     <li  >
-                                        <Link href="">
+                                        <Link href="/">
                                             <a>
                                                 <div className="center"><PersonIcon/>&#160;Se connecter  </div>
                                             </a>
@@ -137,7 +137,7 @@ export default function Header(props) {
                 <ul>{(!user && (largeur > 1075)) &&
                     <>
                         <li >
-                            <Link href="">
+                            <Link href="/">
                                 <a>
                                     <div className="center">Se connecter  </div>
                                 </a>
@@ -168,7 +168,7 @@ export default function Header(props) {
                                 </a>
                             }</>
                             {(largeur > 1075) &&
-                               <>{user?
+                               <ul>{user?
                                     <>
                                         <li  >
                                             <Link href={"/profil/"+user.user_id+"@"+(user.user_name+"-"+user.user_firstname).replace(/\s+/g, '-').toLowerCase()}>
@@ -187,7 +187,7 @@ export default function Header(props) {
                                     </>
                                 :null
                                 }                
-                                </>
+                                </ul>
                             }
                         </li>
                     </ul>

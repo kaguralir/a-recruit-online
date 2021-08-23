@@ -3,9 +3,13 @@ body {
   padding: 0;
   margin: 0;
   font-family: great vibes;
+  overflow-y: hidden;
 }
 .body{
   margin-top: 40px;
+  min-height: 100vh;
+  height: 100%;
+
 }
 // @import url('bulma/css/bulma.css');
 // @import url('material-design-icons/iconfont/material-icons.css');
@@ -47,7 +51,7 @@ main{
   box-sizing: border-box;
   margin: 0;
   font-family: great vibes;
-  font-size: var(--font-S);
+  font-size: initial;
 }
 
 .logo_edit{
@@ -120,6 +124,15 @@ main{
   align-items: center;
 }
 
+.box-shadow{
+  margin: 0 auto;
+  margin-bottom: 2em;
+  padding-top: 2em;
+  width: 95%;
+  border-radius: 5px;
+  padding-bottom: 2em;
+  box-shadow: rgba(252, 248, 248, 0.24) 0px 3px 8px;
+}
 /*** ARROWS ****/
 
 
@@ -172,7 +185,7 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25px;
+  min-height: 25px;
   min-width: max-content;
   padding-left: var(--font-M);
   padding-right: var(--font-M);
@@ -182,9 +195,17 @@ main{
   color: #fff;
   font-weight: 900;
   cursor: pointer;
-  background-color: transparent;
   margin: 0.5em;
-
+  background-color: var(--color-primary-light);
+  input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    color: #fff;
+    border: 0;
+    padding: 0.5em;
+  }
 }
 
 .sh_button{
@@ -232,6 +253,7 @@ main{
   background-size: 15px;
   padding-left: 20px;
   background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
   max-width: 50%;
 
@@ -260,8 +282,10 @@ main{
 .recutor_title{
   margin: 2em auto;
   width: 100%;
-  text-align: center;
+  text-align: left;
   font-weight: 900;
+  font-size: 1em;
+  padding-left: 1em;
 }
 .titleContainer{
   width: 95%;
@@ -471,4 +495,117 @@ a{
 
 
 
+}
+
+.recruteur,.consultant{
+
+  .body{
+    .top{
+      
+      background-image: url("/images/top.png");
+      width: 100%;
+      height: 150px;
+      color: #fff;
+      padding-top: 50px;
+      display: flex;
+      justify-content: center;
+      @media screen and (max-width:850px){
+        padding-top: 0px;
+      }
+      .title{
+          position: absolute;
+          left: 10%;
+          top: 70px;
+          width: max-content;
+          height: 100%;
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: column;
+          font-size: 1.2em;
+          @media screen and (max-width:850px){
+              padding-left: 1em;
+              position: inherit;
+              
+          }
+      }
+     
+      .previewXL,.previewXL2{
+          width: 70%;
+          max-width: 90%;
+          left: 15%;
+          height: max-content;
+          display: flex;
+          align-items: center;
+          @media screen and (max-width:850px){
+              margin: 0 auto;
+             div{
+                 margin-right: 5px;
+             }
+              
+          }
+      }
+     
+      .preview,.previewXL,.previewXL2{
+
+          color: var(--color-primary-light);
+          top: 90px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          padding: 2em;
+         
+          @media screen and (max-width:850px){
+              position: inherit;
+              width: max-content;
+              max-width: 90%;
+              height: max-content;
+              top:100px;
+              right: 1em;
+              margin-top: 50px;
+              margin-right: 1em;
+              div{
+                  margin: 1em;
+                  min-width: 90px;
+              }
+          }
+
+
+          div{
+              margin: 0 auto;
+          }
+          .ovale{
+              width: 100%;
+              border-radius: 10px;
+              text-align: center;
+              border: 2px solid var(--color-primary-light);
+              margin-top: 10px;
+              color: var(--color-primary-light);
+          }
+          .fill{
+              background-color: var(--color-primary-light);
+              color: #fff;
+          }
+      
+      }
+      .preview{
+        width: 25%;
+        max-width: 250px;
+        height: 200px;
+        margin-left: 70vw;
+        @media screen and (max-width:850px){
+          width: max-content;
+          margin-left: 20vw;
+         
+          
+        }
+      }
+      
+        
+    }
+  }
+}
+.wave2{
+  margin-bottom: -20px;
+  transform: rotate(180deg);
+  margin-bottom: 1em;
 }

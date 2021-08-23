@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
 import Image from 'next/image'
-import {getProfilesName,getCompanyData} from '../../lib/profil'
+import {getProfilesName,getCompanyData} from '../../lib/partenaire'
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 
 const key = "AIzaSyBeM-wkqt3uIlMXGxnCHAvlsI8EBqXLOQI"

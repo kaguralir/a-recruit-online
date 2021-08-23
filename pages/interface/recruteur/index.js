@@ -1,6 +1,5 @@
 import React ,{useState,useEffect,Component}from 'react'
 import cookie from 'cookie'
-import jwtDecode from 'jwt-decode';
 import Head from 'next/head'
 import Link from 'next/link'
 import Header from '../../../components/header/header'
@@ -9,7 +8,6 @@ import WrapListLayout from '../../../components/layouts/wrap_list_layout'
 import Axios from 'axios'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import ReactLocalStorage  from 'reactjs-localstorage'
 import BigSizeScreenNotif from '../../../components/notification/bigSizeScreenNotif'
 import Image from 'next/image'
 import {api} from '../../api/api'
@@ -150,9 +148,12 @@ export default class index extends Component {
                             <Link href="/">
                                 <a> <div className="button full">PRENDRE RENDEZ-VOUS AVEC UN CONSEILLER</div></a>
                             </Link>
-                            <Link href={{pathname:"/utils/pdf",query:{url:this.props.data.company_info.company_contrat,tobesigned:true,by: this.props.data.company_info.company_id}}}>
-                                <a> <div className="button full">MON CONTRAT</div></a>
+                            <Link href={{pathname:"/utils/fileExplorer"}}>
+                                <a> <div className="button full">MES DOCUMENTS</div></a>
                             </Link>
+                            {/* <Link href={{pathname:"/utils/pdf",query:{url:this.props.data.company_info.company_contrat,tobesigned:true,by: this.props.data.company_info.company_id}}}>
+                                <a> <div className="button full">MES DOCUMENTS</div></a>
+                            </Link> */}
                         </div>
                         <div className="bottom ">
                         

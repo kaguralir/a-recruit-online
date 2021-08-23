@@ -68,7 +68,6 @@ export default function Connect({dest}) {
 
             <main className="login_signin_background center orientationV">
 
-                  <Image alt="logo" src="/images/A_Recruit.jpg" width={200} height={100}/>
 
                     <div className="login-root">
 
@@ -101,7 +100,9 @@ export default function Connect({dest}) {
                                                     </label>
                                                 </div>
                                             <div className="field padding-bottom--24">
-                                                <div   onClick={(e)=>{connexion(e)}}>Continuer</div>
+                                                <div className="button" >
+                                                    <input type="submit" value="Continuer" onClick={(e)=>{connexion(e)}}/>
+                                                </div>
                                             </div>
         
                                         </form>
