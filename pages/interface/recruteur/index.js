@@ -107,6 +107,8 @@ export default class index extends Component {
                                 }                                
                                 <div style={{marginLeft:'1em'}}>
                                     <div><span>{this.props.data.company_info.company_name}</span></div>
+                                    <div>{this.props.data.company_info.company_siret}</div>
+                                    <div>{this.props.data.company_info.company_ape}</div>
                                     <div>{this.props.data.company_info.company_rcs}</div>
                                     <div>{this.props.data.company_info.company_headquarters}</div>
                                     <div>{this.props.data.company_info.company_address}</div>

@@ -20,10 +20,10 @@ const Layout = props => {
     <div>
         { isLoading ?
             <div className="Loading">
-               <div class="wrap">
-                <div class="loading">
-                    <div class="bounceball"></div>
-                    <div class="text">CHARGEMENT ...</div>
+               <div className="wrap">
+                <div className="loading">
+                    <div className="bounceball"></div>
+                    <div className="text">CHARGEMENT ...</div>
                 </div>
                 </div>
             </div>
@@ -33,3 +33,4 @@ const Layout = props => {
 }
 
 export default Layout;
+

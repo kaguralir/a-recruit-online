@@ -81,7 +81,7 @@ export default function inscription({dest}) {
                         sameSite: true,
                     })
 
-                    window.location.href = `../interface/${router.query.dest}`
+                    window.location.href = `${router.query.dest}`
 
                 }else {
                      setAlert("Deja inscrit")

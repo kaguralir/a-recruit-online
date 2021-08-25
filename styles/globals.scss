@@ -349,6 +349,7 @@ span{
   padding: 1em;
   margin-bottom: 2em;
   initial-letter: 3;
+  line-height: 30px;
   @media screen and (max-width:850px){
     margin-top: 30px;
     width: 100%;
@@ -501,32 +502,20 @@ a{
 
   .body{
     .top{
-      
       background-image: url("/images/top.png");
       width: 100%;
       height: 150px;
       color: #fff;
-      padding-top: 50px;
       display: flex;
       justify-content: center;
       @media screen and (max-width:850px){
         padding-top: 0px;
       }
-      .title{
-          position: absolute;
-          left: 10%;
-          top: 70px;
-          width: max-content;
-          height: 100%;
-          display: flex;
-          justify-content: flex-start;
-          flex-direction: column;
-          font-size: 1.2em;
-          @media screen and (max-width:850px){
-              padding-left: 1em;
-              position: inherit;
-              
-          }
+      .title{   
+
+        @media screen and (max-width:850px){
+          padding-left: 1em;
+        }
       }
      
       .previewXL,.previewXL2{
@@ -546,61 +535,62 @@ a{
       }
      
       .preview,.previewXL,.previewXL2{
+        margin-top: 50px;
+        color: var(--color-primary-light);
+        top: 90px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 2em;
+        
+        @media screen and (max-width:850px){
+            position: inherit;
+            width: max-content;
+            max-width: 90%;
+            height: max-content;
+            top:100px;
+            right: 1em;
+            margin-top: 50px;
+            margin-right: 1em;
+            div{
+                margin: 1em;
+                min-width: 90px;
+            }
+        }
 
-          color: var(--color-primary-light);
-          top: 90px;
-          background-color: #fff;
-          border-radius: 10px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          padding: 2em;
-         
-          @media screen and (max-width:850px){
-              position: inherit;
-              width: max-content;
-              max-width: 90%;
-              height: max-content;
-              top:100px;
-              right: 1em;
-              margin-top: 50px;
-              margin-right: 1em;
-              div{
-                  margin: 1em;
-                  min-width: 90px;
-              }
-          }
 
-
-          div{
-              margin: 0 auto;
-          }
-          .ovale{
-              width: 100%;
-              border-radius: 10px;
-              text-align: center;
-              border: 2px solid var(--color-primary-light);
-              margin-top: 10px;
-              color: var(--color-primary-light);
-          }
-          .fill{
-              background-color: var(--color-primary-light);
-              color: #fff;
-          }
+        div{
+            margin: 0 auto;
+            min-height: 21px;
+        }
+        .ovale{
+            width: 100%;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--color-primary-light);
+            margin-top: 10px;
+            color: var(--color-primary-light);
+        }
+        .fill{
+            background-color: var(--color-primary-light);
+            color: #fff;
+        }
       
       }
       .preview{
-        width: 25%;
-        max-width: 250px;
+        width: max-content;
+        max-width: 200px;
         height: 200px;
-        margin-left: 70vw;
-        @media screen and (max-width:850px){
-          width: max-content;
-          margin-left: 20vw;
-         
-          
-        }
+        margin-right: 1em;
+        
       }
       
         
+    }
+  }
+  .company_data{
+    div{
+      height: 25px;
     }
   }
 }

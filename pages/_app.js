@@ -10,6 +10,7 @@ import '../styles/consultant/consultant.scss'
 import '../styles/consultant/consultant_gestionrecrutements.scss'
 import '../styles/consultant/consultant_statistiques.scss'
 import '../styles/consultant/consultant_placeaffaire.scss'
+import '../styles/consultant/formation.scss'
 import Loading from '../components/loader/loader'
 
 

@@ -11,26 +11,13 @@ import axios from 'axios'
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import {api} from '../../api/api'
 
+
 export default function Consultant({data}) {
 
         var state = {
-
-            consultant: {
-                id:3,
-                name:"Gherici DRISSI",
-                email:"contact@gcdconseil.com"
-            },
             
             company:{
-                company_name:"GCD Conseil",
-                img:"/images/partner/partner_audi.svg",
-                rcs:"RCS de BESANCON",
-                siret:"N° de SIRET 493 543 433 00061",
-                ape:"Code APE 7022Z Conseil pour les Affaires",
-                headquarter_adresse:"7 rue Albrecht DURER",
-                headquarter_zip_code:"25000",
-                headquarter_city:"Besançon",
-                phone_number:"06 32 61 59 75",
+                
                 stats:{
                     lastCa:18250,
                     in_progress:2,
@@ -77,19 +64,17 @@ export default function Consultant({data}) {
                                         <Image alt="logo" loader={customImgLoader} src={data.company_logo} width={200} height={200}/>
                                     }                                
                                     <div style={{marginLeft:'1em'}}>
-                                        <div><span>{state.company.company_name}</span></div>
-                                        <div><span>{state.consultant.name}</span></div>
-                                        <div>{state.company.rcs}</div>
-                                        <div>{state.company.siret}</div>
-                                        <div>{state.company.ape}</div>
-                                        <div>
-                                            Siège social :
-                                        </div>
-                                        <div>{state.company.headquarter_adresse}</div>
-                                        <div>{state.company.headquarter_zip_code}</div>
-                                        <div>{state.company.headquarter_city}</div>
-                                        <div>Tel :&#160; {state.company.phone_number}</div> 
-                                        <div>Mail: &#160; {state.consultant.email}</div>
+                                        <div><span>{data.company_name || "Nom : Non renseigné"}</span></div>
+                                        <div><span>{(data.company_consultant_name+ " "+data.company_consultant_firstname)|| "Représentant : Non renseigné"}</span></div>
+                                        <div>{data.company_rcs || "RCS : Non renseigné"}</div>
+                                        <div>{"SIRET : "+(data.company_siret || "Non renseigné")}</div>
+                                        <div>{"APE : "+(data.company_ape || "Non renseigné")}</div>
+                                        <div>{" Siège social : "+(data.company_headquarters || "Non renseigné")}</div>
+                                        <div>{"Adresse :" +(data.company_address || "Non renseigné")}</div>
+                                        <div>{"Ville : "+(data.company_city || "Non renseigné")}</div>
+                                        <div>{"Adresse : " +(data.company_zip_code || "Non renseigné")}</div>
+                                        <div>{"Departement : " +(data.company_department || "Non renseigné")}</div>
+                                        <div>Tel :&#160; {data.company_phone_number || "Non renseigné"}</div> 
 
                                     </div>
                                 </div>
@@ -188,7 +173,7 @@ export default function Consultant({data}) {
                                     />
                                 </a>
                             </Link>
-                            <Link href="/interface/consultant/infoconsultant">
+                            <Link href={{pathname:"/partenaire/"+(data.company_name).replace(/\s+/g, '-').toLowerCase()}}>
                                 <a>
                                     <Domaines
                                         src="/images/web_app.svg"
@@ -221,7 +206,7 @@ export async function getServerSideProps({ req }) {
             data= reponse.data
         })  
         data={...data,user}
-        console.log(data)
+       // console.log(data)
         return {
             props: {
                 data

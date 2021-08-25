@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Footer() {
     return (
         <>
-        <div className="footer orientationV spaceBetween">
+        <div className="footer orientationV">
             <div className="footer_links_container  orientationH spaceBetween">
                 <div className="footer_link orientationV">
                     <Link href="/interface/consultant">
@@ -59,8 +59,8 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-
             <p className="center">© 2021 A-Recruit / Tous droits réservés</p>
+
 
             <style jsx>{`
             

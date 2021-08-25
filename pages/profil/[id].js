@@ -7,7 +7,7 @@ import Image from 'next/image'
 import {getProfilesName,getProfileData} from '../../lib/user'
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 
-const key = "AIzaSyBeM-wkqt3uIlMXGxnCHAvlsI8EBqXLOQI"
+import { googleapikey } from '../api/api'
 
 
 
@@ -145,7 +145,7 @@ class index extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: key
+    apiKey: googleapikey
 })(index);
 
 export async function getStaticPaths() {

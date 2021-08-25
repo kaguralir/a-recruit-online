@@ -172,7 +172,7 @@ export default function edit({data}) {
                 console.log(resutlt.data)
                 window.location.reload(true)
             }else {
-                    Alert("Une erreur s'est produite veuillez revérier tout les champs et réessayez")
+                 alert("Une erreur s'est produite veuillez revérier tout les champs et réessayez")
             }
         });
          

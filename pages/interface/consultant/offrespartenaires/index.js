@@ -13,7 +13,6 @@ export default function index() {
         setOffers([{nom:"ANTS",intitule: "Attaché commercial (H/F)",periode : "Du 14/07/21 au 15/08/21 "}])
     },[])
 
-    const [right,setRight]=useState(false)
      
     const responsive = {
         superLargeDesktop: {

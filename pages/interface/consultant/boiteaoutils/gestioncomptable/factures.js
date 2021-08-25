@@ -1,67 +1,154 @@
-import React ,{useState} from 'react'
-
-export default function factures() {
-
-    // Excel.run(function (context) {
-    //     var sheet = context.workbook.worksheets.getItem("Sample");
-    //     var expensesTable = sheet.tables.add("A1:D1", true /*hasHeaders*/);
-    //     expensesTable.name = "ExpensesTable";
-    
-    //     expensesTable.getHeaderRowRange().values = [["Date", "Merchant", "Category", "Amount"]];
-    
-    //     expensesTable.rows.add(null /*add rows to the end of the table*/, [
-    //         ["1/1/2017", "The Phone Company", "Communications", "$120"],
-    //         ["1/2/2017", "Northwind Electric Cars", "Transportation", "$142"],
-    //         ["1/5/2017", "Best For You Organics Company", "Groceries", "$27"],
-    //         ["1/10/2017", "Coho Vineyard", "Restaurant", "$33"],
-    //         ["1/11/2017", "Bellows College", "Education", "$350"],
-    //         ["1/15/2017", "Trey Research", "Other", "$135"],
-    //         ["1/15/2017", "Best For You Organics Company", "Groceries", "$97"]
-    //     ]);
-    
-    //     if (Office.context.requirements.isSetSupported("ExcelApi", "1.2")) {
-    //         sheet.getUsedRange().format.autofitColumns();
-    //         sheet.getUsedRange().format.autofitRows();
-    //     }
-    
-    //     sheet.activate();
-    
-    //     return context.sync();
-    // }).catch(errorHandlerFunction);
-    
-    const compta =[{name:"L1-C1",n:"L1-C2",n_minus:"L1-C3",diff:"l1-C4"},{name:"L1-C1",n:"L1-C2",n_minus:"L1-C3",diff:"l1-C4"},{name:"L1-C1",n:"L1-C2",n_minus:"L1-C3",diff:"l1-C4"},{name:"L1-C1",n:"L1-C2",n_minus:"L1-C3",diff:"l1-C4"},{name:"L1-C1",n:"L1-C2",n_minus:"L1-C3",diff:"l1-C4"},{name:"L1-C1",n:"L1-C2",n_minus:"L1-C3",diff:"l1-C4"},{name:"L1-C1",n:"L1-C2",n_minus:"L1-C3",diff:"l1-C4"},{name:"L1-C1",n:"L1-C2",n_minus:"L1-C3",diff:"l1-C4"}]
+import React ,{useState,useEffect} from 'react'
+import Head from 'next/head'
+import Header from '../../../../../components/header/header'
+import Footer from '../../../../../components/footer/footer'
+import Link from 'next/link'
 
 
-    return (
-        <div>   
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import HowToRegIcon from '@material-ui/icons/HowToReg';
+import FolderSharedIcon from '@material-ui/icons/FolderShared';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import EuroIcon from '@material-ui/icons/Euro';
+import BusinessIcon from '@material-ui/icons/Business';
+
+export default function statistiques() {
+
+    const [chart,setChart]=useState("ca_vs_ca")
+    const [largeur,setLargeur]=useState(2000);
+    useEffect(()=>{
+
+        setLargeur(window.innerWidth);
+
+        const changeWidth =()=>{
+
+            setLargeur(window.innerWidth);
             
-            <table>
-                <thead>
-                    <tr>
-                        <th>libelle</th>
-                        <th>N</th>
-                        <th>N-1</th>
-                        <th>Progression</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   
-                    {
-                        compta.map((data,index)=>{
-                    
-                            return (
-                                <tr >
-                                    <td key={index}>{data.name}</td>
-                                    <td key={index}>{data.n}</td>
-                                    <td key={index}>{data.n_minus}</td>
-                                    <td key={index}>{data.diff}</td>
-                                </tr>
-                            )
-                        })
+        }
+        
+        window.addEventListener('resize',changeWidth);
+    
+        //console.log(largeur)
+        
+        return()=>{
+        
+            window.removeEventListener('resize',changeWidth);
+        
+        }
+    })
+    
+    return (
+        <>
+            <Head>
+                <title>A recruit | Statistiques</title>
+            </Head>
+
+            <div className="statistiques consultant">
+            <Header>
+                {largeur<585 &&
+                    <>
+                        <li>
+                            <Link href="/interface/consultant">
+                                <a>
+                                    <div className="center"><DashboardIcon/>&#160;Dashboard  </div>
+                                </a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/interface/consultant/boiteaoutils/gestionrecrutements">
+                                <a className="locate">
+                                    <div className="center"><HowToRegIcon/>&#160; Gestion recrutements  </div>
+                                </a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/">
+                                <a>
+                                    <div className="center"><FolderSharedIcon/>&#160; CVthèque </div>
+                                </a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/interface/consultant/boiteaoutils/statistiques">
+                                <a>
+                                    <div className="center"><EqualizerIcon/>&#160; Statistiques </div>
+                                </a>
+                            </Link>
+                        </li>
+                        <li className="menu-menu"><a><div className="center"><EuroIcon/>&#160;Gestion Comptable</div></a>
+                            <ul>
+                                <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/factures"><a > <div className="center"><ReceiptIcon/>&#160; Factures </div></a></Link> </li>
+                                <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/compteresultat"><a > <div className="center"><EuroIcon/>&#160; Compte Résultat </div></a></Link> </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <Link href="/interface/consultant/boiteaoutils/placeaffaire">
+                                <a> <div className="center"><BusinessIcon/>&#160; Place affaire </div></a>
+                            </Link>
+                        </li>
+                        </>
                     }
-                   
-                </tbody>
-            </table>
-        </div>
+                </Header>
+                <div className="consultantBody orientationH">
+                    {largeur>585 &&
+                        <div className="menu">
+
+                            <ul>
+                                <li>
+                                    <Link href="/interface/consultant">
+                                        <a>
+                                            <div><DashboardIcon/>&#160;Dashboard  </div>
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/interface/consultant/boiteaoutils">
+                                        <a >
+                                            <div><HowToRegIcon/>&#160; Gestion recrutements  </div>
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/">
+                                        <a>
+                                            <div><FolderSharedIcon/>&#160; CVthèque </div>
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/interface/consultant/boiteaoutils/statistiques">
+                                        <a >
+                                            <div><EqualizerIcon/>&#160; Statistiques </div>
+                                        </a>
+                                    </Link>
+                                </li>
+                                <br></br>
+                                <div>Gestion Comptable</div>
+                                <div className="menu-menu">
+                                    <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/factures"><a className="locate"> <div><ReceiptIcon/>&#160; Factures </div></a></Link> </li>
+                                    <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/compteresultat"><a > <div><EuroIcon/>&#160; Compte Résultat </div></a></Link> </li>
+                                </div>
+                                <br></br>
+                                <li>
+                                    <Link href="/interface/consultant/boiteaoutils/placeaffaire">
+                                        <a> <div><BusinessIcon/>&#160; Place affaire </div></a>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+
+                    <div className="content w100">
+
+
+                        <p className="recutor_title">FACTURES</p>
+             
+                    </div>
+                </div>
+                <Footer/>
+            </div>
+            
+        </>
     )
 }

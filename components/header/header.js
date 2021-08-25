@@ -44,10 +44,10 @@ export default function Header(props) {
         
         window.addEventListener('resize',changeWidth);
     
-        //console.log(largeur)
+        //console.log(window.location)
         
         return()=>{
-        
+            
             window.removeEventListener('resize',changeWidth);
         
         }
@@ -58,8 +58,8 @@ export default function Header(props) {
 
     const disconnect  = () =>{
 
-        document.cookie = 'me' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    
+        removeCookie('me ')
+        window.location.reload(true)
     }   
 
 
