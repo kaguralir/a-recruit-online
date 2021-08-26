@@ -36,10 +36,12 @@
           justify-content: center;
         }
         .lead{
-          font-family:"Open sans", Helvetica, Arial; font-size:44px; margin-bottom:6px; color:white; line-height:1.15em; 
+          font-family:"Open sans", Helvetica, Arial; font-size:2em; margin-bottom:6px; color:white; line-height:1.15em; 
           margin-bottom: 1em;
         }
         .redirect{
+          display: flex;
+          flex-wrap: wrap;
           div{
             background-color: var(--color-primary-light);
             padding: 0.5em;
