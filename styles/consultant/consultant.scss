@@ -155,7 +155,7 @@
     }
     .consultant_bottom{
         @media screen and (max-width:850px){   
-           margin-top: 10em;
+           margin-top: 8em;
         }
     }
     .infos{
@@ -279,7 +279,9 @@
         
         a{
             margin: 1em;
-
+            @media screen and (max-width:850px){   
+                margin: 0 ;
+            }
         }
     }
   

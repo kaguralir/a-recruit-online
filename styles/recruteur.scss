@@ -4,9 +4,9 @@
     .body{
         position: relative;
         .mbXl{
-            margin-bottom: 200px;
+            margin-bottom: 250px;
             @media screen and (max-width:750px){
-                margin-bottom: 250px;
+                margin-bottom: calc(350px - 10vw);
             }
 
         }
