@@ -98,33 +98,35 @@ export default class index extends Component {
                     <main className="body">
 
                         <div className="top mbXl">
-                         
-                            <div className="previewXL orientationH">
-                                {!this.props.data.company_info.company_logo ?
-                                    <div className="defaultLogo"><div>{this.props.data.company_info.company_name && this.props.data.company_info.company_name.charAt(0)}</div></div>
-                                    :
-                                    <Image alt="logo" loader={this.customImgLoader} src={this.props.data.company_info.company_logo} width={200} height={200}/>
-                                }                                
-                                <div style={{marginLeft:'1em'}}>
-                                    <div><span>{this.props.data.company_info.company_name}</span></div>
-                                    <div>{this.props.data.company_info.company_siret}</div>
-                                    <div>{this.props.data.company_info.company_ape}</div>
-                                    <div>{this.props.data.company_info.company_rcs}</div>
-                                    <div>{this.props.data.company_info.company_headquarters}</div>
-                                    <div>{this.props.data.company_info.company_address}</div>
-                                    <div>{this.props.data.company_info.company_zip_code}</div>
-                                    <div>{this.props.data.company_info.company_city}</div>
-                                    <div>{this.props.data.company_info.company_department}</div>
-                                    <div>Tel :{this.props.data.company_info.company_phone_number}</div> 
+                            <div className="previewXL w100">
 
+                                <div className=" orientationH">
+                                    {!this.props.data.company_info.company_logo ?
+                                        <div className="defaultLogo"><div>{this.props.data.company_info.company_name && this.props.data.company_info.company_name.charAt(0)}</div></div>
+                                        :
+                                        <Image alt="logo" loader={this.customImgLoader} src={this.props.data.company_info.company_logo} width={200} height={200}/>
+                                    }                                
+                                    <div style={{marginLeft:'1em'}}>
+                                        <div><span>{this.props.data.company_info.company_name}</span></div>
+                                        <div>{this.props.data.company_info.company_siret}</div>
+                                        <div>{this.props.data.company_info.company_ape}</div>
+                                        <div>{this.props.data.company_info.company_rcs}</div>
+                                        <div>{this.props.data.company_info.company_headquarters}</div>
+                                        <div>{this.props.data.company_info.company_address}</div>
+                                        <div>{this.props.data.company_info.company_zip_code}</div>
+                                        <div>{this.props.data.company_info.company_city}</div>
+                                        <div>{this.props.data.company_info.company_department}</div>
+                                        <div>Tel :{this.props.data.company_info.company_phone_number}</div> 
+
+                                    </div>
+                                
                                 </div>
+                                <br></br>
                                 <div className="recrutor-consultant center">
                                     <div>
-                                        <span>Mon conseiller A RECRUIT</span>
-                                        <p>{this.props.data.company_info.company_consultant_name+ " " +this.props.data.company_info.company_consultant_firstname}</p>
-                                        <div>
-                                            <Image className="recrutor-consultant-img" src ="/images/zinedine.png" width={100} height = {100}/>
-                                        </div>
+                                    <span>Mon conseiller A RECRUIT</span>
+                                    <p>{this.props.data.company_info.company_consultant_name+ " " +this.props.data.company_info.company_consultant_firstname}</p>
+                                    
                                         <br></br>
                                         <Link href="/">
                                             <a className="center">
@@ -135,7 +137,6 @@ export default class index extends Component {
                                     </div>
 
                                 </div>
-                            
                             </div>
                            
                         </div>
