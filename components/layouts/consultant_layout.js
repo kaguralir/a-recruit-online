@@ -10,6 +10,7 @@ import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import EuroIcon from '@material-ui/icons/Euro';
 import BusinessIcon from '@material-ui/icons/Business';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 export default function index(props) {
 
@@ -122,7 +123,7 @@ export default function index(props) {
                                 </Link>
                             </li>
                             <br></br>
-                            <div>Gestion Comptable</div>
+                            <li><div className="menu_text"><ExpandMoreIcon/>Gestion Comptable</div></li>
                             <div className="menu-menu">
                                 <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/factures"><a className={props.position==="factures" && "locate"}> <div><ReceiptIcon/>&#160; Factures </div></a></Link> </li>
                                 <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/compteresultat"><a className={props.position==="compte.resultat" && "locate"}> <div><EuroIcon/>&#160; Compte Résultat </div></a></Link> </li>

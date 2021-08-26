@@ -10,7 +10,7 @@ import {useCookies} from 'react-cookie';
 export default function Connect({dest}) {
 
     let token = ""
-
+    const [isConnecting,setIsConnecting]=useState(false)
     const [user_email,setUserEmail]=useState(false);
     const [user_password,setUserpassword]=useState(false);
     const [alert,setAlert]=useState(false);
@@ -19,7 +19,7 @@ export default function Connect({dest}) {
     const connexion = (e)=>{
 
         e.preventDefault()
-        
+        setIsConnecting(true)
         if(!user_email || !user_password){
 
             setAlert(" Veuillez remplir tous les champs pour vous inscrire")
@@ -101,7 +101,7 @@ export default function Connect({dest}) {
                                                 </div>
                                             <div className="field padding-bottom--24">
                                                 <div className="button" >
-                                                    <input type="submit" value="Continuer" onClick={(e)=>{connexion(e)}}/>
+                                                    <input type="submit" value={!isConnecting?"Continuer":"Connexion en cours ..." }onClick={(e)=>{connexion(e)}}/>
                                                 </div>
                                             </div>
         

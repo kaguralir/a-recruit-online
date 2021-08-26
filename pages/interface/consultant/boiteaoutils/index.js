@@ -271,7 +271,7 @@ export default function gestionrecrutements({data}) {
                             <ul>
                                 {filteredResult.map((result) => (
                                     <li key={result.id} className="result">
-                                        <Link href="/interface/consultant/boiteaoutils/gestionrecrutements/employeur">
+                                        <Link href={{pathname:"/interface/consultant/boiteaoutils/gestionrecrutements/gerer",query:{id:result.id,type:result.origin}}}>
                                             <a>
                                                 <div className="url">
                                                     {result.name+ " ( " + result.origin+" ) "}

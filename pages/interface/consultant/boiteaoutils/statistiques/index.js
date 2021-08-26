@@ -45,34 +45,38 @@ export default function statistiques() {
                 position="statistiques"
             >
                 <>
-                    <p className="recutor_title">ESPACE STATISTIQUES</p>
                             
-                    <div className="select">
-                        <select onChange={(e)=>{setChart(e.target.value)}}>
-                            <option value="ca_vs_ca">CA N VS CA N-1</option>
-                            <option value="ca_vs_collaborateur">CA/Collaborateur</option>
-                            <option value="taux_reussite">Taux de réussite</option>
-                            <option value="ca_poste">CA/Poste</option>
-                            <option value="ca_vs_activite">CA/Activité</option>
-                            <option value="ca_vs_masse_salariale">CA/Masse salariale client</option>
-                        </select>
-                    </div>
                     <div className="chart">
-                        { 
-                        chart==="ca_vs_ca"?
-                            <CA_vs_CA/>
-                        :chart==="ca_vs_collaborateur"?
-                            <CA_vs_collaborateurs/>
-                        :chart==="taux_reussite"?
-                            <TauxReussite/>
-                        :chart==="ca_poste"?
-                            <CA_vs_poste/>
-                        :chart==="ca_vs_activite"?
-                            <CA_vs_activite/>
-                        :chart==="ca_vs_masse_salariale"?
-                            <CA_vs_masseSalarial/>
-                        :null
-                        }
+                    <p className="consultant_title">ESPACE STATISTIQUES</p>
+                        <>
+                            <div className="select">
+                            <select onChange={(e)=>{setChart(e.target.value)}}>
+                                <option value="ca_vs_ca">CA N VS CA N-1</option>
+                                <option value="ca_vs_collaborateur">CA/Collaborateur</option>
+                                <option value="taux_reussite">Taux de réussite</option>
+                                <option value="ca_poste">CA/Poste</option>
+                                <option value="ca_vs_activite">CA/Activité</option>
+                                <option value="ca_vs_masse_salariale">CA/Masse salariale client</option>
+                            </select>
+                            </div>
+                            <>
+                            {    chart==="ca_vs_ca"?
+                                    <CA_vs_CA/>
+                                :chart==="ca_vs_collaborateur"?
+                                    <CA_vs_collaborateurs/>
+                                :chart==="taux_reussite"?
+                                    <TauxReussite/>
+                                :chart==="ca_poste"?
+                                    <CA_vs_poste/>
+                                :chart==="ca_vs_activite"?
+                                    <CA_vs_activite/>
+                                :chart==="ca_vs_masse_salariale"?
+                                    <CA_vs_masseSalarial/>
+                                :null}
+                            </>
+                        
+                        </>
+                       
                     </div>
                 </> 
             </Consultant_layout>

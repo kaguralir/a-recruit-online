@@ -184,6 +184,17 @@ export default function Consultant({data}) {
                                     />
                                 </a>
                             </Link>
+                            <Link href={{pathname:"/partenaire/"+(data.company_name).replace(/\s+/g, '-').toLowerCase()}}>
+                                <a>
+                                    <Domaines
+                                        src="/images/law.png"
+                                        title1="Cahier des charges"
+                                        style={{
+                                            color:'green'
+                                        }}
+                                    />
+                                </a>
+                            </Link>
                         </div>
                      <Footer/>
                     </div>

@@ -2,18 +2,21 @@ import { useState, useEffect } from "react";
 import Router from "next/router";
 
 const Layout = props => {
+  
   const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
-    const updateLoadingStatus = () => setIsLoading(!isLoading);
+        const handleStart = (url) => (url !== Router.asPath) && setIsLoading(true);
+        const handleComplete = (url) => (url === Router.asPath) && setIsLoading(false);
 
-    Router.events.on("routeChangeStart", updateLoadingStatus);
-    Router.events.on("routeChangeComplete", updateLoadingStatus);
+        Router.events.on('routeChangeStart', handleStart)
+        Router.events.on('routeChangeComplete', handleComplete)
+        Router.events.on('routeChangeError', handleComplete)
 
-    return () => {
-      Router.events.off("routeChangeStart", updateLoadingStatus);
-      Router.events.off("routeChangeComplete", updateLoadingStatus);
-    };
+        return () => {
+            Router.events.off('routeChangeStart', handleStart)
+            Router.events.off('routeChangeComplete', handleComplete)
+            Router.events.off('routeChangeError', handleComplete)
+        }
   }, [isLoading]);
 
   return (
