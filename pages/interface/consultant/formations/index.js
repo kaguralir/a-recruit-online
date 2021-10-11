@@ -197,8 +197,9 @@ export default function index() {
             <div className="consultantBody">
                 <div className="body formation-body">
 
-                    <p className="recutor_title">FORMATIONS</p>
                     <div className="search_bar w100">
+                        <br></br>
+                        <p className="recutor_title">FORMATIONS</p>
                         <form onSubmit={(e)=>{e.preventDefault();}} role="search" className="w100">
                             <input className="w100" id="search" type="search" placeholder="Rechercher une formation ..." autoFocus autoComplete="off" required onChange={(e)=>{setFilter(e.target.value)}}/>
                         </form>

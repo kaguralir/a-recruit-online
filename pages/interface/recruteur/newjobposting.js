@@ -230,7 +230,7 @@ export default function newjobposting({data}) {
 
 export async function getServerSideProps({ query }) {
     let data=[]
-    let europe_country=[]
+    let europe_country=["Allemagne", "Autriche", "Belgique", "Bulgarie", "Chypre (partie grecque)", "Croatie", "Danemark", "Espagne", "Estonie", "Finlande", "France", "Grèce", "Hongrie", "Irlande", "Italie", "Lettonie", "Lituanie", "Luxembourg", "Malte", "Pays-Bas", "Pologne", "Portugal", "République tchèque", "Roumanie", "Royaume-Uni", "Slovaquie", "Slovénie", "Suède"]
     let departements=[]
 
     await axios.post(`${api}/getCompanyInfo`,{
@@ -240,11 +240,11 @@ export async function getServerSideProps({ query }) {
     })
 
 
-    await axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
-        europe : europe_country
-    }).then( (reponse)=>{
-         europe_country = reponse.data
-    })
+    // await axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
+    //     europe : europe_country
+    // }).then( (reponse)=>{
+    //      europe_country = reponse.data
+    // })
 
     await axios.get("https://geo.api.gouv.fr/departements")
     .then( (reponse)=>{

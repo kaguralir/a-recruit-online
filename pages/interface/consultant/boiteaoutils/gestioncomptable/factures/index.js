@@ -37,7 +37,7 @@ export default function index() {
                             </tr>
                         </thead>
                         <tbody>
-                            {factures.map((element,index)=>{
+                            {factures.length!==0 ? factures.map((element,index)=>{
                                 return(
 
                                     <tr key={index}>
@@ -51,7 +51,12 @@ export default function index() {
                                     
                                     </tr>
                                 )
-                            })}
+                            })
+                            :
+                            <tr>
+                                <td colSpan="3" className="empty_table">Aucune donnée disponible</td>
+                            </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

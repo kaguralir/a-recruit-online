@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/loading.scss'
 import '../styles/globals.scss'
 import '../styles/index.scss'
@@ -8,6 +9,8 @@ import '../styles/fileExplorer.scss'
 import '../styles/members.scss'
 import '../styles/consultant/consultant.scss'
 import '../styles/consultant/consultant_formation.scss'
+import '@brainhubeu/react-file-input/dist/react-file-input.css';
+
 import Loading from '../components/loader/loader'
 
 

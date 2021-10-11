@@ -284,7 +284,7 @@ export async function getServerSideProps({ req }) {
         let company_unFilledJobs=[]
         let company_fillededJobs=[]
         let company_department=[]
-        let europe_country=[]
+        let europe_country=["Allemagne", "Autriche", "Belgique", "Bulgarie", "Chypre (partie grecque)", "Croatie", "Danemark", "Espagne", "Estonie", "Finlande", "France", "Grèce", "Hongrie", "Irlande", "Italie", "Lettonie", "Lituanie", "Luxembourg", "Malte", "Pays-Bas", "Pologne", "Portugal", "République tchèque", "Roumanie", "Royaume-Uni", "Slovaquie", "Slovénie", "Suède"]
 
         await axios.post(`${api}/getCompanyInfo`,{
             user_id:user.user_id,
@@ -313,11 +313,11 @@ export async function getServerSideProps({ req }) {
 
         ///Chargement des données régionnaux pour les formulaires
 
-        await axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
-            europe : europe_country
-        }).then( (reponse)=>{ 
-            europe_country=reponse.data
-        })
+        // await axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
+        //     europe : europe_country
+        // }).then( (reponse)=>{ 
+        //     europe_country=reponse.data
+        // })
 
         data = await {...data,company_info:company_info,company_unFilledJobs:company_unFilledJobs,company_fillededJobs:company_fillededJobs,company_department:company_department,europe_country:europe_country}
     

@@ -271,7 +271,7 @@ export default function gestionrecrutements({data}) {
                             <ul>
                                 {filteredResult.map((result) => (
                                     <li key={result.id} className="result">
-                                        <Link href={{pathname:"/interface/consultant/boiteaoutils/gestionrecrutements/gerer",query:{id:result.id,type:result.origin}}}>
+                                        <Link href={{pathname: result.origin==="Candidat"?"/interface/consultant/boiteaoutils/gestionrecrutements/candidat":"/interface/consultant/boiteaoutils/gestionrecrutements/recruteur",query:{id:result.id,type:result.origin}}}>
                                             <a>
                                                 <div className="url">
                                                     {result.name+ " ( " + result.origin+" ) "}
@@ -450,7 +450,7 @@ export async function getServerSideProps({ req }) {
         
         const user = jwt_decode(JSON.stringify(user_cookie))
         let data=[]
-        let europe_country=[]
+        let europe_country=["Allemagne", "Autriche", "Belgique", "Bulgarie", "Chypre (partie grecque)", "Croatie", "Danemark", "Espagne", "Estonie", "Finlande", "France", "Grèce", "Hongrie", "Irlande", "Italie", "Lettonie", "Lituanie", "Luxembourg", "Malte", "Pays-Bas", "Pologne", "Portugal", "République tchèque", "Roumanie", "Royaume-Uni", "Slovaquie", "Slovénie", "Suède"]
         let departements=[]
         let city=[] 
 
@@ -459,11 +459,11 @@ export async function getServerSideProps({ req }) {
         }).then((reponse)=>{
             data= reponse.data
         }) 
-        await axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
-            europe : europe_country
-        }).then( (reponse)=>{
-             europe_country = reponse.data
-        })
+        // await axios.get("https://restcountries.eu/rest/v2/region/europe?fields=name", {
+        //     europe : europe_country
+        // }).then( (reponse)=>{
+        //      europe_country = reponse.data
+        // })
     
         await axios.get("https://geo.api.gouv.fr/departements")
         .then( (reponse)=>{

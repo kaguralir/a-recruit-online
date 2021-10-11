@@ -65,7 +65,7 @@ export default function Consultant({data}) {
                                     }                                
                                     <div style={{marginLeft:'1em'}}>
                                         <div><span>{data.company_name || "Nom : Non renseigné"}</span></div>
-                                        <div><span>{(data.company_consultant_name+ " "+data.company_consultant_firstname)|| "Représentant : Non renseigné"}</span></div>
+                                        <div><span>{(data.user.user_name+ " "+data.user.user_firstname)|| "Représentant : Non renseigné"}</span></div>
                                         <div>{data.company_rcs || "RCS : Non renseigné"}</div>
                                         <div>{"SIRET : "+(data.company_siret || "Non renseigné")}</div>
                                         <div>{"APE : "+(data.company_ape || "Non renseigné")}</div>
@@ -128,9 +128,14 @@ export default function Consultant({data}) {
                             <div>Bienvenu sur votre compte collaborateur</div>
                         </div>
 
+                        {data.mode==='demo'&&
+                            <div className="demoSignal center">
+                                <div>Vous êtes en mode démo et certaines fonctionnalités sont innacessibles.</div>
+                            </div>
+                        }
                         <div className="etiquettes">
                             <Link href="/interface/consultant/boiteaoutils">
-                                <a>
+                                <a className={data.mode}>
                                     <Domaines
                                         src="/images/tools.png"
                                         title1="Boite à outils"
@@ -141,7 +146,7 @@ export default function Consultant({data}) {
                                 </a>
                             </Link>
                             <Link href="/interface/consultant/formations">
-                                <a>
+                                <a className={data.mode}>
                                     <Domaines
                                         src="/images/formation.png"
                                         title1="Formations"
@@ -152,7 +157,7 @@ export default function Consultant({data}) {
                                 </a>
                             </Link>
                             <Link href="/interface/consultant/blog">
-                                <a>
+                                <a className={data.mode}>
                                     <Domaines
                                         src="/images/blog.png"
                                         title1="Blog A recruit"
@@ -163,7 +168,7 @@ export default function Consultant({data}) {
                                 </a>
                             </Link>
                             <Link href="/interface/consultant/offrespartenaires">
-                                <a>
+                                <a className={data.mode}>
                                     <Domaines
                                         src="/images/partenaires.png"
                                         title1="Offres partenaires"
@@ -184,13 +189,24 @@ export default function Consultant({data}) {
                                     />
                                 </a>
                             </Link>
-                            <Link href={{pathname:"/partenaire/"+(data.company_name).replace(/\s+/g, '-').toLowerCase()}}>
+                            <Link href={{pathname:"/interface/consultant/cahierdescharges"}}>
                                 <a>
                                     <Domaines
-                                        src="/images/law.png"
+                                        src="/images/cahier-des-charges.png"
                                         title1="Cahier des charges"
                                         style={{
                                             color:'green'
+                                        }}
+                                    />
+                                </a>
+                            </Link>
+                            <Link href={{pathname:"/interface/consultant/contrat"}}>
+                                <a>
+                                    <Domaines
+                                        src="/images/law.png"
+                                        title1="Mon contrat"
+                                        style={{
+                                            color:'orange'
                                         }}
                                     />
                                 </a>
@@ -211,13 +227,21 @@ export async function getServerSideProps({ req }) {
 
         const user = jwt_decode(JSON.stringify(user_cookie))
         let data=[]
+        let mode="";
+
+        await axios.post(`${api}/getUserAccoundFormula`,{
+            id:user.user_id,
+        }).then((reponse)=>{
+            mode= reponse.data.account
+        })  
+
         await axios.post(`${api}/getCompanyInfo`,{
             user_id:user.user_id,
         }).then((reponse)=>{
             data= reponse.data
         })  
-        data={...data,user}
-       // console.log(data)
+        data={...data,user,mode}
+        //console.log(data)
         return {
             props: {
                 data

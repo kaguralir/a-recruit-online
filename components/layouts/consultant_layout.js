@@ -96,28 +96,28 @@ export default function index(props) {
                         <ul>
                             <li>
                                 <Link href="/interface/consultant">
-                                    <a className={props.position==="dashboard" && "locate"}>
+                                    <a className={props.position==="dashboard" ? "locate" : ""}>
                                         <div><DashboardIcon/>&#160;Dashboard  </div>
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/interface/consultant/boiteaoutils">
-                                    <a  className={props.position==="gestion.recrutement" && "locate"}>
+                                    <a  className={props.position==="gestion.recrutement" ? "locate" : ""}>
                                         <div><HowToRegIcon/>&#160; Gestion recrutements  </div>
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/interface/consultant/boiteaoutils/cvtheque">
-                                    <a className={props.position==="cvtheque" && "locate"}>
+                                    <a className={props.position==="cvtheque" ? "locate" : ""}>
                                         <div><FolderSharedIcon/>&#160; CVthèque </div>
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/interface/consultant/boiteaoutils/statistiques">
-                                    <a className={props.position==="statistiques" && "locate"}>
+                                    <a className={props.position==="statistiques" ? "locate" : ""}>
                                         <div><EqualizerIcon/>&#160; Statistiques </div>
                                     </a>
                                 </Link>
@@ -125,13 +125,13 @@ export default function index(props) {
                             <br></br>
                             <li><div className="menu_text"><ExpandMoreIcon/>Gestion Comptable</div></li>
                             <div className="menu-menu">
-                                <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/factures"><a className={props.position==="factures" && "locate"}> <div><ReceiptIcon/>&#160; Factures </div></a></Link> </li>
-                                <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/compteresultat"><a className={props.position==="compte.resultat" && "locate"}> <div><EuroIcon/>&#160; Compte Résultat </div></a></Link> </li>
+                                <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/factures"><a className={props.position==="factures" ? "locate" : ""}> <div><ReceiptIcon/>&#160; Factures </div></a></Link> </li>
+                                <li><Link href="/interface/consultant/boiteaoutils/gestioncomptable/compteresultat"><a className={props.position==="compte.resultat" ? "locate" : ""}> <div><EuroIcon/>&#160; Compte Résultat </div></a></Link> </li>
                             </div>
                             <br></br>
                             <li>
                                 <Link href="/interface/consultant/boiteaoutils/placeaffaire">
-                                    <a className={props.position==="placeaffaire" && "locate"}> <div><BusinessIcon/>&#160; Place affaire </div></a>
+                                    <a className={props.position==="placeaffaire" ? "locate" : ""}> <div><BusinessIcon/>&#160; Place affaire </div></a>
                                 </Link>
                             </li>
                         </ul>
