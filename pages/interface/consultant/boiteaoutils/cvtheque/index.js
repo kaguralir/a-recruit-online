@@ -24,15 +24,28 @@ const allcv = ({ cvs }) => {
                 position="cvtheque"
             >
                 <h1>Liste de CV</h1>
-                <ul>
+                <div className="cvCards-container">
                     {cvs.map(cv =>
-                        <li key={cv.candidat_id}>
-                            <p>Candidat n°: {cv.candidat_id}</p>
-                            <Link href={"/interface/consultant/boiteaoutils/cvtheque/" + cv.candidat_id}>Voir le CV en détail</Link>
 
-                        </li>
+                        <div id="card">
+                            <div id="content">
+                                <div id="title">
+                                    Candidat n°: {cv.candidat_id}
+                                </div>
+                                <div id="desc">
+                                    Travail recherché : {cv.searched_job1}
+                                </div>
+
+
+                                <div id="info-box">
+
+                                    <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/cvtheque/" + cv.candidat_id} className="link-cv">Voir le CV en détail</Link></button>
+                                </div>
+                            </div>
+                        </div>
+
                     )}
-                </ul>
+                </div>
             </Consultant_layout>
         </div >
     )
