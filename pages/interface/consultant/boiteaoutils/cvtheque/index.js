@@ -23,31 +23,33 @@ const allcv = ({ cvs }) => {
             <Consultant_layout
                 position="cvtheque"
             >
-                <div>
-                    <h1>Liste de CV</h1>
-                </div>
-                <div className="cvCards-container">
+                <div className="cvtheque-container">
+                    <div>
+                        <h1>Liste de CV</h1>
+                    </div>
+                    <div className="cvCards-container">
 
-                    {cvs.map(cv =>
+                        {cvs.map(cv =>
 
-                        <div id="card">
-                            <div id="content">
-                                <div id="title">
-                                    Candidat n°: {cv.candidat_id}
-                                </div>
-                                <div id="desc">
-                                    Travail recherché : {cv.searched_job1}
-                                </div>
+                            <div id="card">
+                                <div id="content">
+                                    <div id="title">
+                                        Candidat n°: {cv.candidat_id}
+                                    </div>
+                                    <div id="desc">
+                                        Travail recherché : {cv.searched_job1}
+                                    </div>
 
 
-                                <div id="info-box">
+                                    <div id="info-box">
 
-                                    <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/cvtheque/" + cv.candidat_id} className="link-cv">Voir le CV en détail</Link></button>
+                                        <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/cvtheque/" + cv.candidat_id} className="link-cv">Voir le CV en détail</Link></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    )}
+                        )}
+                    </div>
                 </div>
             </Consultant_layout>
         </div >
