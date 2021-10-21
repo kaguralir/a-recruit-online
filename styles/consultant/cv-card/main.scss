@@ -39,7 +39,7 @@
 
 #card {
   background-color: $white;
-  width: clamp(20.375rem, 33vw, 25.375rem);
+  width: clamp(50.375rem, 33vw, 25.375rem);
   overflow: hidden;
   @include round-border;
   margin: 10%;
@@ -51,18 +51,38 @@
 
 .cvCards-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-$breakpoint-tablet: 700px;
+.cvCards-container > #card {
+  flex: 20%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+  /*demo*/
+
+  /*   box-shadow: 0 0 0 1px black;
+  margin-bottom: 10px; */
+}
+$breakpoint-tablet: 900px;
 @media (max-width: $breakpoint-tablet) {
   .cvCards-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #card {
+    width: clamp(20.375rem, 33vw, 25.375rem);
   }
 }
 
 .link-cv {
   color: white;
+}
+
+.cvdetail-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
 }

@@ -19,10 +19,11 @@ const details = ({ cv }) => {
             <Consultant_layout
                 position="cvtheque"
             >
-                <h1>Profil</h1>
+                <div className="cvdetail-container ">
 
-                <div >
 
+
+                    <h1>Profil</h1>
                     {cv.map((val, key) => {
                         return (
                             <div id="card">
@@ -37,12 +38,6 @@ const details = ({ cv }) => {
                                         <div id="info-desc">
                                             <h2 id="plan-title">Autres postes recherchés : </h2>
                                             <p id="sub-title">{val.searched_job2}</p>
-                                        </div>
-                                    </div>
-                                    <div id="info-box">
-                                        <i id="note" className="fas fa-user-alt"></i>
-                                        <div id="info-desc">
-                                            <h2 id="plan-title">Autres postes recherchés : </h2>
                                             <p id="sub-title">{val.searched_job3}</p>
                                         </div>
                                     </div>
@@ -52,21 +47,7 @@ const details = ({ cv }) => {
                                         <div id="info-desc">
                                             <h2 id="plan-title">Mobilité:</h2>
                                             <p id="sub-title">{val.job_location1}</p>
-                                        </div>
-                                    </div>
-                                    <div id="info-box">
-                                        <i id="note" className="fas fa-user-alt"></i>
-
-                                        <div id="info-desc">
-                                            <h2 id="plan-title">Mobilité:</h2>
                                             <p id="sub-title">{val.job_location2}</p>
-                                        </div>
-                                    </div>
-                                    <div id="info-box">
-                                        <i id="note" className="fas fa-user-alt"></i>
-
-                                        <div id="info-desc">
-                                            <h2 id="plan-title">Mobilité:</h2>
                                             <p id="sub-title">{val.job_location3}</p>
                                         </div>
                                     </div>
@@ -75,19 +56,7 @@ const details = ({ cv }) => {
                                         <div id="info-desc">
                                             <h2 id="plan-title">Secteurs:</h2>
                                             <p id="sub-title">{val.job_field1}</p>
-                                        </div>
-                                    </div>
-                                    <div id="info-box">
-                                        <i id="note" className="fas fa-user-alt"></i>
-                                        <div id="info-desc">
-                                            <h2 id="plan-title">Secteurs:</h2>
                                             <p id="sub-title">{val.job_field2}</p>
-                                        </div>
-                                    </div>
-                                    <div id="info-box">
-                                        <i id="note" className="fas fa-user-alt"></i>
-                                        <div id="info-desc">
-                                            <h2 id="plan-title">Secteurs:</h2>
                                             <p id="sub-title">{val.job_field3}</p>
                                         </div>
                                     </div>
@@ -96,19 +65,7 @@ const details = ({ cv }) => {
                                         <div id="info-desc">
                                             <h2 id="plan-title">Expériences:</h2>
                                             <p id="sub-title">{val.experience1}</p>
-                                        </div>
-                                    </div>
-                                    <div id="info-box">
-                                        <i id="note" className="fas fa-user-alt"></i>
-                                        <div id="info-desc">
-                                            <h2 id="plan-title">Expériences:</h2>
                                             <p id="sub-title">{val.experience2}</p>
-                                        </div>
-                                    </div>
-                                    <div id="info-box">
-                                        <i id="note" className="fas fa-user-alt"></i>
-                                        <div id="info-desc">
-                                            <h2 id="plan-title">Expériences:</h2>
                                             <p id="sub-title">{val.experience3}</p>
                                         </div>
                                     </div>

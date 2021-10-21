@@ -23,8 +23,11 @@ const allcv = ({ cvs }) => {
             <Consultant_layout
                 position="cvtheque"
             >
-                <h1>Liste de CV</h1>
+                <div>
+                    <h1>Liste de CV</h1>
+                </div>
                 <div className="cvCards-container">
+
                     {cvs.map(cv =>
 
                         <div id="card">
