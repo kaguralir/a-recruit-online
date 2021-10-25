@@ -9,10 +9,31 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head'
 import Consultant_layout from '../../../../../components/layouts/consultant_layout'
+import { useState } from 'react';
 
 
 
 const allcv = ({ cvs }) => {
+
+    const [filter, setFilter] = useState("")
+
+
+    const filterResults = (results, query) => {
+
+        console.log(results)
+        if (!query) {
+            return [];
+        }
+
+        return results.filter((result) => {
+            const postName = result.name.toLowerCase();
+            return postName.includes(query.toLowerCase());
+        });
+
+    };
+    const filteredResult = filterResults(cvs.data, filter);
+    console.log(filteredResult);
+
 
     return (
         <div>
@@ -27,6 +48,27 @@ const allcv = ({ cvs }) => {
                     <div>
                         <h1>Liste de CV</h1>
                     </div>
+                    <div className="w100 center orientationV">
+
+                        <div className="search_bar w100">
+                            <form onSubmit={(e) => { e.preventDefault(); }} role="search" className="w100">
+                                <input className="w100" id="search" type="search" placeholder="Rechercher un CV" autoFocus autoComplete="off" required onChange={(e) => { setFilter(e.target.value) }} />
+                            </form>
+                            <ul>
+                                {filteredResult.map((result) => (
+                                    <li key={result.id} className="result">
+                                        <Link href={{ pathname: result.origin === "Candidat" ? "/interface/consultant/boiteaoutils/gestionrecrutements/candidat" : "/interface/consultant/boiteaoutils/gestionrecrutements/recruteur", query: { id: result.id, type: result.origin } }}>
+                                            <a>
+                                                <div className="url">
+                                                    {result.name + " ( " + result.origin + " ) "}
+                                                </div>
+                                            </a>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                     <div className="cvCards-container">
 
                         {cvs.map(cv =>
@@ -37,7 +79,7 @@ const allcv = ({ cvs }) => {
                                         Candidat n°: {cv.candidat_id}
                                     </div>
                                     <div id="desc">
-                                        Travail recherché : {cv.searched_job1}
+                                        Travail recherché: {cv.searched_job1}
                                     </div>
 
 

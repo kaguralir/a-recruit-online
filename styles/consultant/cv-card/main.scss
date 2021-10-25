@@ -42,17 +42,18 @@
   width: clamp(50.375rem, 33vw, 25.375rem);
   overflow: hidden;
   @include round-border;
-  margin: 10%;
+  /*   margin: 10%; */
+  margin: 2%;
 
   #hero {
     width: 100%;
   }
 }
 
-.cvCards-container {
+/* .cvCards-container {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 
 .cvCards-container > #card {
   flex: 20%; /* or - flex: 0 50% - or - flex-basis: 50% - */
