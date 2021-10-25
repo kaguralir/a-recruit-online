@@ -18,20 +18,19 @@ const allcv = ({ cvs }) => {
     const [filter, setFilter] = useState("")
 
 
-    const filterResults = (results, query) => {
+    const filterResults = (cvs, query) => {
 
-        console.log(results)
         if (!query) {
             return [];
         }
 
-        return results.filter((result) => {
-            const postName = result.name.toLowerCase();
-            return postName.includes(query.toLowerCase());
+        return cvs.filter((cv) => {
+
+            return cv;
         });
 
     };
-    const filteredResult = filterResults(cvs.data, filter);
+    const filteredResult = filterResults(cvs, filter);
     console.log(filteredResult);
 
 
@@ -55,12 +54,12 @@ const allcv = ({ cvs }) => {
                                 <input className="w100" id="search" type="search" placeholder="Rechercher un CV" autoFocus autoComplete="off" required onChange={(e) => { setFilter(e.target.value) }} />
                             </form>
                             <ul>
-                                {filteredResult.map((result) => (
-                                    <li key={result.id} className="result">
+                                {filteredResult.map((cv) => (
+                                    <li key={cv.candidat_id} className="cv">
                                         <Link href={{ pathname: result.origin === "Candidat" ? "/interface/consultant/boiteaoutils/gestionrecrutements/candidat" : "/interface/consultant/boiteaoutils/gestionrecrutements/recruteur", query: { id: result.id, type: result.origin } }}>
                                             <a>
                                                 <div className="url">
-                                                    {result.name + " ( " + result.origin + " ) "}
+                                                    {cv.user_firstname + " ( " + cv.origin + " ) "}
                                                 </div>
                                             </a>
                                         </Link>
