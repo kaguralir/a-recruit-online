@@ -27,7 +27,7 @@ const details = ({ cv }) => {
                     {cv.map((val, key) => {
                         return (
                             <div id="card">
-                                <div id="content">
+                                <div id="content2">
                                     <h1 id="title"> Ceci est le profil du candidat n°: {val.candidat_id}</h1>
                                     <p id="desc">
                                         Poste recherché :   {val.searched_job1}
@@ -94,28 +94,28 @@ const details = ({ cv }) => {
                                         <i id="note" className="fas fa-user-alt"></i>
                                         <div id="info-desc">
                                             <h2 id="plan-title">CV sous forme PDF:</h2>
-                                            <button class="btn--pay2">Voir</button>
+                                            <button className="btn--pay2">Voir</button>
                                         </div>
                                     </div>
                                     <div id="info-box">
                                         <i id="note" className="fas fa-user-alt"></i>
                                         <div id="info-desc">
                                             <h2 id="plan-title">Vidéo de présentation:</h2>
-                                            <button class="btn--pay2">Regarder</button>
+                                            <button className="btn--pay2">Regarder</button>
                                         </div>
                                     </div>
                                     <div id="info-box">
                                         <i id="note" className="fas fa-user-alt"></i>
                                         <div id="info-desc">
                                             <h2 id="plan-title">Lettre de motivation:</h2>
-                                            <button class="btn--pay2">Voir</button>
+                                            <button className="btn--pay2">Voir</button>
                                         </div>
                                     </div>
                                     <div id="info-box">
                                         <i id="note" className="fas fa-user-alt"></i>
                                         <div id="info-desc">
                                             <h2 id="plan-title">Vidéo de motivation:</h2>
-                                            <button class="btn--pay2">Voir</button>
+                                            <button className="btn--pay2">Voir</button>
                                         </div>
                                     </div>
                                     <button className="btn--pay">Contacter ce candidat</button>
@@ -138,7 +138,9 @@ const details = ({ cv }) => {
 export default details;
 
 export const getStaticPaths = async () => {
-    const res = await fetch(`${api}/getallcvs`);
+    /*     const res = await fetch(`${api}/getCVUser`);
+     */
+    const res = await fetch(`http://localhost:3080/getCVUser`);
     const data = await res.json();
 
     // map data to an array of path objects with params (id)

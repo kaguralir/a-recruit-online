@@ -76,7 +76,10 @@ const allcv = ({ cvs }) => {
                             <div id="card">
                                 <div id="content">
                                     <div id="title">
-                                        Candidat n°: {cv.candidat_id}
+                                        Candidat nom: {cv.user_firstname}
+                                    </div>
+                                    <div id="title">
+                                        Candidat prénom: {cv.user_name}
                                     </div>
                                     <div id="desc">
                                         Travail recherché: {cv.searched_job1}
@@ -102,10 +105,10 @@ export default allcv;
 
 export const getStaticProps = async () => {
 
-    const response = await axios.get(`${api}/getallcvs`);
-    /*    console.log("response data is", response.data); */
+    const response = await axios.get("http://localhost:3080/getCVUser");
 
-
+    /*     console.log("response data is", response.data);
+     */
     return {
         props: {
             cvs: response.data
