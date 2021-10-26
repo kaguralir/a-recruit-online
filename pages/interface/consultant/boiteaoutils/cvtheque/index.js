@@ -14,25 +14,26 @@ import { useState } from 'react';
 
 
 const allcv = ({ cvs }) => {
+    const [searchTerm, setSearchTerm] = useState("")
 
-    const [filter, setFilter] = useState("")
-
-
-    const filterResults = (cvs, query) => {
-
-        if (!query) {
-            return [];
-        }
-
-        return cvs.filter((cv) => {
-
-            return cv;
-        });
-
-    };
-    const filteredResult = filterResults(cvs, filter);
-    console.log(filteredResult);
-
+    /*     const [filter, setFilter] = useState("")
+    
+    
+        const filterResults = (cvs, query) => {
+    
+            if (!query) {
+                return [];
+            }
+    
+            return cvs.filter((cv) => {
+    
+                return cv;
+            });
+    
+        };
+        const filteredResult = filterResults(cvs, filter);
+        console.log(filteredResult);
+     */
 
     return (
         <div>
@@ -47,7 +48,7 @@ const allcv = ({ cvs }) => {
                     <div>
                         <h1>Liste de CV</h1>
                     </div>
-                    <div className="w100 center orientationV">
+                    {/*                     <div className="w100 center orientationV">
 
                         <div className="search_bar w100">
                             <form onSubmit={(e) => { e.preventDefault(); }} role="search" className="w100">
@@ -56,7 +57,7 @@ const allcv = ({ cvs }) => {
                             <ul>
                                 {filteredResult.map((cv) => (
                                     <li key={cv.candidat_id} className="cv">
-                                        <Link href={{ pathname: result.origin === "Candidat" ? "/interface/consultant/boiteaoutils/gestionrecrutements/candidat" : "/interface/consultant/boiteaoutils/gestionrecrutements/recruteur", query: { id: result.id, type: result.origin } }}>
+                                        <Link href={{ pathname: cv.origin === "Candidat" ? "/interface/consultant/boiteaoutils/gestionrecrutements/candidat" : "/interface/consultant/boiteaoutils/gestionrecrutements/recruteur", query: { id: cv.id, type: cv.origin } }}>
                                             <a>
                                                 <div className="url">
                                                     {cv.user_firstname + " ( " + cv.origin + " ) "}
@@ -67,8 +68,93 @@ const allcv = ({ cvs }) => {
                                 ))}
                             </ul>
                         </div>
+                    </div> */}
+
+                    <div className="App">
+                        <input type="text" placeholder="Search..." onChange={(event) => { setSearchTerm(event.target.value) }} />
+                        {cvs.filter((val) => {
+                            if (searchTerm == '') {
+                                return (
+                                    <div className="cvCards-container">
+
+                                        <div id="card">
+                                            <div id="content">
+                                                <div id="title">
+                                                    Candidat nom: {val.user_firstname}
+                                                </div>
+                                                <div id="title">
+                                                    Candidat prénom: {val.user_name}
+                                                </div>
+                                                <div id="desc">
+                                                    Travail recherché: {val.searched_job1}
+                                                </div>
+
+
+                                                <div id="info-box">
+
+                                                    <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/cvtheque/" + val.candidat_id} className="link-cv">Voir le CV en détail</Link></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>)
+                            }
+                            else if (val.user_name.toLowerCase().includes(searchTerm.toLowerCase()) || val.user_firstname.toLowerCase().includes(searchTerm.toLowerCase()) || val.searched_job1.toLowerCase().includes(searchTerm.toLowerCase())) {
+                                return (
+                                    <div className="cvCards-container">
+
+                                        <div id="card">
+                                            <div id="content">
+                                                <div id="title">
+                                                    Candidat nom: {val.user_firstname}
+                                                </div>
+                                                <div id="title">
+                                                    Candidat prénom: {val.user_name}
+                                                </div>
+                                                <div id="desc">
+                                                    Travail recherché: {val.searched_job1}
+                                                </div>
+
+
+                                                <div id="info-box">
+
+                                                    <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/cvtheque/" + val.candidat_id} className="link-cv">Voir le CV en détail</Link></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>)
+                            }
+                        }).map((val, key) => {
+                            return (
+                                <div className="cvCards-container">
+
+                                    <div id="card">
+                                        <div id="content">
+                                            <div id="title">
+                                                Candidat nom: {val.user_firstname}
+                                            </div>
+                                            <div id="title">
+                                                Candidat prénom: {val.user_name}
+                                            </div>
+                                            <div id="desc">
+                                                Travail recherché: {val.searched_job1}
+                                            </div>
+
+
+                                            <div id="info-box">
+
+                                                <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/cvtheque/" + val.candidat_id} className="link-cv">Voir le CV en détail</Link></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            );
+                        })}
+
                     </div>
-                    <div className="cvCards-container">
+                    {/*                   <div className="cvCards-container">
 
                         {cvs.map(cv =>
 
@@ -93,7 +179,7 @@ const allcv = ({ cvs }) => {
                             </div>
 
                         )}
-                    </div>
+                    </div> */}
                 </div>
             </Consultant_layout>
         </div >
