@@ -10,6 +10,8 @@ import '../styles/members.scss'
 import '../styles/consultant/consultant.scss'
 import '../styles/consultant/consultant_formation.scss'
 import '../styles/consultant/cv-card/main.scss'
+import '../styles/consultant/tableau.css'
+
 
 import '@brainhubeu/react-file-input/dist/react-file-input.css';
 

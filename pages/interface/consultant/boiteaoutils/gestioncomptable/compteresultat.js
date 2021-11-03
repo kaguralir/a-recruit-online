@@ -67,11 +67,14 @@ export default function gestionComptable(){
     );
 } */
 
-import React from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import Head from 'next/head'
 import Consultant_layout from '../../../../../components/layouts/consultant_layout'
+import CompteResultat from "./CompteResultat.json";
 
-export default function compteresultat({ selectMonth, reset }) {
+
+
+export default function compteresultat({ month }) {
 
 
     function capitalizeFirstLetter(string) {
@@ -90,85 +93,105 @@ export default function compteresultat({ selectMonth, reset }) {
     }
 
 
-    const months = getMonthsForLocale('en-EN')
+    const months = getMonthsForLocale('fr-FR');
+
+
+
+
+
+    /*     const { CompteResultat, findMonth } = useContext(GlobalContext);
+    
+        const [month, setMonth] = useState(1);
+        useEffect(() => {
+            findMonth(month)
+        }, [month]);
+    
+     */
+
 
 
     return (
         <div>
             <Head>
-                <title>A recruit | CV Thèque</title>
+                <title>A recruit | Compte résultat</title>
             </Head>
 
             <Consultant_layout
                 position="cvtheque"
             >
-                <table>
-                    <thead>
+                <div className="tableContainer">
+                    <p>2021</p>
 
-                        <tr>
-                            <th>2021</th>
-                            {months.map((month) =>
-                                <th>{month}</th>
-                            )}
+                    <table>
 
-                        </tr>
-                    </thead>
-                    <tr> <td><a href="#">Bénéfice d’exploitation</a></td>
-                        <td>Paragon</td>
-                        <td>1/5/2021</td>
-                        <td>
-                            <p class="status status-unpaid">Unpaid</p>
-                        </td>
+                        <thead>
+                            <tr>
+                                <th>{""}</th>
 
-                    </tr>
-                    <tr>
-                        <td><a href="#">Revenu d’intérêts (charge)</a></td>
-                        <td>Sonic</td>
-                        <td>1/4/2021</td>
-                        <td>
-                            <p class="status status-paid">Paid</p>
-                        </td>
 
-                    </tr>
-                    <tr>
-                        <td><a href="#">Bénéfice avant impôts</a></td>
-                        <td>Innercircle</td>
-                        <td>1/2/2021</td>
-                        <td>
-                            <p class="status status-pending">Pending</p>
-                        </td>
 
-                    </tr>
-                    <tr>
-                        <td><a href="#">Charge d’impôts</a></td>
-                        <td>Varsity Plus</td>
-                        <td>12/30/2020</td>
-                        <td>
-                            <p class="status status-pending">Pending</p>
-                        </td>
+                                {months.map((month) =>
+                                    <th>{month}</th>
+                                )}
+                                <th>Exercise à ce jour</th>
 
-                    </tr>
-                    <tr>
-                        <td><a href="#">Revenu net</a></td>
-                        <td>Highlander</td>
-                        <td>12/18/2020</td>
-                        <td>
-                            <p class="status status-paid">Paid</p>
-                        </td>
+                            </tr>
 
-                    </tr>
+                        </thead>
 
-                </table>
+                        <tbody>
+
+
+
+                            <tr>
+                                <td><a href="#">Revenu d’intérêts (charge)</a></td>
+                                {CompteResultat.map((compteresultats) =>
+                                    <td><a href="#">{compteresultats.benefits}</a></td>
+                                )}
+                                {/*  <td><a href="#">020</a></td> */}
+
+
+                            </tr>
+
+
+                            <tr>
+                                <td><a href="#">Bénéfice avant impôts</a></td>
+                                {CompteResultat.map((compteresultats) =>
+                                    <td><a href="#">{compteresultats.benefits}</a></td>
+                                )}
+                                <td><a href="#">12011</a></td>
+                            </tr>
+
+                            <tr>
+                                <td><a href="#">Charge d’impôts</a></td>
+                                {CompteResultat.map((compteresultats) =>
+
+                                    <td><a href="#">{compteresultats.taxes}</a></td>
+                                )}
+                                <td><a href="#">12011</a></td>
+                            </tr>
+
+
+                            <tr>
+                                <td><a href="#">Revenu net</a></td>
+                                {CompteResultat.map((compteresultats) =>
+
+                                    <td><a href="#">{compteresultats.month}</a></td>
+                                )}
+                                <td><a href="#">12011</a></td>
+
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
             </Consultant_layout>
         </div>
 
 
     );
-
-
-
-
-
-
 
 }

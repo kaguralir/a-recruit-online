@@ -41,6 +41,7 @@
     "material-design-icons": "^3.0.1",
     "next": "10.2.3",
     "nextjs-redirect": "^5.0.2",
+    "pdf-parse": "^1.1.1",
     "react": "17.0.2",
     "react-bootstrap": "^2.0.0",
     "react-calendly": "^2.0.4",
